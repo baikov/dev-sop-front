@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "antfu.iconify",
+    "antfu.goto-alias",
+    "nuxtr.nuxtr-vscode",
+    "irongeek.vscode-env",
+    "vue.volar"
+  ]
+}
