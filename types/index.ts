@@ -40,6 +40,15 @@ interface IAuthError {
   message: string[] | null
 }
 
+interface IMenuItem {
+  id: number
+  name: string
+  depth: number
+  slug: string
+  image?: string | null
+  submenu: IMenuItem[] | []
+}
+
 export type {
   IBreadcrumb,
   IconMap,
@@ -48,5 +57,6 @@ export type {
   ILoginForm,
   IRegistrationForm,
   IActivateAccount,
-  IAuthError
+  IAuthError,
+  IMenuItem
 }

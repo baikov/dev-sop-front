@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 const config = useRuntimeConfig()
 useHead({
-  title: 'Preconfigured Nuxt 3 with NuxtUI',
-  titleTemplate: '%s | Template',
+  title: 'ООО "СПЕЦОПТТОРГ" - поставки стальной трубы, металлопроката, изоляции, опор для трубопроводов',
+  titleTemplate: '%s',
   meta: [
     {
       name: 'description',
-      content: 'Include TailwindCSS + headlessui, ready to use as part of fullstack project.'
+      content: 'Широкий выбор стальной трубы, металлопроката, деталей для трубопровода. Услуги доставки.'
     },
     {
       name: 'robots',
@@ -28,5 +28,9 @@ useHead({
 </script>
 
 <template>
-  <DefaultHero />
+  <div>
+    <HomeHero />
+    <HomeCatalog />
+    <HomeAbout />
+  </div>
 </template>

@@ -16,6 +16,7 @@ onMounted(() => {
   <ClientOnly>
     <UToggle
       v-model="isDark"
+      class="hidden md:flex"
       off-icon="i-heroicons-sun-20-solid"
       on-icon="i-heroicons-moon-20-solid"
     />
