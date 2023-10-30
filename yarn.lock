@@ -1605,6 +1605,16 @@
     "@tufjs/canonical-json" "2.0.0"
     minimatch "^9.0.3"
 
+"@twemoji/api@^14.0.2":
+  version "14.1.2"
+  resolved "https://registry.yarnpkg.com/@twemoji/api/-/api-14.1.2.tgz#9e75a59cc2ff64c6c9106902823c9b6bc5bb4a9f"
+  integrity sha512-JLuszRq7t+NWJTaNwBD+Hbhf67gzn6jAqhNIDTPndEGT55kHiZTJAYRGCHZB/eA58OGVSp7mIvsJs+F/ZDJanA==
+  dependencies:
+    fs-extra "^8.0.1"
+    jsonfile "^5.0.0"
+    twemoji-parser "14.0.0"
+    universalify "^0.1.2"
+
 "@types/eslint@^8.37.0", "@types/eslint@^8.4.5":
   version "8.44.6"
   resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-8.44.6.tgz#60e564551966dd255f4c01c459f0b4fb87068603"
@@ -6086,14 +6096,15 @@ nuxi@^3.9.1:
   optionalDependencies:
     fsevents "~2.3.3"
 
-nuxt-og-image@^2.0.28:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/nuxt-og-image/-/nuxt-og-image-2.2.0.tgz#71258d18b14d0afaef6ffc00a7787fadfbb4a1bf"
-  integrity sha512-7ydP99KhNJMrupyG0iDdwZyxxTOYngbDgWMsBWzfWLAQ4Syt2LKH9Uc7y73DvWarQdXKhgUz5GNjswjmZCpaMg==
+nuxt-og-image@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/nuxt-og-image/-/nuxt-og-image-2.2.3.tgz#2cae0881ed112bac9813454dbf8ab75f1a393da7"
+  integrity sha512-r6EfYcprzndoDIFnfUU+Qq0/iEp5b413LRGehaigTBABRspWzMvI6fqKHlovSbi/k44Y/vWCVUaJQD0gwZ65Wg==
   dependencies:
     "@nuxt/kit" "^3.8.0"
     "@resvg/resvg-js" "^2.6.0"
     "@resvg/resvg-wasm" "^2.6.0"
+    "@twemoji/api" "^14.0.2"
     "@types/fs-extra" "^11.0.3"
     birpc "0.2.14"
     chalk "^5.3.0"
@@ -6107,8 +6118,8 @@ nuxt-og-image@^2.0.28:
     globby "^13.2.2"
     image-size "^1.0.2"
     launch-editor "^2.6.1"
-    nuxt-site-config "^1.5.4"
-    nuxt-site-config-kit "^1.5.4"
+    nuxt-site-config "^1.5.5"
+    nuxt-site-config-kit "^1.5.5"
     nypm "^0.3.3"
     ofetch "^1.3.3"
     ohash "^1.1.3"
