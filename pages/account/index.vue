@@ -15,10 +15,10 @@ const breadcrumbs = [
 
 <template>
   <div>
-    <DefaultBreadcrumbs :items="breadcrumbs" />
+    <CommonBreadcrumbs :items="breadcrumbs" />
     <UContainer class="flex flex-col items-center justify-center">
-      <DefaultAccountLoginRegistr v-if="!authenticated" />
-      <DefaultAccountProfile v-else />
+      <CommonAccountLoginRegistr v-if="!authenticated" />
+      <CommonAccountProfile v-else />
     </UContainer>
   </div>
 </template>
