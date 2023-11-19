@@ -6194,10 +6194,10 @@ nuxt-schema-org@^3.0.1:
     nuxt-site-config-kit "^1.4.0"
     pathe "^1.1.1"
 
-nuxt-simple-robots@^3.1.1:
-  version "3.1.7"
-  resolved "https://registry.yarnpkg.com/nuxt-simple-robots/-/nuxt-simple-robots-3.1.7.tgz#89a3c3e7e18790e70dfb3f6afe040fedc5395ac7"
-  integrity sha512-fmBhuCZu2h/Hi14Yrtiz4etsFAPIGlL4AzLqtIVncsvz9VsaKc//Ze52v0GTTvE0n18y5WdDMfCuvjM6rNmUTA==
+nuxt-simple-robots@^3.1.9:
+  version "3.1.9"
+  resolved "https://registry.yarnpkg.com/nuxt-simple-robots/-/nuxt-simple-robots-3.1.9.tgz#9bd9353dac6e3c7a7b92287a83306cc27999532f"
+  integrity sha512-JpXLbuPh3gXu7Sfy+6WJcDCaPpshFbn7aDQtfIOiuKXqxw2zY/BopBeJWQRzPBAcWc/R4S0yxRVFxK8BsbT5aA==
   dependencies:
     "@nuxt/kit" "^3.8.0"
     defu "^6.1.3"
