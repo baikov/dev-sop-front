@@ -1086,7 +1086,7 @@
   optionalDependencies:
     ipx "^2.0.2"
 
-"@nuxt/kit@3.8.2", "@nuxt/kit@^3.5.0", "@nuxt/kit@^3.6.5", "@nuxt/kit@^3.8.0", "@nuxt/kit@^3.8.1", "@nuxt/kit@^3.8.2":
+"@nuxt/kit@3.8.2", "@nuxt/kit@^3.5.0", "@nuxt/kit@^3.8.0", "@nuxt/kit@^3.8.1", "@nuxt/kit@^3.8.2":
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.8.2.tgz#f4548f3449d2566dbd2febe2b84f47060f7c668c"
   integrity sha512-LrXCm8hAkw+zpX8teUSD/LqXRarlXjbRiYxDkaqw739JSHFReWzBFgJbojsJqL4h1XIEScDGGOWiEgO4QO1sMg==
@@ -1269,13 +1269,13 @@
     pathe "^1.1.0"
     vite-plugin-eslint "^1.8.1"
 
-"@nuxtjs/google-fonts@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/google-fonts/-/google-fonts-3.0.2.tgz#baecde4a4bbd4e9ff5724d83d427c56b1ffc5127"
-  integrity sha512-9DY0NcBnx/I6+3Lr7NeB64k5A7GbqCN1pqVgU9ld00NEXSpDUht2+lG8mcC5UnmpTi8KCdCJckDbD/bqW3ncYg==
+"@nuxtjs/google-fonts@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/google-fonts/-/google-fonts-3.1.0.tgz#0d8fd062637c3f5c6a59f2e48da5becd8ce0a1bd"
+  integrity sha512-4e6FacoTXefYNUzQkRqUBlB/uH/JTLYX2vDoOB6saUS4I81k2DNn8qQfUgiv5xc9nZyTOjYGqOHBJm8U4Ec4pQ==
   dependencies:
-    "@nuxt/kit" "^3.6.5"
-    google-fonts-helper "^3.3.1"
+    "@nuxt/kit" "^3.8.2"
+    google-fonts-helper "^3.4.0"
     pathe "^1.1.1"
 
 "@nuxtjs/tailwindcss@^6.10.0":
@@ -4745,10 +4745,10 @@ globby@^14.0.0:
     slash "^5.1.0"
     unicorn-magic "^0.1.0"
 
-google-fonts-helper@^3.3.1:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/google-fonts-helper/-/google-fonts-helper-3.3.2.tgz#b13f38fd7d682e320ee9c5c01ff1a3efa6edb27c"
-  integrity sha512-IOPj9Awaw43vsjWr/QPCLZn80yWTuUlLIiF/k/kpAZezRlPE5D7YQ/dqo9bh0Hl7IANMQliDYdMrEtQu7Y7CYw==
+google-fonts-helper@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/google-fonts-helper/-/google-fonts-helper-3.4.0.tgz#98369c2d2fdea18237873e6372aca19b6a9495aa"
+  integrity sha512-WlSzFb7AnsTo1dSUL/A070fiQFbr89bw82u4FOyuQeigyfBaPLP4KP8qGfOMRWcb+IRowQtEwIwS4sEA2BzGFw==
   dependencies:
     deepmerge "^4.3.1"
     hookable "^5.5.3"
