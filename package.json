@@ -12,15 +12,15 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@iconify/json": "2.2.145",
+    "@iconify/json": "2.2.146",
     "@nuxt/devtools": "1.0.3",
     "@nuxt/image": "1.1.0",
     "@nuxt/ui": "2.11.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/eslint-module": "^4.1.0",
-    "@nuxtjs/google-fonts": "^3.0.2",
+    "@nuxtjs/google-fonts": "3.1.0",
     "@pinia/nuxt": "^0.5.1",
-    "@types/node": "20.9.4",
+    "@types/node": "20.10.0",
     "@vueuse/core": "^10.3.0",
     "@vueuse/nuxt": "^10.3.0",
     "eslint": "^8.49.0",
