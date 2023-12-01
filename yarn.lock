@@ -973,7 +973,7 @@
   resolved "https://registry.yarnpkg.com/@nuxt/devalue/-/devalue-2.0.2.tgz#5749f04df13bda4c863338d8dabaf370f45ef7c7"
   integrity sha512-GBzP8zOc7CGWyFQS6dv1lQz8VVpz5C2yRszbXufwG/9zhStTIH50EtD87NmWbTMwXDvZLNg8GIpb1UFdH93JCA==
 
-"@nuxt/devtools-kit@1.0.3", "@nuxt/devtools-kit@^1.0.2", "@nuxt/devtools-kit@^1.0.3":
+"@nuxt/devtools-kit@1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@nuxt/devtools-kit/-/devtools-kit-1.0.3.tgz#10b101476e6c19ee93a1a3c1a6a72f6c19e0b733"
   integrity sha512-a/ZAVmrD5yOfUYhRVfC9afMkczzL8J8zdf0h6QHbTd33rJW/jmjwTn++RTdnbSD2gg2fSBRi/h8y17RmqIdb9g==
@@ -982,31 +982,40 @@
     "@nuxt/schema" "^3.8.1"
     execa "^7.2.0"
 
-"@nuxt/devtools-ui-kit@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@nuxt/devtools-ui-kit/-/devtools-ui-kit-1.0.3.tgz#11830dd2b2f17f0d7fe21e8763ddcfbdb67802a1"
-  integrity sha512-SHXNFDnT3V26uWcfAgMWJ9MCvtQiQLlB/O9HsUICPXrMgHyBbTmLjwyuG0nxlGOQmgDDYKuOJYkkRUXJm+FQSw==
+"@nuxt/devtools-kit@1.0.4", "@nuxt/devtools-kit@^1.0.2", "@nuxt/devtools-kit@^1.0.3", "@nuxt/devtools-kit@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@nuxt/devtools-kit/-/devtools-kit-1.0.4.tgz#dace89a92d4397f414d473b21a3164f35cbb8abe"
+  integrity sha512-AXNeI1dBilNryCmwuTd3lU7CrPBhzUJ5ntTFiXw9MmFwe5QT3NOxDFOv0gX7z1DFnmBEmx5mPKWysCwh7htEnQ==
+  dependencies:
+    "@nuxt/kit" "^3.8.2"
+    "@nuxt/schema" "^3.8.2"
+    execa "^7.2.0"
+
+"@nuxt/devtools-ui-kit@^1.0.3", "@nuxt/devtools-ui-kit@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@nuxt/devtools-ui-kit/-/devtools-ui-kit-1.0.4.tgz#effce16d638edb2c141ab151a6a1273c712c901b"
+  integrity sha512-V+6MGuCIUDq/zrAj1kfgPdMO55/XRZQN27Rp2MWB+70BVpVMCyDLLURfPLVcVCTNWyaeiO4hCIK5zDBNvrcUTQ==
   dependencies:
     "@iconify-json/carbon" "^1.1.21"
     "@iconify-json/logos" "^1.1.38"
     "@iconify-json/ri" "^1.1.12"
     "@iconify-json/tabler" "^1.1.97"
-    "@nuxt/devtools-kit" "1.0.3"
-    "@nuxt/kit" "^3.8.1"
+    "@nuxt/devtools-kit" "1.0.4"
+    "@nuxt/kit" "^3.8.2"
     "@nuxtjs/color-mode" "^3.3.2"
-    "@unocss/core" "^0.57.6"
-    "@unocss/nuxt" "^0.57.6"
-    "@unocss/preset-attributify" "^0.57.6"
-    "@unocss/preset-icons" "^0.57.6"
-    "@unocss/preset-mini" "^0.57.6"
-    "@unocss/reset" "^0.57.6"
+    "@unocss/core" "^0.57.7"
+    "@unocss/nuxt" "^0.57.7"
+    "@unocss/preset-attributify" "^0.57.7"
+    "@unocss/preset-icons" "^0.57.7"
+    "@unocss/preset-mini" "^0.57.7"
+    "@unocss/reset" "^0.57.7"
     "@vueuse/core" "^10.6.1"
     "@vueuse/integrations" "^10.6.1"
     "@vueuse/nuxt" "^10.6.1"
     defu "^6.1.3"
     focus-trap "^7.5.4"
     splitpanes "^3.1.5"
-    unocss "^0.57.6"
+    unocss "^0.57.7"
     v-lazy-show "^0.2.4"
 
 "@nuxt/devtools-wizard@1.0.3":
@@ -2029,7 +2038,7 @@
     "@unocss/core" "0.57.7"
     unconfig "^0.3.11"
 
-"@unocss/core@0.57.7", "@unocss/core@^0.57.6", "@unocss/core@^0.57.7":
+"@unocss/core@0.57.7", "@unocss/core@^0.57.7":
   version "0.57.7"
   resolved "https://registry.yarnpkg.com/@unocss/core/-/core-0.57.7.tgz#4fe79e3d7327d5f25de0f82b80567fd8f5f82602"
   integrity sha512-1d36M0CV3yC80J0pqOa5rH1BX6g2iZdtKmIb3oSBN4AWnMCSrrJEPBrUikyMq2TEQTrYWJIVDzv5A9hBUat3TA==
@@ -2051,7 +2060,7 @@
     gzip-size "^6.0.0"
     sirv "^2.0.3"
 
-"@unocss/nuxt@^0.57.6":
+"@unocss/nuxt@^0.57.7":
   version "0.57.7"
   resolved "https://registry.yarnpkg.com/@unocss/nuxt/-/nuxt-0.57.7.tgz#b2cee73afd9ae0589fdf879a02ba7f9099163b1c"
   integrity sha512-txmi7qEU+uumF/APebRULtbRF2JTsyFlylkXyjwJPdVxYZrv6FakVi6ZDt4j3F3nyQFagG+qT3IcqmLX1i8aFA==
@@ -2084,14 +2093,14 @@
     magic-string "^0.30.5"
     postcss "^8.4.31"
 
-"@unocss/preset-attributify@0.57.7", "@unocss/preset-attributify@^0.57.6":
+"@unocss/preset-attributify@0.57.7", "@unocss/preset-attributify@^0.57.7":
   version "0.57.7"
   resolved "https://registry.yarnpkg.com/@unocss/preset-attributify/-/preset-attributify-0.57.7.tgz#ffca52114329c9a13b668049f2fcada645f56d1d"
   integrity sha512-vUqfwUokNHt1FJXIuVyj2Xze9LfJdLAy62h79lNyyEISZmiDF4a4hWTKLBe0d6Kyfr33DyXMmkLp57t5YW0V3A==
   dependencies:
     "@unocss/core" "0.57.7"
 
-"@unocss/preset-icons@0.57.7", "@unocss/preset-icons@^0.57.6":
+"@unocss/preset-icons@0.57.7", "@unocss/preset-icons@^0.57.7":
   version "0.57.7"
   resolved "https://registry.yarnpkg.com/@unocss/preset-icons/-/preset-icons-0.57.7.tgz#8465a439ea8a667cb7c88f741d71167a698a4195"
   integrity sha512-s3AelKCS9CL1ArP1GanYv0XxxPrcFi+XOuQoQCwCRHDo2CiBEq3fLLMIhaUCFEWGtIy7o7wLeL5BRjMvJ2QnMg==
@@ -2100,7 +2109,7 @@
     "@unocss/core" "0.57.7"
     ofetch "^1.3.3"
 
-"@unocss/preset-mini@0.57.7", "@unocss/preset-mini@^0.57.6":
+"@unocss/preset-mini@0.57.7", "@unocss/preset-mini@^0.57.7":
   version "0.57.7"
   resolved "https://registry.yarnpkg.com/@unocss/preset-mini/-/preset-mini-0.57.7.tgz#08b801d5dd377b2056116c3c4568f3ab727f3a5b"
   integrity sha512-YPmmh+ZIg4J7/nPMfvzD1tOfUFD+8KEFXX9ISRteooflYeosn2YytGW66d/sq97AZos9N630FJ//DvPD2wfGwA==
@@ -2151,7 +2160,7 @@
     "@unocss/preset-mini" "0.57.7"
     "@unocss/rule-utils" "0.57.7"
 
-"@unocss/reset@0.57.7", "@unocss/reset@^0.57.6":
+"@unocss/reset@0.57.7", "@unocss/reset@^0.57.7":
   version "0.57.7"
   resolved "https://registry.yarnpkg.com/@unocss/reset/-/reset-0.57.7.tgz#e5a09fa9289a47db2f5b030cfc547ea641ad298c"
   integrity sha512-oN9024WVrMewGbornnAPIpzHeKPIfVmZ5IsZGilWR761TnI5jTjHUkswsVoFx7tZdpCN2/bqS3JK/Ah0aot3NQ==
@@ -6478,27 +6487,27 @@ nuxt-simple-robots@^3.1.9:
     pathe "^1.1.1"
     ufo "^1.3.1"
 
-nuxt-simple-sitemap@4.1.6:
-  version "4.1.6"
-  resolved "https://registry.yarnpkg.com/nuxt-simple-sitemap/-/nuxt-simple-sitemap-4.1.6.tgz#bb07111e1017f989aec539c265fffbba5a09bc05"
-  integrity sha512-wHIDFS3AIFc/9lbG7lUcm5OF/TxYu9kzBH/HRjYIDh/jBvGv+ESy0Qix6sqMh7eDa6dV8MPBxFlRxy+dD0m2Nw==
+nuxt-simple-sitemap@4.1.7:
+  version "4.1.7"
+  resolved "https://registry.yarnpkg.com/nuxt-simple-sitemap/-/nuxt-simple-sitemap-4.1.7.tgz#a75b475eea570ccefa6247d61b4765476b681505"
+  integrity sha512-6ez2ws8ShgETNoqX4skcSuczoirsCNWsH4WMbAaUAl0FBP4fcwWav9ZkVA7S/H2ZMQrJ3pUzirEuAuB+VXpT1Q==
   dependencies:
-    "@nuxt/devtools-kit" "^1.0.3"
-    "@nuxt/devtools-ui-kit" "^1.0.3"
+    "@nuxt/devtools-kit" "^1.0.4"
+    "@nuxt/devtools-ui-kit" "^1.0.4"
     "@nuxt/kit" "^3.8.2"
     chalk "^5.3.0"
     defu "^6.1.3"
-    nuxt-site-config "^1.6.1"
-    nuxt-site-config-kit "^1.6.1"
+    nuxt-site-config "^1.6.6"
+    nuxt-site-config-kit "^1.6.6"
     ofetch "^1.3.3"
     pathe "^1.1.1"
     radix3 "^1.1.0"
     semver "^7.5.4"
     sirv "^2.0.3"
-    site-config-stack "^1.6.1"
+    site-config-stack "^1.6.6"
     ufo "^1.3.2"
 
-nuxt-site-config-kit@1.6.6, nuxt-site-config-kit@^1.5.5, nuxt-site-config-kit@^1.6.0, nuxt-site-config-kit@^1.6.1:
+nuxt-site-config-kit@1.6.6, nuxt-site-config-kit@^1.5.5, nuxt-site-config-kit@^1.6.0, nuxt-site-config-kit@^1.6.6:
   version "1.6.6"
   resolved "https://registry.yarnpkg.com/nuxt-site-config-kit/-/nuxt-site-config-kit-1.6.6.tgz#946044845a46677b4944a22bc50f6273119e25e1"
   integrity sha512-1sEC1qeWBnYDkHeyTrDD5d9rxC7N9g7dHbKro0Qs1NOfmq1Mj8IMizl6NWVVxPrZ8PfJOEcMf9zEcCqSaaVwoQ==
@@ -6510,7 +6519,7 @@ nuxt-site-config-kit@1.6.6, nuxt-site-config-kit@^1.5.5, nuxt-site-config-kit@^1
     std-env "^3.5.0"
     ufo "^1.3.2"
 
-nuxt-site-config@^1.5.5, nuxt-site-config@^1.6.0, nuxt-site-config@^1.6.1:
+nuxt-site-config@^1.5.5, nuxt-site-config@^1.6.0, nuxt-site-config@^1.6.6:
   version "1.6.6"
   resolved "https://registry.yarnpkg.com/nuxt-site-config/-/nuxt-site-config-1.6.6.tgz#d0c83d0905fa887bf157d9235587558f7b6fd8d1"
   integrity sha512-orqglyJAFZEVxW7oglFMcCgq6r7Cpr8xOd+1zn+OiPmP+D++EBFn+90gmV9utGjaX8t5G2sO71pO4DMIZf2u7g==
@@ -7937,7 +7946,7 @@ sisteransi@^1.0.5:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-site-config-stack@1.6.6, site-config-stack@^1.6.1:
+site-config-stack@1.6.6, site-config-stack@^1.6.6:
   version "1.6.6"
   resolved "https://registry.yarnpkg.com/site-config-stack/-/site-config-stack-1.6.6.tgz#3952f6aa9a7847436fc625b9cbd8ba4bfc6e1493"
   integrity sha512-a3nLIeVL6W9bSkPxQf2HA4ZRzPpWYpP3WYu8AVhEGv9ty5pzD8Xb8muRVLq9kD/fzXtgR1qvko0r/0nKKhH2xQ==
@@ -8749,7 +8758,7 @@ universalify@^2.0.0:
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.1.tgz#168efc2180964e6386d061e094df61afe239b18d"
   integrity sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==
 
-unocss@0.57.7, unocss@^0.57.6:
+unocss@0.57.7, unocss@^0.57.7:
   version "0.57.7"
   resolved "https://registry.yarnpkg.com/unocss/-/unocss-0.57.7.tgz#d73aa2fd3f71adea3335f144e18c84b23db8dfe3"
   integrity sha512-Z99ZZPkbkjIUXEM7L+K/7Y5V5yqUS0VigG7ZIFzLf/npieKmXHKlrPyvQWFQaf3OqooMFuKBQivh75TwvSOkcQ==
