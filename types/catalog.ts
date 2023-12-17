@@ -22,6 +22,7 @@ interface IProductProperty {
   units: string
   is_display_in_list: boolean
   ordering: number
+  values: string[]
 }
 interface ICategoryDetail {
   id: number
@@ -42,7 +43,7 @@ interface IProduct {
   slug: string
   properties: IProductPropertyValue[]
   unit_price_with_coef: number
-  ton_price_with_coef: number | string
+  ton_price_with_coef: number
   meter_price_with_coef: number
   seo: ISEO
   category: string

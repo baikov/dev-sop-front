@@ -1,12 +1,10 @@
 <script lang="ts" setup>
-const { getCategory, getProductList } = useCategory()
+const { getCategory } = useCategory()
 const route = useRoute()
 const config = useRuntimeConfig()
 const slug = route.params.slug.toString()
 const { data: detailCategory, error } = await getCategory(slug)
 const toast = useToast()
-
-const { data: productList } = await getProductList(slug)
 
 if (error.value) {
   if (error.value.statusCode === 500) {
@@ -66,14 +64,11 @@ useHead({
         <CatalogSidebar />
       </div>
       <div class="w-full md:w-8/12 lg:w-9/12">
-        <CatalogSubcategories :subcat-list="detailCategory?.subcategories" />
+        <CatalogSubcategories v-show="detailCategory?.subcategories && detailCategory?.subcategories.length > 0" :subcat-list="detailCategory?.subcategories" />
         <div class="">
           {{ detailCategory?.description }}
         </div>
-
-        <div v-if="productList && detailCategory?.product_properties">
-          <CatalogProductTable :products="productList" :product-properties="detailCategory?.product_properties" />
-        </div>
+        <CatalogProductTableTemp :category-properties="detailCategory?.product_properties" />
       </div>
     </div>
   </div>

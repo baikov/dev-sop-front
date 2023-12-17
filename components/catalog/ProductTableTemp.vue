@@ -1,0 +1,299 @@
+<script lang="ts" setup>
+import type { IProductList, IProductProperty } from '~/types/catalog'
+const config = useRuntimeConfig()
+const route = useRoute()
+const slug = route.params.slug.toString()
+const toast = useToast()
+
+const sort = ref({
+  column: 'diametr',
+  direction: 'asc'
+})
+
+const props = defineProps<{
+  categoryProperties: IProductProperty[]
+}>()
+
+const djangoSort = computed(() => {
+  if (sort.value.direction === 'desc') {
+    return `-${sort.value.column}`
+  } else {
+    return sort.value.column
+  }
+})
+
+const productListParams = useState('productListParams', () => {
+  const res = props.categoryProperties.reduce((acc: Record<string, any>, item: any) => {
+    acc[item.code] = ''
+    return acc
+  }, {}) || {}
+  res.limit = 20
+  res.offset = 0
+  return res
+})
+
+const page = computed({
+  get () {
+    return productListParams.value.offset / productListParams.value.limit + 1
+  },
+  set (newValue) {
+    productListParams.value.offset = (newValue - 1) * productListParams.value.limit
+  }
+})
+
+const filters = computed(
+  () => {
+    let result = ''
+    for (const prop of props.categoryProperties) {
+      if (productListParams.value[prop.code]) {
+        result += `&${prop.code}=${productListParams.value[prop.code]}`
+      }
+    }
+    return result
+  }
+)
+
+const endpoint = computed(
+  () => `${config.public.apiUrl}/products/?category=${slug}&sort=${djangoSort.value}&limit=${productListParams.value.limit}&offset=${productListParams.value.offset}${filters.value}`
+)
+
+const { data: productList, pending, error } = await useFetch<IProductList>(
+  endpoint,
+  {
+    method: 'get',
+    watch: [endpoint]
+  }
+)
+
+if (error.value) {
+  if (error.value.statusCode === 500) {
+    toast.add({
+      title: 'Ошибка на сервере',
+      description: 'Что-то пошло не так, попробуйте позже',
+      icon: 'i-heroicons-x-circle-solid',
+      color: 'red'
+    })
+  } else {
+    for (const key of Object.keys(error.value.data)) {
+      toast.add({
+        title: 'Ошибка получения списка продукции',
+        description: `${key}: ${error.value.data[key]}`,
+        icon: 'i-heroicons-x-circle-solid',
+        color: 'red'
+      })
+    }
+  }
+}
+
+interface IProductRow {
+  id: number
+  name: string
+  slug: string
+  in_stock: boolean
+  meter_price_with_coef: number
+  ton_price_with_coef: number
+  unit_price_with_coef: number
+  [key: string | number | symbol]: any
+}
+const table = computed(() => {
+  const res = [] as IProductRow[]
+  for (const item of productList.value?.results || []) {
+    const props = item.properties
+    const row: IProductRow = {
+      id: item.id,
+      name: item.name,
+      slug: item.slug,
+      in_stock: item.in_stock,
+      meter_price_with_coef: item.meter_price_with_coef,
+      ton_price_with_coef: item.ton_price_with_coef,
+      unit_price_with_coef: item.unit_price_with_coef
+    }
+    for (const prop of props) {
+      row[prop.code] = prop.value || ''
+    }
+    res.push(row)
+  }
+  return res
+})
+
+const baseColumns = [
+  {
+    key: 'in_stock',
+    label: 'Наличие'
+  },
+  {
+    key: 'ton_price_with_coef',
+    label: 'Цена за тонну'
+  },
+  {
+    key: 'unit_price_with_coef',
+    label: 'Цена за единицу'
+  }, {
+    key: 'meter_price_with_coef',
+    label: 'Цена за метр'
+  }
+]
+const productProperties = computed(() => {
+  const res = []
+  for (const realProp of productList.value?.results[0].properties || []) {
+    res.push(realProp.code)
+  }
+  return res
+})
+// const propColums = props.categoryProperties.map((item) => {
+//   if (productProperties.value.includes(item.code)) {
+//     return {
+//       key: item.code,
+//       label: item.name,
+//       sortable: true
+//     }
+//   }
+// })
+const propColumns = computed(() => {
+  const res = []
+  for (const item of props.categoryProperties) {
+    if (productProperties.value.includes(item.code)) {
+      res.push({
+        key: item.code,
+        label: item.name,
+        sortable: true
+      })
+    }
+  }
+  return res
+}
+)
+
+const columns = computed(() => {
+  return [
+    {
+      key: 'name',
+      label: 'Название'
+    },
+    ...propColumns.value,
+    ...baseColumns
+  ]
+})
+
+const updateSort = () => {
+  productListParams.value.offset = 0
+}
+
+const setUnsetFilter = (propertyCode: string, value: string) => {
+  if (productListParams.value[propertyCode] === value) {
+    productListParams.value[propertyCode] = ''
+  } else {
+    productListParams.value[propertyCode] = value
+  }
+  productListParams.value.offset = 0
+  isOpen.value = false
+}
+
+watch(route, () => {
+  productListParams.value.offset = 0
+  for (const item in props.categoryProperties) {
+    productListParams.value[props.categoryProperties[item].code] = ''
+  }
+}, { flush: 'sync', immediate: true, deep: true })
+const isOpen = ref(false)
+</script>
+
+<template>
+  <!-- {{ productProperties }}
+  {{ categoryProperties }} -->
+  <!-- <UAccordion
+    v-show="productProperties"
+    color="gray"
+    variant="outline"
+    size="2xs"
+    :items="[{
+      label: 'Фильтры',
+      icon: 'i-mdi-filter-outline',
+      defaultOpen: false,
+      slot: 'filters'
+    }]"
+  >
+    <template #filters>
+      <div v-for="prop in categoryProperties" :key="prop.code">
+        <span v-if="prop.values != null && prop.values.length > 0">
+          {{ prop.name }}:
+          <UBadge
+            v-for="value in prop.values"
+            :key="value"
+            class="mb-2 ml-2 cursor-pointer"
+            :class="{ 'bg-red-500': productListParams[prop.code] === value }"
+            @click="setUnsetFilter(prop.code, value)"
+          >
+            {{ value }}
+          </UBadge>
+        </span>
+      </div>
+    </template>
+  </UAccordion> -->
+
+  <div>
+    <UButton label="Фильтры" @click="isOpen = true" />
+
+    <USlideover v-model="isOpen">
+      <UCard class="flex flex-1 flex-col overflow-y-auto" :ui="{ body: { base: 'flex-1' }, ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
+        <template #header>
+          Фильтры
+        </template>
+
+        <div v-for="prop in categoryProperties" :key="prop.code">
+          <span v-if="prop.values != null && prop.values.length > 0">
+            {{ prop.name }}:
+            <UBadge
+              v-for="value in prop.values"
+              :key="value"
+              class="mb-2 ml-2 cursor-pointer"
+              :class="{ 'bg-red-500': productListParams[prop.code] === value }"
+              @click="setUnsetFilter(prop.code, value)"
+            >
+              {{ value }}
+            </UBadge>
+          </span>
+        </div>
+
+        <template #footer>
+          <Placeholder class="h-8" />
+        </template>
+      </UCard>
+    </USlideover>
+  </div>
+
+  <div v-if="productList" class="flex justify-between px-3 py-3.5 dark:border-gray-700">
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <div>
+        <div class="flex items-center gap-x-3">
+          <h2 class="text-lg font-medium text-gray-800 dark:text-white">
+            Список продукции
+          </h2>
+          <span v-for="prop in categoryProperties" :key="prop.code">
+            <UChip v-if="productListParams[prop.code] !== ''" text="x" color="gray">
+              <UBadge
+                class="cursor-pointer bg-red-500"
+                @click="setUnsetFilter(prop.code, productListParams[prop.code])"
+              >
+                {{ prop.name }}: {{ productListParams[prop.code] }}
+              </UBadge>
+            </UChip>
+          </span>
+
+          <span class="rounded-full bg-green-100 px-3 py-1 text-xs text-green-700 dark:bg-gray-900 dark:text-zinc-200">
+            {{ productList?.count }} позиций
+          </span>
+        </div>
+      </div>
+    </div>
+    <UPagination v-model="page" :total="productList?.count" :page-count="productListParams.limit" />
+  </div>
+  <UTable v-model:sort="sort" :rows="table" :loading="pending" :columns="columns" @update:sort="updateSort">
+    <template #in_stock-data="{ row }">
+      <span :class="{ 'text-yellow-500': !row.in_stock, 'text-green-500': row.in_stock }">{{ row.in_stock ? 'ДОХУЯ' : 'Много' }}</span>
+    </template>
+  </UTable>
+  <div v-if="productList" class="flex justify-end border-t border-gray-200 px-3 py-3.5 dark:border-gray-700">
+    <UPagination v-model="page" :total="productList?.count" :page-count="productListParams.limit" />
+  </div>
+</template>

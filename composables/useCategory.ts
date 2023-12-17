@@ -2,8 +2,7 @@ import type { Category, ICategoryDetail, IProductList } from '~/types/catalog'
 
 export const useCategory = () => {
   const config = useRuntimeConfig()
-  const pageLimit = useState('limit', () => 0)
-  const pageOffset = useState('offset', () => 0)
+  const productListParams = useState('productListParams')
 
   const getCategryList = async () => {
     const { data, error } = await useFetch<Category[]>(
@@ -45,7 +44,7 @@ export const useCategory = () => {
     const { data, error } = await useFetch<IProductList>(
       `${config.public.apiUrl}/categories/${slug}/products/`,
       {
-        query: { limit: pageLimit, offset: pageOffset }
+        // query: { limit: pageLimit, offset: pageOffset }
         // watch: [pageLimit, pageOffset],
       }
     )
@@ -55,5 +54,23 @@ export const useCategory = () => {
     }
   }
 
-  return { getCategryList, getCategory, getProductList, getRootCategories, pageLimit, pageOffset }
+  const getProductListNew = async (slug: string) => {
+    const { data, error, refresh } = await useFetch<IProductList>(
+      `${config.public.apiUrl}/products/?category=${slug}`,
+      {
+        query: productListParams
+        // watch: [sort]
+        // transform: (productList) => {
+        //   return productList.map(productList.results => ({ title: mountain.title, description: mountain.description }))
+        // }
+      }
+    )
+    return {
+      data,
+      error,
+      refresh
+    }
+  }
+
+  return { getCategryList, getCategory, getRootCategories, getProductList, getProductListNew }
 }
