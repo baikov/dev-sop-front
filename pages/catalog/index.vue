@@ -42,7 +42,7 @@ const breadcrumbs = [
         <CatalogSidebar />
       </div> -->
       <div class="w-full">
-        <CatalogSubcategories :subcat-list="rootCategories" />
+        <CatalogSubcategories :subcat-list="rootCategories || []" />
       </div>
     </div>
   </div>
