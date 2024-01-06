@@ -50,6 +50,8 @@ interface IProduct {
   description: string
   breadcrumbs: IBreadcrumb[]
   in_stock: boolean
+  same_category_products: IProduct[] | []
+  related_products: IProduct[] | []
 }
 interface IProductList {
   limit: number

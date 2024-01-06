@@ -5,7 +5,11 @@ const route = useRoute()
 const slug = route.params.slug.toString()
 const toast = useToast()
 
-const sort = ref({
+interface SortRef {
+  column: string;
+  direction: 'asc' | 'desc';
+}
+const sort = ref<SortRef>({
   column: 'diametr',
   direction: 'asc'
 })
@@ -109,7 +113,7 @@ const table = computed(() => {
       unit_price_with_coef: item.unit_price_with_coef
     }
     for (const prop of props) {
-      row[prop.code] = prop.value || ''
+      row[prop.code] = parseFloat(prop.value) || prop.value
     }
     res.push(row)
   }
@@ -196,6 +200,29 @@ watch(route, () => {
   }
 }, { flush: 'sync', immediate: true, deep: true })
 const isOpen = ref(false)
+
+watch(error, () => {
+  if (error.value) {
+    if (error.value.statusCode === 500) {
+      toast.add({
+        title: 'Ошибка на сервере',
+        description: 'Что-то пошло не так, попробуйте позже',
+        icon: 'i-heroicons-x-circle-solid',
+        color: 'red'
+      })
+      sort.value = { direction: 'asc', column: 'diametr' }
+    } else {
+      for (const key of Object.keys(error.value.data)) {
+        toast.add({
+          title: 'Ошибка получения списка продукции',
+          description: `${key}: ${error.value.data[key]}`,
+          icon: 'i-heroicons-x-circle-solid',
+          color: 'red'
+        })
+      }
+    }
+  }
+})
 </script>
 
 <template>
@@ -289,8 +316,13 @@ const isOpen = ref(false)
     <UPagination v-model="page" :total="productList?.count" :page-count="productListParams.limit" />
   </div>
   <UTable v-model:sort="sort" :rows="table" :loading="pending" :columns="columns" @update:sort="updateSort">
+    <template #name-data="{ row }">
+      <NuxtLink :to="`/product/${row.slug}`" class="underline hover:text-gray-700 dark:hover:text-gray-200">
+        {{ row.name }}
+      </NuxtLink>
+    </template>
     <template #in_stock-data="{ row }">
-      <span :class="{ 'text-yellow-500': !row.in_stock, 'text-green-500': row.in_stock }">{{ row.in_stock ? 'ДОХУЯ' : 'Много' }}</span>
+      <span :class="{ 'text-yellow-500': !row.in_stock, 'text-green-500': row.in_stock }">{{ row.in_stock ? 'Много' : 'Мало' }}</span>
     </template>
   </UTable>
   <div v-if="productList" class="flex justify-end border-t border-gray-200 px-3 py-3.5 dark:border-gray-700">

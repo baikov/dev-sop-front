@@ -1,4 +1,4 @@
-import type { Category, ICategoryDetail, IProductList } from '~/types/catalog'
+import type { Category, ICategoryDetail, IProductList, IProduct } from '~/types/catalog'
 
 export const useCategory = () => {
   const config = useRuntimeConfig()
@@ -72,5 +72,16 @@ export const useCategory = () => {
     }
   }
 
-  return { getCategryList, getCategory, getRootCategories, getProductList, getProductListNew }
+  const getProductDetail = async (slug: string) => {
+    const { data, error, refresh } = await useFetch<IProduct>(
+      `${config.public.apiUrl}/products/${slug}/`
+    )
+    return {
+      data,
+      error,
+      refresh
+    }
+  }
+
+  return { getCategryList, getCategory, getRootCategories, getProductList, getProductListNew, getProductDetail }
 }

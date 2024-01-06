@@ -68,7 +68,7 @@ useHead({
         <div class="">
           {{ detailCategory?.description }}
         </div>
-        <CatalogProductTableTemp :category-properties="detailCategory?.product_properties" />
+        <CatalogProductTableTemp :category-properties="detailCategory?.product_properties || []" />
       </div>
     </div>
   </div>
