@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { IMenuItem } from '~/types'
 const showDrawer = useState<boolean>('navbar.showDrawer', () => false)
 const toggleDrawer = () => (showDrawer.value = !showDrawer.value)
 
@@ -6,6 +7,10 @@ const toggleSubmenu = (id: number) => {
   const sub = document.querySelector(`#submenu-${id}`)
   if (sub?.classList.contains('hidden')) { sub.classList.replace('hidden', 'block') } else { sub?.classList.replace('block', 'hidden') }
 }
+defineProps<{
+  catalogMenu?: IMenuItem[] | null
+  mainMenu: IMenuItem[]
+}>()
 </script>
 
 <template>
@@ -39,7 +44,7 @@ const toggleSubmenu = (id: number) => {
             </NuxtLink>
           </div>
           <div
-            v-for="item in menu"
+            v-for="item in mainMenu"
             :key="item.id"
             class="relative my-2 w-full cursor-pointer font-bold transition-colors ease-in-out hover:bg-white/10 hover:text-zinc-50"
             :class="

@@ -58,7 +58,7 @@ if (error.value) {
         <!-- <CommonDarkToggle /> -->
         <CommonHeaderProfile class="ml-4" />
       </div>
-      <CommonMobileMenu />
+      <CommonMobileMenu :main-menu="mainMenu" :catalog-menu="catalogMenu" />
     </UContainer>
   </header>
 </template>
