@@ -108,7 +108,7 @@ const currencyOptions = {
             <!-- <NuxtImg src="https://via.placeholder.com/600" placeholder densities="x1 x2" height="300" /> -->
             <NuxtImg
               v-show="productDetail.image"
-              :src="`/soptorg/${productDetail.image}`"
+              :src="`/soptorg/media/${productDetail.image}`"
               sizes="100vw sm:50vw md:400px"
               loading="lazy"
               class="relative top-0 inline-block transition-all duration-300 ease-in-out group-hover:-top-0.5 dark:invert"
