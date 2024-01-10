@@ -126,7 +126,7 @@ async function onSubmitRegistration () {
         ref="form"
         :validate="validateLogin"
         :state="loginForm"
-        @submit.prevent="onSubmitLogin"
+        @submit="onSubmitLogin"
       >
         <UCard>
           <template #header>

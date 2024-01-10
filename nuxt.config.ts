@@ -54,9 +54,13 @@ export default defineNuxtConfig({
   },
   image: {
     // dir: 'assets/img',
-    domains: [`${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`],
+    domains: [
+      `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
+      'localhost'
+    ],
     alias: {
-      site: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`
+      soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`
+      // soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://localhost:8000'}`
     }
   },
   googleFonts: {

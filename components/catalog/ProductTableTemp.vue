@@ -126,17 +126,11 @@ const baseColumns = [
     label: 'Наличие'
   },
   {
-    key: 'ton_price_with_coef',
-    label: 'Цена за тонну'
-  },
-  {
-    key: 'unit_price_with_coef',
-    label: 'Цена за единицу'
-  }, {
-    key: 'meter_price_with_coef',
-    label: 'Цена за метр'
+    key: 'price',
+    label: 'Цена'
   }
 ]
+
 const productProperties = computed(() => {
   const res = []
   for (const realProp of productList.value?.results[0].properties || []) {
@@ -144,15 +138,7 @@ const productProperties = computed(() => {
   }
   return res
 })
-// const propColums = props.categoryProperties.map((item) => {
-//   if (productProperties.value.includes(item.code)) {
-//     return {
-//       key: item.code,
-//       label: item.name,
-//       sortable: true
-//     }
-//   }
-// })
+
 const propColumns = computed(() => {
   const res = []
   for (const item of props.categoryProperties) {
@@ -160,7 +146,7 @@ const propColumns = computed(() => {
       res.push({
         key: item.code,
         label: item.name,
-        sortable: true
+        sortable: item.is_sortable
       })
     }
   }
@@ -193,13 +179,14 @@ const setUnsetFilter = (propertyCode: string, value: string) => {
   isOpen.value = false
 }
 
+const isOpen = ref(false)
+
 watch(route, () => {
   productListParams.value.offset = 0
   for (const item in props.categoryProperties) {
     productListParams.value[props.categoryProperties[item].code] = ''
   }
 }, { flush: 'sync', immediate: true, deep: true })
-const isOpen = ref(false)
 
 watch(error, () => {
   if (error.value) {
@@ -223,41 +210,16 @@ watch(error, () => {
     }
   }
 })
+
+const currencyOptions = {
+  style: 'currency',
+  currency: 'RUB',
+  maximumFractionDigits: 0
+}
 </script>
 
 <template>
-  <!-- {{ productProperties }}
-  {{ categoryProperties }} -->
-  <!-- <UAccordion
-    v-show="productProperties"
-    color="gray"
-    variant="outline"
-    size="2xs"
-    :items="[{
-      label: 'Фильтры',
-      icon: 'i-mdi-filter-outline',
-      defaultOpen: false,
-      slot: 'filters'
-    }]"
-  >
-    <template #filters>
-      <div v-for="prop in categoryProperties" :key="prop.code">
-        <span v-if="prop.values != null && prop.values.length > 0">
-          {{ prop.name }}:
-          <UBadge
-            v-for="value in prop.values"
-            :key="value"
-            class="mb-2 ml-2 cursor-pointer"
-            :class="{ 'bg-red-500': productListParams[prop.code] === value }"
-            @click="setUnsetFilter(prop.code, value)"
-          >
-            {{ value }}
-          </UBadge>
-        </span>
-      </div>
-    </template>
-  </UAccordion> -->
-
+  <!-- {{ productProperties }} -->
   <div>
     <UButton label="Фильтры" @click="isOpen = true" />
 
@@ -283,7 +245,7 @@ watch(error, () => {
         </div>
 
         <template #footer>
-          <Placeholder class="h-8" />
+          <div class="h-8" />
         </template>
       </UCard>
     </USlideover>
@@ -315,7 +277,14 @@ watch(error, () => {
     </div>
     <UPagination v-model="page" :total="productList?.count" :page-count="productListParams.limit" />
   </div>
-  <UTable v-model:sort="sort" :rows="table" :loading="pending" :columns="columns" @update:sort="updateSort">
+  <UTable
+    v-model:sort="sort"
+    :rows="table"
+    :loading="pending"
+    :loading-state="{ icon: 'i-heroicons-arrow-path-20-solid', label: 'Загрузка...' }"
+    :columns="columns"
+    @update:sort="updateSort"
+  >
     <template #name-data="{ row }">
       <NuxtLink :to="`/product/${row.slug}`" class="underline hover:text-gray-700 dark:hover:text-gray-200">
         {{ row.name }}
@@ -323,6 +292,36 @@ watch(error, () => {
     </template>
     <template #in_stock-data="{ row }">
       <span :class="{ 'text-yellow-500': !row.in_stock, 'text-green-500': row.in_stock }">{{ row.in_stock ? 'Много' : 'Мало' }}</span>
+    </template>
+    <template #price-data="{ row }">
+      <div v-if="row.ton_price_with_coef || row.meter_price_with_coef || row.unit_price_with_coef">
+        <span v-show="row.ton_price_with_coef" class="font-bold">
+          {{ row.ton_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/тн
+        </span>
+        <span v-show="!row.ton_price_with_coef && row.unit_price_with_coef" class="font-bold">
+          {{ `${row.unit_price_with_coef.toLocaleString('ru-RU', currencyOptions)}/шт` }}
+        </span>
+        <span v-show="!row.ton_price_with_coef && row.meter_price_with_coef" class="font-bold">
+          {{ `${row.meter_price_with_coef.toLocaleString('ru-RU', currencyOptions)}/м` }}
+        </span>
+        <p v-if="row.ton_price_with_coef && row.meter_price_with_coef" class="text-xs font-normal text-gray-600 dark:text-gray-400">
+          {{ row.meter_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/м
+        </p>
+        <p v-if="row.ton_price_with_coef && row.unit_price_with_coef" class="text-xs font-normal text-gray-600 dark:text-gray-400">
+          {{ row.unit_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/шт
+        </p>
+      </div>
+      <div v-else>
+        <span class="font-bold">
+          По запросу
+        </span>
+      </div>
+    </template>
+    <template #empty-state>
+      <div class="flex flex-col items-center justify-center gap-3 py-6">
+        <span class="text-sm italic">Товары не найдены</span>
+        <!-- <UButton label="Сбросить фильтры" @click="filters = {}" /> -->
+      </div>
     </template>
   </UTable>
   <div v-if="productList" class="flex justify-end border-t border-gray-200 px-3 py-3.5 dark:border-gray-700">

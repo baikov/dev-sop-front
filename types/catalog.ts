@@ -21,6 +21,7 @@ interface IProductProperty {
   code: string
   units: string
   is_display_in_list: boolean
+  is_sortable: boolean
   ordering: number
   values: string[]
 }
@@ -40,6 +41,7 @@ interface IProductPropertyValue extends IProductProperty {
 interface IProduct {
   id: number
   name: string
+  image: string | null
   slug: string
   properties: IProductPropertyValue[]
   unit_price_with_coef: number
