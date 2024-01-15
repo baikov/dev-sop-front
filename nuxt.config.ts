@@ -33,6 +33,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/google-fonts',
     '@nuxtjs/sitemap', // https://nuxtseo.com/sitemap
+    // 'nuxt-simple-sitemap', // https://nuxtseo.com/sitemap
     'nuxt-simple-robots', // https://github.com/harlan-zw/nuxt-simple-robots
     'nuxt-og-image', // https://github.com/harlan-zw/nuxt-og-image
     'nuxt-schema-org', // https://unhead-schema-org.harlanzw.com/integrations/nuxt/module
