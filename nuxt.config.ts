@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@vueuse/nuxt',
     '@nuxtjs/google-fonts',
-    'nuxt-simple-sitemap', // https://github.com/harlan-zw/nuxt-simple-sitemap
+    '@nuxtjs/sitemap', // https://nuxtseo.com/sitemap
     'nuxt-simple-robots', // https://github.com/harlan-zw/nuxt-simple-robots
     'nuxt-og-image', // https://github.com/harlan-zw/nuxt-og-image
     'nuxt-schema-org', // https://unhead-schema-org.harlanzw.com/integrations/nuxt/module
@@ -59,8 +59,8 @@ export default defineNuxtConfig({
       'localhost'
     ],
     alias: {
-      soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`
-      // soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://localhost:8000'}`
+      // soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`
+      soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://localhost:8000'}`
     }
   },
   googleFonts: {
@@ -82,5 +82,27 @@ export default defineNuxtConfig({
   },
   tailwindcss: {
     viewer: false
+  },
+  sitemap: {
+    sitemaps: {
+      products: {
+        sources: [
+          `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}${process.env.API_PORT ? `:${process.env.API_PORT}` : ''}/api` + '/products/sitemap'
+        ],
+        defaults: { priority: 0.5 }
+      },
+      categories: {
+        sources: [
+          `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}${process.env.API_PORT ? `:${process.env.API_PORT}` : ''}/api` + '/categories/sitemap'
+        ],
+        defaults: { priority: 0.7 }
+      },
+      pages: {
+        includeAppSources: true,
+        exclude: [
+          '/account/**'
+        ]
+      }
+    }
   }
 })
