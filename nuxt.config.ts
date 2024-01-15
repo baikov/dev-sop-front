@@ -63,8 +63,8 @@ export default defineNuxtConfig({
       'localhost'
     ],
     alias: {
-      // soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`
-      soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://localhost:8000'}`
+      soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`
+      // soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://localhost:8000'}`
     }
   },
   googleFonts: {
