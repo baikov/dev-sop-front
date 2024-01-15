@@ -56,7 +56,7 @@ if (error.value) {
       <div class="flex items-center md:flex-initial">
         <CommonDarkToggleSwipe />
         <!-- <CommonDarkToggle /> -->
-        <CommonHeaderProfile class="ml-4" />
+        <!-- <CommonHeaderProfile class="ml-4" /> -->
       </div>
       <CommonMobileMenu :main-menu="mainMenu" :catalog-menu="catalogMenu" />
     </UContainer>
