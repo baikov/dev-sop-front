@@ -1262,10 +1262,10 @@
     google-fonts-helper "^3.4.1"
     pathe "^1.1.1"
 
-"@nuxtjs/sitemap@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/sitemap/-/sitemap-5.0.2.tgz#ecaeae1524ec97efef22243cec8eff23a6629456"
-  integrity sha512-0bfdX5sWIicRQ2BkkDMCNEGxdkRfw6p9jEGQ8ISVjgapnMFuWwTEtggA6HWky8tUCi0+4Gpae+pb2BYaeI2/vA==
+"@nuxtjs/sitemap@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/sitemap/-/sitemap-5.0.3.tgz#fbe0e91353a5d4b2d10a5a1e2805a43c91e023be"
+  integrity sha512-TfVyLI0IShv6DzfdrwhO5ghpMg3Nm67QxL7nHd7l+Ke9e8tQkfwtuiKKhZjXOt2riSpyqKATuG+H9b1Nyx9HPQ==
   dependencies:
     "@nuxt/devtools-kit" "^1.0.8"
     "@nuxt/devtools-ui-kit" "^1.0.8"
