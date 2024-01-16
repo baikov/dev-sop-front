@@ -4450,6 +4450,14 @@ floating-vue@5.0.3:
     "@floating-ui/dom" "~1.1.1"
     vue-resize "^2.0.0-alpha.1"
 
+floating-vue@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/floating-vue/-/floating-vue-5.1.0.tgz#30a114fed70a95eb0db2cbbfb72f9aa14d8f4c4f"
+  integrity sha512-tk2Y9pbsmfaMc15JhA3JYPRDT+DSOJ2fm7kYIRks0HRga8HtOYDfU4nPh95SRqFOk+OQWHdaE41FYq/wYKztuA==
+  dependencies:
+    "@floating-ui/dom" "~1.1.1"
+    vue-resize "^2.0.0-alpha.1"
+
 focus-trap@^7.5.4:
   version "7.5.4"
   resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-7.5.4.tgz#6c4e342fe1dae6add9c2aa332a6e7a0bbd495ba2"
@@ -6435,10 +6443,10 @@ nuxt-icon@^0.6.8:
     "@nuxt/devtools-kit" "^1.0.6"
     "@nuxt/kit" "^3.9.0"
 
-nuxt-og-image@3.0.0-rc.26:
-  version "3.0.0-rc.26"
-  resolved "https://registry.yarnpkg.com/nuxt-og-image/-/nuxt-og-image-3.0.0-rc.26.tgz#e4f07dcfa1df1b5449916c0ed1167b4202545b47"
-  integrity sha512-RHGwH94hEJCsBIAg97auBMtiKltsW/kgLRNepTLiuX0QLf+W9atlTI9578VB+sCNwtllBt7Ba008EpEaxnJMIg==
+nuxt-og-image@3.0.0-rc.27:
+  version "3.0.0-rc.27"
+  resolved "https://registry.yarnpkg.com/nuxt-og-image/-/nuxt-og-image-3.0.0-rc.27.tgz#0cb18dd6ac94e3a2fd22aafeefe50cc0e54bf555"
+  integrity sha512-kt19Njq82335KHCrusXmEcT3kS9FtkHq7bzzShNckbD6bP45mlpS1xE+qEwt2YsbnTP3p0QD87E+4UQaDVIw/A==
   dependencies:
     "@css-inline/css-inline" "^0.12.1"
     "@css-inline/css-inline-wasm" "^0.12.1"
@@ -6453,7 +6461,7 @@ nuxt-og-image@3.0.0-rc.26:
     chrome-launcher "^1.1.0"
     defu "^6.1.4"
     execa "^8.0.1"
-    floating-vue "5.0.3"
+    floating-vue "5.1.0"
     image-size "^1.1.1"
     nuxt-site-config "^2.2.5"
     nuxt-site-config-kit "^2.2.5"
