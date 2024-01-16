@@ -1330,10 +1330,10 @@
     google-fonts-helper "^3.4.1"
     pathe "^1.1.1"
 
-"@nuxtjs/sitemap@5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/sitemap/-/sitemap-5.0.3.tgz#fbe0e91353a5d4b2d10a5a1e2805a43c91e023be"
-  integrity sha512-TfVyLI0IShv6DzfdrwhO5ghpMg3Nm67QxL7nHd7l+Ke9e8tQkfwtuiKKhZjXOt2riSpyqKATuG+H9b1Nyx9HPQ==
+"@nuxtjs/sitemap@5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/sitemap/-/sitemap-5.0.4.tgz#e5d649c448904d39f358c3ce597d814866391d50"
+  integrity sha512-ojtAHiGdEpQ2lSnkD0rrEfiujQL3U4hHv858q5HIDKH84uFxhqrm1ycRzYKe4vojJsCeWCOr9iTHf77dxoUKLA==
   dependencies:
     "@nuxt/devtools-kit" "^1.0.8"
     "@nuxt/devtools-ui-kit" "^1.0.8"
@@ -1341,7 +1341,7 @@
     "@vueuse/core" "^10.7.2"
     chalk "^5.3.0"
     defu "^6.1.4"
-    floating-vue "5.0.3"
+    floating-vue "5.1.0"
     h3-compression "^0.3.2"
     nuxt-site-config "^2.2.5"
     nuxt-site-config-kit "^2.2.5"
@@ -4446,6 +4446,14 @@ floating-vue@5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/floating-vue/-/floating-vue-5.0.3.tgz#aa6643c7080408cfdd6ad392d7a016c2f3dede05"
   integrity sha512-AM7yczIuFACI6T2l8z0ozpTSqHDagcxiQCCanUqvm7Zxtk4CUJNyF6nSuBkkeEYX6hDyTAcmNHe2NJ5x54qnnw==
+  dependencies:
+    "@floating-ui/dom" "~1.1.1"
+    vue-resize "^2.0.0-alpha.1"
+
+floating-vue@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/floating-vue/-/floating-vue-5.1.0.tgz#30a114fed70a95eb0db2cbbfb72f9aa14d8f4c4f"
+  integrity sha512-tk2Y9pbsmfaMc15JhA3JYPRDT+DSOJ2fm7kYIRks0HRga8HtOYDfU4nPh95SRqFOk+OQWHdaE41FYq/wYKztuA==
   dependencies:
     "@floating-ui/dom" "~1.1.1"
     vue-resize "^2.0.0-alpha.1"
