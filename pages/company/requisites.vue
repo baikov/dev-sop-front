@@ -40,7 +40,7 @@ const table = [
   <div>
     <CommonBreadcrumbs :items="breadcrumbs" />
     <CommonPageHeader h1="Реквизиты" />
-    <section class="relative mx-auto flex h-full w-full flex-1 flex-col">
+    <section class="relative mx-auto flex size-full flex-1 flex-col">
       <div class="mx-auto w-full max-w-7xl overflow-hidden p-4">
         <div class="">
           <dl>
@@ -65,7 +65,7 @@ const table = [
                 <ul role="list" class="divide-y divide-gray-200 rounded-md border border-gray-200">
                   <li class="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
                     <div class="flex w-0 flex-1 items-center">
-                      <UIcon class="h-5 w-5 shrink-0" aria-hidden="true" name="i-mdi-file-pdf" />
+                      <UIcon class="size-5 shrink-0" aria-hidden="true" name="i-mdi-file-pdf" />
                       <span class="ml-2 w-0 flex-1 truncate">Карточка_организации.pdf</span>
                     </div>
                     <div class="ml-4 shrink-0">

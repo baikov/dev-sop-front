@@ -38,7 +38,7 @@ const breadcrumbs = [
                 <div class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:w-6/12 xl:px-12">
                   <div class="flex items-start">
                     <div class="shrink-0">
-                      <div class="bg-primary-700 flex h-14 w-14 items-center justify-center rounded-md p-4 shadow-md dark:bg-gray-800">
+                      <div class="bg-primary-700 flex size-14 items-center justify-center rounded-md p-4 shadow-md dark:bg-gray-800">
                         <UIcon name="i-mdi-phone" class="w-6 text-white" />
                       </div>
                     </div>
@@ -55,7 +55,7 @@ const breadcrumbs = [
                 <div class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:w-6/12 xl:px-12">
                   <div class="flex items-start">
                     <div class="shrink-0">
-                      <div class="bg-primary-700 flex h-14 w-14 items-center justify-center rounded-md p-4 shadow-md dark:bg-gray-800">
+                      <div class="bg-primary-700 flex size-14 items-center justify-center rounded-md p-4 shadow-md dark:bg-gray-800">
                         <UIcon name="i-mdi-email" class="w-6 text-white" />
                       </div>
                     </div>
@@ -72,7 +72,7 @@ const breadcrumbs = [
                 <div class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:mb-0 lg:w-full xl:w-6/12 xl:px-12">
                   <div class="align-start flex">
                     <div class="shrink-0">
-                      <div class="bg-primary-700 flex h-14 w-14 items-center justify-center rounded-md p-4 shadow-md dark:bg-gray-800">
+                      <div class="bg-primary-700 flex size-14 items-center justify-center rounded-md p-4 shadow-md dark:bg-gray-800">
                         <UIcon name="i-mdi-map-marker" class="w-6 text-white" />
                       </div>
                     </div>

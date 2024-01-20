@@ -24,7 +24,7 @@ const breadcrumbs = [
   <div>
     <CommonBreadcrumbs :items="breadcrumbs" />
     <CommonPageHeader h1="О компании" />
-    <section class="relative mx-auto flex h-full w-full flex-1 flex-col">
+    <section class="relative mx-auto flex size-full flex-1 flex-col">
       <div class="relative isolate overflow-hidden px-6 py-20 dark:text-zinc-200 sm:py-6 lg:overflow-visible lg:px-0">
         <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
           <div class="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">

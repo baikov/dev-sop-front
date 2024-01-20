@@ -30,7 +30,7 @@ const services = [
   <div>
     <CommonBreadcrumbs :items="breadcrumbs" />
     <CommonPageHeader h1="Услуги" />
-    <section class="relative mx-auto flex h-full w-full flex-col">
+    <section class="relative mx-auto flex size-full flex-col">
       <div class="container mx-auto w-full max-w-7xl p-4">
         <div class="mt-8 lg:flex lg:items-center">
           <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 xl:gap-16">
