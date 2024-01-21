@@ -34,7 +34,7 @@ defineProps<{
       <Transition name="slide-fade-from-left" mode="out-in">
         <div
           v-if="showDrawer"
-          class="fixed left-0 top-10 z-50 flex h-screen w-screen flex-col items-center justify-start border-t border-gray-600 bg-gradient-to-r from-gray-900 to-gray-700 p-5 lg:hidden"
+          class="size-screen fixed left-0 top-10 z-50 flex flex-col items-center justify-start border-t border-gray-600 bg-gradient-to-r from-gray-900 to-gray-700 p-5 lg:hidden"
         >
           <div
             class="relative my-2 flex w-full cursor-pointer items-center justify-center font-bold transition-colors ease-in-out hover:bg-white/10 hover:text-zinc-50"

@@ -64,7 +64,7 @@ const parentSlug = findParentSlug(props.menu, slug)
               <!-- </div> -->
 
               <span v-show="subitem.submenu && subitem.submenu.length" class="shrink-0 transition duration-300 group-open:-rotate-180">
-                <UIcon name="i-mdi-chevron-down" class="h-5 w-5" />
+                <UIcon name="i-mdi-chevron-down" class="size-5" />
               </span>
             </summary>
 
@@ -75,7 +75,7 @@ const parentSlug = findParentSlug(props.menu, slug)
                   active-class="bg-gray-300 text-gray-700 dark:bg-gray-900 dark:text-zinc-200"
                   class="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-900 hover:bg-gray-300 hover:text-gray-900 dark:text-zinc-200 dark:hover:bg-gray-900"
                 >
-                  <UIcon name="i-mdi-circle" class="h-1.5 w-1.5 min-w-[0.375rem]" />
+                  <UIcon name="i-mdi-circle" class="size-1.5 min-w-[0.375rem]" />
                   <span class="text-sm font-medium"> {{ lv3.name }} </span>
                 </NuxtLink>
               </template>

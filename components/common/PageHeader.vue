@@ -13,7 +13,7 @@ defineProps<{
       <div class="mt-2">
         <span class="inline-block h-1 w-40 rounded-full bg-green-700 dark:bg-zinc-200" />
         <span class="ml-1 inline-block h-1 w-3 rounded-full bg-green-700 dark:bg-zinc-200" />
-        <span class="ml-1 inline-block h-1 w-1 rounded-full bg-green-700 dark:bg-zinc-200" />
+        <span class="ml-1 inline-block size-1 rounded-full bg-green-700 dark:bg-zinc-200" />
       </div>
     </div>
   </section>

@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
   site: {
-    url: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`
+    url: 'https://soptorg.ru'
   },
   app: {
     head: {
@@ -94,13 +94,13 @@ export default defineNuxtConfig({
     sitemaps: {
       products: {
         sources: [
-          `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}${process.env.API_PORT ? `:${process.env.API_PORT}` : ''}/api` + '/products/sitemap'
+          `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}${process.env.API_PORT ? `:${process.env.API_PORT}` : ''}/api` + '/products/sitemap/'
         ],
         defaults: { priority: 0.5 }
       },
       categories: {
         sources: [
-          `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}${process.env.API_PORT ? `:${process.env.API_PORT}` : ''}/api` + '/categories/sitemap'
+          `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}${process.env.API_PORT ? `:${process.env.API_PORT}` : ''}/api` + '/categories/sitemap/'
         ],
         defaults: { priority: 0.7 }
       },

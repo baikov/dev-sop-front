@@ -27,7 +27,7 @@ useSchemaOrg([
             <NuxtLink to="/" class="flex items-center justify-center">
               <UIcon
                 name="i-mdi-home"
-                class="text-primary-700 h-5 w-5 shrink-0 dark:text-gray-200"
+                class="text-primary-700 size-5 shrink-0 dark:text-gray-200"
                 aria-hidden="true"
               />
             </NuxtLink>

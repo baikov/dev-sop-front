@@ -33,7 +33,7 @@ if (error.value) {
 
     <div class="sticky inset-x-0 bottom-0 border-t border-gray-100 dark:border-gray-500">
       <NuxtLink to="mailto:info@soptorg.ru" class="flex items-center gap-2 bg-green-700 p-4 text-zinc-200 dark:bg-zinc-200 dark:text-gray-900">
-        <UIcon name="i-mdi-email" class="h-10 w-10 rounded-full object-cover" />
+        <UIcon name="i-mdi-email" class="size-10 rounded-full object-cover" />
 
         <div>
           <p class="text-md">

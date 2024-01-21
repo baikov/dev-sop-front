@@ -1,5 +1,5 @@
 <template>
-  <section class="relative mx-auto flex h-full w-full flex-1 flex-col" style="background-image: url('');">
+  <section class="relative mx-auto flex size-full flex-1 flex-col" style="background-image: url('');">
     <div class="mx-auto w-full max-w-7xl px-4 py-10">
       <div class="">
         <div class="group grid grid-cols-1 border bg-white dark:bg-gray-300 md:grid-cols-2 lg:xl:grid-cols-3 ">

@@ -11,7 +11,7 @@
             <div class="mt-2">
               <span class="bg-primary-700 inline-block h-1 w-40 rounded-full" />
               <span class="bg-primary-700 ml-1 inline-block h-1 w-3 rounded-full" />
-              <span class="bg-primary-700 ml-1 inline-block h-1 w-1 rounded-full" />
+              <span class="bg-primary-700 ml-1 inline-block size-1 rounded-full" />
             </div>
           </div>
 
