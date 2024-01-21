@@ -40,8 +40,8 @@ export default defineNuxtConfig({
     'nuxt-simple-robots', // https://github.com/harlan-zw/nuxt-simple-robots
     'nuxt-og-image', // https://github.com/harlan-zw/nuxt-og-image
     'nuxt-schema-org', // https://unhead-schema-org.harlanzw.com/integrations/nuxt/module
-    '@pinia/nuxt'
-    // '@artmizu/yandex-metrika-nuxt',
+    '@pinia/nuxt',
+    '@artmizu/yandex-metrika-nuxt'
     // 'nuxt-vitest',
     // https://sentry.nuxtjs.org/getting-started/setup
   ],
@@ -72,6 +72,9 @@ export default defineNuxtConfig({
       // Nunito: [100, 200, 300, 400, 500, 600, 700, 800, 900],
       Ubuntu: [100, 200, 300, 400, 500, 600, 700, 800, 900]
     }
+  },
+  yandexMetrika: {
+    id: process.env.YANDEX_METRIKA_ID
   },
   vueuse: {
     ssrHandlers: true

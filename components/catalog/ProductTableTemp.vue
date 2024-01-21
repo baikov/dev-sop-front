@@ -216,6 +216,9 @@ const currencyOptions = {
   currency: 'RUB',
   maximumFractionDigits: 0
 }
+// const ctx = useNuxtApp()
+// if (process.client)
+//   ctx.$metrika.reachGoal('zzz')
 </script>
 
 <template>
