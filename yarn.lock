@@ -1104,7 +1104,7 @@
     "@nuxt/schema" "^3.9.1"
     execa "^7.2.0"
 
-"@nuxt/devtools-ui-kit@^1.0.6", "@nuxt/devtools-ui-kit@^1.0.8":
+"@nuxt/devtools-ui-kit@^1.0.8":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@nuxt/devtools-ui-kit/-/devtools-ui-kit-1.0.8.tgz#de489182b4232b031f6a60f3b827b29b048e8154"
   integrity sha512-oPkyQ+nkvCvveWxHWAHpZt9uEycHFD00Rh46KYKe5KLl81Wr/L3KacIIYpiocPog0YZZhjvX5CmrIe8zXopNOA==
@@ -4621,14 +4621,6 @@ flatted@^3.2.9:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.9.tgz#7eb4c67ca1ba34232ca9d2d93e9886e611ad7daf"
   integrity sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==
 
-floating-vue@2.0.0-beta.24:
-  version "2.0.0-beta.24"
-  resolved "https://registry.yarnpkg.com/floating-vue/-/floating-vue-2.0.0-beta.24.tgz#ad4775c55581f8a3c219cf614d8e24a6ae4846e0"
-  integrity sha512-URSzP6YXaF4u1oZ9XGL8Sn8puuM7ivp5jkOUrpy5Q1mfo9BfGppJOn+ierTmsSUfJEeHBae8KT7r5DeI3vQIEw==
-  dependencies:
-    "@floating-ui/dom" "~1.1.1"
-    vue-resize "^2.0.0-alpha.1"
-
 floating-vue@5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/floating-vue/-/floating-vue-5.1.0.tgz#30a114fed70a95eb0db2cbbfb72f9aa14d8f4c4f"
@@ -6779,52 +6771,34 @@ nuxt-site-config-kit@2.2.5:
     std-env "^3.7.0"
     ufo "^1.3.2"
 
-nuxt-site-config-kit@2.2.7, nuxt-site-config-kit@^2.2.5, nuxt-site-config-kit@^2.2.6, nuxt-site-config-kit@^2.2.7:
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/nuxt-site-config-kit/-/nuxt-site-config-kit-2.2.7.tgz#a316052e2d1ee09a82a0532007afa900bae5f35d"
-  integrity sha512-d7lJchV7J8AFMZ1cscJ0WK4gWYPneGn1jzL7NOyk8X59KpxmJqhqKQF/eJhb1oG9HY1HE4GCa7xYi0Up9S4wRg==
+nuxt-site-config-kit@2.2.8, nuxt-site-config-kit@^2.2.5, nuxt-site-config-kit@^2.2.6, nuxt-site-config-kit@^2.2.7:
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/nuxt-site-config-kit/-/nuxt-site-config-kit-2.2.8.tgz#9f3e496f3d2769da03cc03b811473b620aa3b896"
+  integrity sha512-i/BFSjU2Q5ShtsJKCsrr8FuHUrSJhj7/wzVWeX6IEap59qOkynAU3XBlQZ8oEyQSYK2eP+/csNxPGbZkw4gg2A==
   dependencies:
     "@nuxt/kit" "^3.9.3"
     "@nuxt/schema" "^3.9.3"
     pkg-types "^1.0.3"
-    site-config-stack "2.2.7"
+    site-config-stack "2.2.8"
     std-env "^3.7.0"
     ufo "^1.3.2"
 
-nuxt-site-config@2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/nuxt-site-config/-/nuxt-site-config-2.2.5.tgz#5851ca40bbf0ffe610c6a09b82f42331db8878ac"
-  integrity sha512-E8qp+/8GRya1Gyt13Vo9MLW36TDJ52YVXJdSEmZAlNBIplAoVSEkizFlppaStKpGmqXXFXmkLuD8rm3jHZsvMQ==
-  dependencies:
-    "@nuxt/devtools-kit" "^1.0.6"
-    "@nuxt/devtools-ui-kit" "^1.0.6"
-    "@nuxt/kit" "^3.9.1"
-    "@nuxt/schema" "^3.9.1"
-    floating-vue "2.0.0-beta.24"
-    nuxt-site-config-kit "2.2.5"
-    pathe "^1.1.1"
-    pkg-types "^1.0.3"
-    shiki-es "^0.14.0"
-    sirv "^2.0.4"
-    site-config-stack "2.2.5"
-    ufo "^1.3.2"
-
-nuxt-site-config@^2.2.5, nuxt-site-config@^2.2.6, nuxt-site-config@^2.2.7:
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/nuxt-site-config/-/nuxt-site-config-2.2.7.tgz#c4bd2f22e08c21dca40eb509e7304092e67812d3"
-  integrity sha512-J99X2EUvDzOAOYxpx71FLNVsmMGXfwsZE61uc6vA5oC0zW6cKq6VHH+YIeQsobeUwmGrd/IjfpwUj2q6+0460w==
+nuxt-site-config@2.2.8, nuxt-site-config@^2.2.5, nuxt-site-config@^2.2.6, nuxt-site-config@^2.2.7:
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/nuxt-site-config/-/nuxt-site-config-2.2.8.tgz#b01921a85e313c84b29b3ab2e7bea7c60b11393a"
+  integrity sha512-RZooHHBtRZYZOPco6MZcAzJbstYtb6DElh91BEOzIuYJkQLo1vpkz1RLWiRQDux0eEaYWb0PI5exFmI0tgeMqw==
   dependencies:
     "@nuxt/devtools-kit" "^1.0.8"
     "@nuxt/devtools-ui-kit" "^1.0.8"
     "@nuxt/kit" "^3.9.3"
     "@nuxt/schema" "^3.9.3"
     floating-vue "5.2.0"
-    nuxt-site-config-kit "2.2.7"
+    nuxt-site-config-kit "2.2.8"
     pathe "^1.1.2"
     pkg-types "^1.0.3"
-    shikiji "^0.10.0-beta.9"
+    shikiji "^0.10.0"
     sirv "^2.0.4"
-    site-config-stack "2.2.7"
+    site-config-stack "2.2.8"
     ufo "^1.3.2"
 
 nuxt@3.9.3:
@@ -8185,17 +8159,29 @@ shiki-es@^0.14.0:
   resolved "https://registry.yarnpkg.com/shiki-es/-/shiki-es-0.14.0.tgz#64f7902ad47eda244840836f70f68f9d24aac6e6"
   integrity sha512-e+/aueHx0YeIEut6RXC6K8gSf0PykwZiHD7q7AHtpTW8Kd8TpFUIWqTwhAnrGjOyOMyrwv+syr5WPagMpDpVYQ==
 
+shikiji-core@0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/shikiji-core/-/shikiji-core-0.10.0.tgz#4425f1f5055fec6759bf0c71f2cc406518fed17c"
+  integrity sha512-imG+bvRkuNlZUi2q9tMVfegRRouTpDxMFejpfF/6J+bFX3NDKtlW9T9iIAkBYnw4pcCtSwirW0AvkwlQR4wyxg==
+
 shikiji-core@0.10.0-beta.9:
   version "0.10.0-beta.9"
   resolved "https://registry.yarnpkg.com/shikiji-core/-/shikiji-core-0.10.0-beta.9.tgz#4fcc2c726347cb93a2a6ad36744fcabf1a45f91e"
   integrity sha512-7dgwTyN9PeKyc4KJeyKo/qW8gi8XbR//c1CO+0B5GaeozWexNTpEL/tSohyIKkj0Z+7spfm2REmAaS39NlC4Lw==
 
-shikiji@0.10.0-beta.9, shikiji@^0.10.0-beta.9:
+shikiji@0.10.0-beta.9:
   version "0.10.0-beta.9"
   resolved "https://registry.yarnpkg.com/shikiji/-/shikiji-0.10.0-beta.9.tgz#05e1ca5711b528cf07ec60dad4060d8ad5f16b86"
   integrity sha512-I+sv642n9M7/FK/dVcXp9vMv7v5Wa8gU2UuKwkIWKQFvyo+qKB8eV1zNNtRYas+jC7BLwdAaflc5BFUozAonFQ==
   dependencies:
     shikiji-core "0.10.0-beta.9"
+
+shikiji@^0.10.0, shikiji@^0.10.0-beta.9:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/shikiji/-/shikiji-0.10.0.tgz#e7cc117c5a2ad5656a7bf6ea6c01e2b621a1552e"
+  integrity sha512-1dAzIOWbtM7B4Sem5BvE+CEdsebDsRA34SfCxM4qJ4PLgR73ZD92VEtNfbcoZ3xOLSqvtV0J9i4WpCgVsmQteg==
+  dependencies:
+    shikiji-core "0.10.0"
 
 side-channel@^1.0.4:
   version "1.0.4"
@@ -8279,10 +8265,10 @@ site-config-stack@2.2.5:
   dependencies:
     ufo "^1.3.2"
 
-site-config-stack@2.2.7, site-config-stack@^2.2.5:
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/site-config-stack/-/site-config-stack-2.2.7.tgz#eab66ca2580a3b8fbbb984f422f71832e7872a2e"
-  integrity sha512-mLd6MUsQdkxGPN0KWt8U8b46K+TbSqssCDqGO1eeCkUVGH0ry4Ewz/Vfy9X5TGmNF5wJVi1YTMi+g3SVHdtJHg==
+site-config-stack@2.2.8, site-config-stack@^2.2.5:
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/site-config-stack/-/site-config-stack-2.2.8.tgz#b200376abd6cbb1a9c6f6154cec4722d4211d782"
+  integrity sha512-4HyAb5bnP+kkmsMktHGu4xFlZijcuEAhm7MUZEsru8b9d4UfOEV86SE+9+GGkT3OkDlcV0mJrdoga65W7/GTmw==
   dependencies:
     ufo "^1.3.2"
 
