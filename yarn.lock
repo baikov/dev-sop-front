@@ -6779,7 +6779,7 @@ nuxt-site-config-kit@2.2.5:
     std-env "^3.7.0"
     ufo "^1.3.2"
 
-nuxt-site-config-kit@2.2.7, nuxt-site-config-kit@^2.2.5, nuxt-site-config-kit@^2.2.6, nuxt-site-config-kit@^2.2.7:
+nuxt-site-config-kit@2.2.7:
   version "2.2.7"
   resolved "https://registry.yarnpkg.com/nuxt-site-config-kit/-/nuxt-site-config-kit-2.2.7.tgz#a316052e2d1ee09a82a0532007afa900bae5f35d"
   integrity sha512-d7lJchV7J8AFMZ1cscJ0WK4gWYPneGn1jzL7NOyk8X59KpxmJqhqKQF/eJhb1oG9HY1HE4GCa7xYi0Up9S4wRg==
@@ -6788,6 +6788,18 @@ nuxt-site-config-kit@2.2.7, nuxt-site-config-kit@^2.2.5, nuxt-site-config-kit@^2
     "@nuxt/schema" "^3.9.3"
     pkg-types "^1.0.3"
     site-config-stack "2.2.7"
+    std-env "^3.7.0"
+    ufo "^1.3.2"
+
+nuxt-site-config-kit@2.2.8, nuxt-site-config-kit@^2.2.5, nuxt-site-config-kit@^2.2.6, nuxt-site-config-kit@^2.2.7:
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/nuxt-site-config-kit/-/nuxt-site-config-kit-2.2.8.tgz#9f3e496f3d2769da03cc03b811473b620aa3b896"
+  integrity sha512-i/BFSjU2Q5ShtsJKCsrr8FuHUrSJhj7/wzVWeX6IEap59qOkynAU3XBlQZ8oEyQSYK2eP+/csNxPGbZkw4gg2A==
+  dependencies:
+    "@nuxt/kit" "^3.9.3"
+    "@nuxt/schema" "^3.9.3"
+    pkg-types "^1.0.3"
+    site-config-stack "2.2.8"
     std-env "^3.7.0"
     ufo "^1.3.2"
 
@@ -8279,10 +8291,17 @@ site-config-stack@2.2.5:
   dependencies:
     ufo "^1.3.2"
 
-site-config-stack@2.2.7, site-config-stack@^2.2.5:
+site-config-stack@2.2.7:
   version "2.2.7"
   resolved "https://registry.yarnpkg.com/site-config-stack/-/site-config-stack-2.2.7.tgz#eab66ca2580a3b8fbbb984f422f71832e7872a2e"
   integrity sha512-mLd6MUsQdkxGPN0KWt8U8b46K+TbSqssCDqGO1eeCkUVGH0ry4Ewz/Vfy9X5TGmNF5wJVi1YTMi+g3SVHdtJHg==
+  dependencies:
+    ufo "^1.3.2"
+
+site-config-stack@2.2.8, site-config-stack@^2.2.5:
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/site-config-stack/-/site-config-stack-2.2.8.tgz#b200376abd6cbb1a9c6f6154cec4722d4211d782"
+  integrity sha512-4HyAb5bnP+kkmsMktHGu4xFlZijcuEAhm7MUZEsru8b9d4UfOEV86SE+9+GGkT3OkDlcV0mJrdoga65W7/GTmw==
   dependencies:
     ufo "^1.3.2"
 
