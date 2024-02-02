@@ -802,13 +802,13 @@
   dependencies:
     "@iconify/types" "*"
 
-"@iconify/json@2.2.171":
-  version "2.2.171"
-  resolved "https://registry.yarnpkg.com/@iconify/json/-/json-2.2.171.tgz#4e00b19ab6afac002f64b69363b2c415fe1b7dd8"
-  integrity sha512-NfmbMQpM+rUUMdLfNPEvUUrNmhp0+xshVuPsZk7c8MfGjwEnn14pb80KJlNV5toiAP/0uGAfrhJ+6WZY0nUY/A==
+"@iconify/json@2.2.178":
+  version "2.2.178"
+  resolved "https://registry.yarnpkg.com/@iconify/json/-/json-2.2.178.tgz#9bada4ffd49d774df9772fb7a925cc95e10aca94"
+  integrity sha512-AYw9z/Lu9Y0Q5V0DvyhysJA3ohwKMOgXxCJ1AzTnsZizbUqZ7zh5/wnBegv1ikBEISAY0tC/R46j0tJBjliHkw==
   dependencies:
     "@iconify/types" "*"
-    pathe "^1.1.0"
+    pathe "^1.1.2"
 
 "@iconify/types@*", "@iconify/types@^2.0.0":
   version "2.0.0"
