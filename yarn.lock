@@ -1239,7 +1239,7 @@
     "@nuxt/schema" "^3.9.1"
     execa "^7.2.0"
 
-"@nuxt/devtools-ui-kit@^1.0.6", "@nuxt/devtools-ui-kit@^1.0.8":
+"@nuxt/devtools-ui-kit@^1.0.8":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@nuxt/devtools-ui-kit/-/devtools-ui-kit-1.0.8.tgz#de489182b4232b031f6a60f3b827b29b048e8154"
   integrity sha512-oPkyQ+nkvCvveWxHWAHpZt9uEycHFD00Rh46KYKe5KLl81Wr/L3KacIIYpiocPog0YZZhjvX5CmrIe8zXopNOA==
@@ -4872,14 +4872,6 @@ flatted@^3.2.9:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.3.1.tgz#21db470729a6734d4997002f439cb308987f567a"
   integrity sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==
 
-floating-vue@2.0.0-beta.24:
-  version "2.0.0-beta.24"
-  resolved "https://registry.yarnpkg.com/floating-vue/-/floating-vue-2.0.0-beta.24.tgz#ad4775c55581f8a3c219cf614d8e24a6ae4846e0"
-  integrity sha512-URSzP6YXaF4u1oZ9XGL8Sn8puuM7ivp5jkOUrpy5Q1mfo9BfGppJOn+ierTmsSUfJEeHBae8KT7r5DeI3vQIEw==
-  dependencies:
-    "@floating-ui/dom" "~1.1.1"
-    vue-resize "^2.0.0-alpha.1"
-
 floating-vue@5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/floating-vue/-/floating-vue-5.2.0.tgz#8f5ffa40f7eb15c31d7ca7f19d753f6155d387ec"
@@ -7046,25 +7038,7 @@ nuxt-site-config-kit@2.2.9, nuxt-site-config-kit@^2.2.5, nuxt-site-config-kit@^2
     std-env "^3.7.0"
     ufo "^1.3.2"
 
-nuxt-site-config@2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/nuxt-site-config/-/nuxt-site-config-2.2.5.tgz#5851ca40bbf0ffe610c6a09b82f42331db8878ac"
-  integrity sha512-E8qp+/8GRya1Gyt13Vo9MLW36TDJ52YVXJdSEmZAlNBIplAoVSEkizFlppaStKpGmqXXFXmkLuD8rm3jHZsvMQ==
-  dependencies:
-    "@nuxt/devtools-kit" "^1.0.6"
-    "@nuxt/devtools-ui-kit" "^1.0.6"
-    "@nuxt/kit" "^3.9.1"
-    "@nuxt/schema" "^3.9.1"
-    floating-vue "2.0.0-beta.24"
-    nuxt-site-config-kit "2.2.5"
-    pathe "^1.1.1"
-    pkg-types "^1.0.3"
-    shiki-es "^0.14.0"
-    sirv "^2.0.4"
-    site-config-stack "2.2.5"
-    ufo "^1.3.2"
-
-nuxt-site-config@^2.2.5, nuxt-site-config@^2.2.6, nuxt-site-config@^2.2.7, nuxt-site-config@^2.2.8:
+nuxt-site-config@2.2.9, nuxt-site-config@^2.2.5, nuxt-site-config@^2.2.6, nuxt-site-config@^2.2.7, nuxt-site-config@^2.2.8:
   version "2.2.9"
   resolved "https://registry.yarnpkg.com/nuxt-site-config/-/nuxt-site-config-2.2.9.tgz#8f30218bffe5fecc5cda8267b95dec02e98d7084"
   integrity sha512-oIxo7OTmVyPHi1uduAQUg1Py8W3ZM0to2z5SCffmhME47I0wK2wK8OimSY2ZpbKsNLfaxExEvR10vSbhgy9rOA==
@@ -8442,11 +8416,6 @@ shell-quote@^1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.8.1.tgz#6dbf4db75515ad5bac63b4f1894c3a154c766680"
   integrity sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==
-
-shiki-es@^0.14.0:
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/shiki-es/-/shiki-es-0.14.0.tgz#64f7902ad47eda244840836f70f68f9d24aac6e6"
-  integrity sha512-e+/aueHx0YeIEut6RXC6K8gSf0PykwZiHD7q7AHtpTW8Kd8TpFUIWqTwhAnrGjOyOMyrwv+syr5WPagMpDpVYQ==
 
 shiki@^1.0.0-beta.3:
   version "1.1.7"
