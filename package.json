@@ -28,7 +28,7 @@
     "eslint": "8.57.0",
     "eslint-plugin-tailwindcss": "3.14.3",
     "nuxt": "3.10.3",
-    "nuxt-og-image": "3.0.0-rc.28",
+    "nuxt-og-image": "3.0.0-rc.45",
     "nuxt-schema-org": "3.3.4",
     "nuxt-simple-robots": "4.0.0-rc.13",
     "nuxt-site-config": "2.2.5",
