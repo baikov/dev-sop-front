@@ -1,4 +1,35 @@
+<script lang="ts" setup>
+const { getRootCategories } = useCategory()
+const { data: rootCategories, error } = await getRootCategories()
+
+const toast = useToast()
+
+if (error.value) {
+  if (error.value.statusCode === 500) {
+    toast.add({
+      title: 'Ошибка на сервере',
+      description: 'Что-то пошло не так, попробуйте позже',
+      icon: 'i-heroicons-x-circle-solid',
+      color: 'red'
+    })
+  } else {
+    for (const key of Object.keys(error.value.data)) {
+      toast.add({
+        title: 'Ошибка получения списка категорий',
+        description: `${key}: ${error.value.data[key]}`,
+        icon: 'i-heroicons-x-circle-solid',
+        color: 'red'
+      })
+    }
+  }
+}
+</script>
 <template>
+  <div class="py-4">
+    <CatalogSubcategories :subcat-list="rootCategories || []" />
+  </div>
+</template>
+<!-- <template>
   <section class="relative mx-auto flex size-full flex-1 flex-col" style="background-image: url('');">
     <div class="mx-auto w-full max-w-7xl px-4 py-10">
       <div class="">
@@ -162,4 +193,4 @@
       </div>
     </div>
   </section>
-</template>
+</template> -->

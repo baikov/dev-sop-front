@@ -6,10 +6,10 @@ defineProps<{
 </script>
 
 <template>
-  <section class="py-2">
+  <section class="py-6">
     <div class="container mx-auto px-4 transition-all duration-300 ease-in-out">
       <div class="mx-auto max-w-6xl transition-all duration-300 ease-in-out">
-        <div class="mb-10 grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
           <div v-for="cat in subcatList" :key="cat.id" data-aos="fade-up">
             <NuxtLink
               class="group relative top-0
