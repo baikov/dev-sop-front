@@ -31,6 +31,8 @@
   "nuxtr.vueFiles.style.addStyleTag": false,
   "nuxtr.vueFiles.style.alwaysScoped": true,
   "nuxtr.vueFiles.style.defaultLanguage": "css",
+  // Vue Official
+  "vue.server.maxOldSpaceSize": 4000,
   // Github Pull Requests
   "githubPullRequests.assignCreated": "${user}",
   "githubPullRequests.postCreate": "checkoutDefaultBranch",
