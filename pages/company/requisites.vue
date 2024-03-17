@@ -28,11 +28,12 @@ const table = [
   { name: 'Наименование', value: 'ООО "СПЕЦОПТТОРГ"' },
   { name: 'ИНН', value: '5256207934' },
   { name: 'КПП', value: '525601001' },
-  { name: 'Номер расчетного счета', value: '№40702810001500188475' },
-  { name: 'Название банка', value: 'ТОЧКА ПАО БАНКА "ФК ОТКРЫТИЕ"' },
-  { name: 'БИК', value: '044525999' },
-  { name: 'Город', value: 'Москва' },
-  { name: 'Корр. счет', value: '30101810845250000999' }
+  { name: 'ОГРН', value: '1235200008560' },
+  { name: 'Юридический адрес', value: '603095, Нижегородская область, г. Нижний Новгород, пр-кт Бусыгина, д. 1, офис 325' },
+  { name: 'Расчётный счет', value: '40702810001500188475' },
+  { name: 'Название банка', value: 'ООО "Банк Точка"' },
+  { name: 'БИК', value: '044525104' },
+  { name: 'Корр. счет', value: '30101810745374525104' }
 ]
 </script>
 
@@ -69,7 +70,7 @@ const table = [
                       <span class="ml-2 w-0 flex-1 truncate">Карточка_организации.pdf</span>
                     </div>
                     <div class="ml-4 shrink-0">
-                      <NuxtLink to="#" class="font-medium hover:underline">
+                      <NuxtLink to="/soptorg_req.pdf" class="font-medium hover:underline" external target="_blank">
                         Скачать
                       </NuxtLink>
                     </div>
