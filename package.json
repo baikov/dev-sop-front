@@ -14,7 +14,7 @@
   "devDependencies": {
     "@artmizu/yandex-metrika-nuxt": "1.0.4",
     "@iconify/json": "2.2.192",
-    "@nuxt/devtools": "1.0.6",
+    "@nuxt/devtools": "1.1.1",
     "@nuxt/image": "1.2.0",
     "@nuxt/ui": "2.14.2",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
