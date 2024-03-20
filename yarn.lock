@@ -934,10 +934,10 @@
   dependencies:
     "@iconify/types" "*"
 
-"@iconify/json@2.2.192":
-  version "2.2.192"
-  resolved "https://registry.yarnpkg.com/@iconify/json/-/json-2.2.192.tgz#791a82f6592f025bc4d0950a974251374c5e33c8"
-  integrity sha512-q03tWoVKoMRaTEUDOPWc8geSsKkMe+3D/kK4UZ7F7P3NYwr4h+GN/yT3+5Z68lnD0ajDmTuswfMKOi1DbVnEnw==
+"@iconify/json@2.2.194":
+  version "2.2.194"
+  resolved "https://registry.yarnpkg.com/@iconify/json/-/json-2.2.194.tgz#104515cab45dcab010b27bacdcaea7a6c4e8773b"
+  integrity sha512-kt6oB8uvCfUAenD7BUN1Sf+coZvkLbXlT2wPcdurqVQrbL0SLNgiknxaV6RXVXXN7uE/BV239vRGfoHub4dBvA==
   dependencies:
     "@iconify/types" "*"
     pathe "^1.1.2"
