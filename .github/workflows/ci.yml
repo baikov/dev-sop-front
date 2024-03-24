@@ -36,7 +36,7 @@ jobs:
         run: yarn postinstall
 
       - name: Build
-        run: pnpm build
+        run: yarn build
 
       # - name: Test project
       #   run: yarn test
