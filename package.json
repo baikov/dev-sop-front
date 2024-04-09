@@ -22,7 +22,7 @@
     "@nuxtjs/google-fonts": "3.2.0",
     "@nuxtjs/sitemap": "5.1.2",
     "@pinia/nuxt": "^0.5.1",
-    "@types/node": "20.11.28",
+    "@types/node": "20.12.6",
     "@vueuse/core": "10.9.0",
     "@vueuse/nuxt": "10.9.0",
     "eslint": "8.57.0",
