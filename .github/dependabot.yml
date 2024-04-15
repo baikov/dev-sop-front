@@ -37,9 +37,9 @@ updates:
     schedule:
       interval: "daily"
     # If don't need to update from 18 to 20
-    # ignore:
-    #   - dependency-name: '@types/node'
-    #     update-types:
-    #       - 'version-update:semver-major'
+    ignore:
+      - dependency-name: 'eslint'
+        update-types:
+          - 'version-update:semver-major'
     #       - 'version-update:semver-minor'
     #       - 'version-update:semver-patch'
