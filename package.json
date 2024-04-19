@@ -12,7 +12,8 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@iconify/json": "2.2.201",
+    "@artmizu/yandex-metrika-nuxt": "1.0.4",
+    "@iconify/json": "2.2.202",
     "@nuxt/devtools": "1.1.5",
     "@nuxt/image": "1.5.0",
     "@nuxt/ui": "2.15.2",
@@ -34,10 +35,9 @@
     "nuxt-site-config-kit": "2.2.12",
     "pinia": "2.1.7",
     "typescript": "5.4.5",
-    "vue-tsc": "2.0.13",
-    "@artmizu/yandex-metrika-nuxt": "1.0.4"
+    "vue-tsc": "2.0.13"
   },
   "resolutions": {
     "jackspeak": "2.1.1"
- }
+  }
 }
