@@ -44,6 +44,8 @@ if (error.value) {
     }
   }
 }
+
+const callFormIsOpen = useState('callFormIsOpen', () => false)
 </script>
 
 <template>
@@ -57,6 +59,8 @@ if (error.value) {
         <CommonDarkToggleSwipe />
         <!-- <CommonDarkToggle /> -->
         <!-- <CommonHeaderProfile class="ml-4" /> -->
+        <!-- <CommonCart /> -->
+        <UButton label="Заказать звонок" class="ml-4 hidden md:block" @click="callFormIsOpen = true" />
       </div>
       <CommonMobileMenu :main-menu="mainMenu" :catalog-menu="catalogMenu" />
     </UContainer>

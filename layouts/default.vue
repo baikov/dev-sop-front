@@ -13,5 +13,7 @@ defineOgImage({
       <slot />
     </div>
     <CommonFooter />
+    <CommonFormCall />
+    <CommonFormQuestion />
   </div>
 </template>

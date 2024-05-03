@@ -1,5 +1,10 @@
 <script lang="ts" setup>
 // import type { IProduct } from '~/types/catalog'
+
+// Cart
+// import { useCartStore } from '~/store/cart'
+// const { cart, addProduct, removeProduct, increaseProductQuantity, decreaseProductQuantity } = useCartStore()
+
 const { getProductDetail } = useCategory()
 const route = useRoute()
 const config = useRuntimeConfig()
@@ -90,13 +95,21 @@ useHead({
 //   content: 'Finally, this is the content for Tab3'
 // }]
 
-// const count = ref(1)
-
 const currencyOptions = {
   style: 'currency',
   currency: 'RUB',
   maximumFractionDigits: 0
 }
+
+// Cart
+// const count = ref(1)
+// const quantityInCart = computed(() => {
+//   const productInCart = cart.productsInCart.find(product => product.id === productDetail.value?.id)
+//   return productInCart ? productInCart.quantity : 0
+// })
+
+const questionFormIsOpen = useState('questionFormIsOpen')
+useState('productName', () => productDetail.value?.name)
 </script>
 
 <template>
@@ -166,8 +179,9 @@ const currencyOptions = {
               </div>
 
               <template #footer>
-                <!-- <div class="flex gap-4">
-                  <UButtonGroup size="sm" orientation="horizontal">
+                <div class="flex gap-4">
+                  <!-- Cart -->
+                  <!-- <UButtonGroup size="sm" orientation="horizontal">
                     <UButton
                       icon="i-heroicons-minus"
                       size="sm"
@@ -190,13 +204,28 @@ const currencyOptions = {
                       @click="count++"
                     />
                   </UButtonGroup>
-                  <UButton to="#" icon="i-mdi-playlist-plus">
+                  <UButton
+                    icon="i-mdi-playlist-plus"
+                    @click="addProduct({
+                      'id': productDetail.id,
+                      'name': productDetail.name,
+                      'price': productDetail.ton_price_with_coef,
+                      'quantity': count,
+                      'total': (quantityInCart + count) * productDetail.ton_price_with_coef
+                    })"
+                  >
                     Добавить в заказ
+                  </UButton> -->
+                  <UButton icon="i-mdi-mail" variant="outline" @click="questionFormIsOpen = true">
+                    Задать вопрос
                   </UButton>
+                </div>
+                <!-- <div v-if="quantityInCart">
+                  <span>В заказ уже добавлено {{ quantityInCart }} тонн</span>
+                </div>
+                <div v-else>
+                  Отсутствут в заказе
                 </div> -->
-                <UButton to="mailto:info@soptorg.ru" icon="i-mdi-mail-ru">
-                  Отправить заявку
-                </UButton>
               </template>
             </UCard>
           </div>
