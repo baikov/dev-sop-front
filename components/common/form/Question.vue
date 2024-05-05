@@ -24,7 +24,6 @@ const contactInfo = useState('contactInfo', () => initialContactInfo)
 const additionalData = useState('additionalData', () => {
   return {
     title: 'Задать вопрос',
-    product: productName.value,
     question: '',
     url: fullUrl.value
   }
@@ -32,7 +31,8 @@ const additionalData = useState('additionalData', () => {
 
 const formData = computed(() => ({
   ...contactInfo.value,
-  ...additionalData.value
+  ...additionalData.value,
+  product: productName.value
 }))
 
 const validate = (state: any): FormError[] => {
@@ -62,6 +62,13 @@ async function onSubmit () { // event: FormSubmitEvent<any>
       icon: 'i-heroicons-check-solid',
       color: 'green',
       timeout: 10000
+    })
+  } else if (error.value?.statusCode === 429) {
+    toast.add({
+      title: 'Ошибка!',
+      description: 'Мы уже получили ваш запрос. Повторная отправка не требуется. Мы свяжемся с вами в ближайшее время.',
+      icon: 'i-heroicons-x-circle-solid',
+      color: 'red'
     })
   } else {
     toast.add({
@@ -99,7 +106,7 @@ async function onSubmit () { // event: FormSubmitEvent<any>
               <UInput v-model="contactInfo.email" type="email" placeholder="your@email.ru" />
             </UFormGroup>
             <UFormGroup label="Товар" name="product">
-              <UInput v-model="additionalData.product" :placeholder="formData.product" disabled />
+              <UInput :placeholder="productName" disabled />
             </UFormGroup>
             <UFormGroup label="Вопрос" name="question" required>
               <UTextarea v-model="additionalData.question" placeholder="Ваш вопрос" />

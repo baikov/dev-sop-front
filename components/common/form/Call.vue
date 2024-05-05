@@ -18,19 +18,20 @@ const initialContactInfo: ContactInfo = {
   email: ''
 }
 
+const productName = useState<string>('productName')
 const callFormIsOpen = useState('callFormIsOpen', () => false)
 const contactInfo = useState('contactInfo', () => initialContactInfo)
 const additionalData = useState('additionalData', () => {
   return {
     title: 'Запрос звонка',
-    product: '',
     url: fullUrl.value
   }
 })
 
 const formData = computed(() => ({
   ...contactInfo.value,
-  ...additionalData.value
+  ...additionalData.value,
+  product: productName.value
 }))
 
 const validate = (state: any): FormError[] => {
@@ -65,6 +66,13 @@ async function onSubmit () { // event: FormSubmitEvent<any>
 
     // @ts-ignore
     // if (process.client) { ctx.$metrika.reachGoal('zzz') }
+  } else if (error.value?.statusCode === 429) {
+    toast.add({
+      title: 'Ошибка!',
+      description: 'Мы уже получили ваш запрос. Повторная отправка не требуется. Мы свяжемся с вами в ближайшее время.',
+      icon: 'i-heroicons-x-circle-solid',
+      color: 'red'
+    })
   } else {
     toast.add({
       title: 'Ошибка!',
