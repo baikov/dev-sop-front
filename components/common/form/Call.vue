@@ -21,17 +21,13 @@ const initialContactInfo: ContactInfo = {
 const productName = useState<string>('productName')
 const callFormIsOpen = useState('callFormIsOpen', () => false)
 const contactInfo = useState('contactInfo', () => initialContactInfo)
-const additionalData = useState('additionalData', () => {
-  return {
-    title: 'Запрос звонка',
-    url: fullUrl.value
-  }
-})
+const formTitle = 'Запрос звонка'
 
 const formData = computed(() => ({
   ...contactInfo.value,
-  ...additionalData.value,
-  product: productName.value
+  product: productName.value,
+  title: formTitle,
+  url: fullUrl.value
 }))
 
 const validate = (state: any): FormError[] => {
@@ -91,7 +87,7 @@ async function onSubmit () { // event: FormSubmitEvent<any>
         <UCard>
           <template #header>
             <div class="text-center text-xl font-bold">
-              {{ additionalData.title }}
+              {{ formTitle }}
             </div>
           </template>
 

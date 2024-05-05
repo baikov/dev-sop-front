@@ -21,18 +21,15 @@ const initialContactInfo: ContactInfo = {
 const productName = useState<string>('productName')
 const questionFormIsOpen = useState('questionFormIsOpen', () => false)
 const contactInfo = useState('contactInfo', () => initialContactInfo)
-const additionalData = useState('additionalData', () => {
-  return {
-    title: 'Задать вопрос',
-    question: '',
-    url: fullUrl.value
-  }
-})
+const formTitle = 'Задать вопрос'
+const question = ref('')
 
 const formData = computed(() => ({
   ...contactInfo.value,
-  ...additionalData.value,
-  product: productName.value
+  product: productName.value,
+  title: formTitle,
+  question: question.value,
+  url: fullUrl.value
 }))
 
 const validate = (state: any): FormError[] => {
@@ -89,7 +86,7 @@ async function onSubmit () { // event: FormSubmitEvent<any>
         <UCard>
           <template #header>
             <div class="text-center text-xl font-bold">
-              {{ additionalData.title }}
+              {{ formTitle }}
             </div>
           </template>
 
@@ -109,7 +106,7 @@ async function onSubmit () { // event: FormSubmitEvent<any>
               <UInput :placeholder="productName" disabled />
             </UFormGroup>
             <UFormGroup label="Вопрос" name="question" required>
-              <UTextarea v-model="additionalData.question" placeholder="Ваш вопрос" />
+              <UTextarea v-model="question" placeholder="Ваш вопрос" />
             </UFormGroup>
           </div>
 
