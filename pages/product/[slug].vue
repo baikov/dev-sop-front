@@ -109,7 +109,8 @@ const currencyOptions = {
 // })
 
 const questionFormIsOpen = useState('questionFormIsOpen')
-useState('productName', () => productDetail.value?.name)
+const productName = useState('productName', () => productDetail.value?.name)
+productName.value = productDetail.value?.name
 </script>
 
 <template>
