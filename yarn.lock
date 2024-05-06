@@ -1102,7 +1102,7 @@
     "@nuxt/schema" "^3.11.2"
     execa "^7.2.0"
 
-"@nuxt/devtools-ui-kit@^1.0.8", "@nuxt/devtools-ui-kit@^1.1.5":
+"@nuxt/devtools-ui-kit@^1.0.8", "@nuxt/devtools-ui-kit@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@nuxt/devtools-ui-kit/-/devtools-ui-kit-1.2.0.tgz#89fbda7e557ad675eeade2a59a05c2d7ccc005d9"
   integrity sha512-t1Bn9ONl3UroTs2kOG1UwhYiGtQfldVDKpqJypBvH7Jsv6q2l6/CambffF/52Z0tgw+dJhSVUQ2AxxgJ5sS1yQ==
@@ -1401,13 +1401,13 @@
     google-fonts-helper "^3.5.0"
     pathe "^1.1.2"
 
-"@nuxtjs/sitemap@5.1.4":
-  version "5.1.4"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/sitemap/-/sitemap-5.1.4.tgz#8aadcf5fe1f4d69f1d441ef00a83923b67e35e55"
-  integrity sha512-RLIK38M377IcFetMXSM3vuWCdcICmFCl2M0ygnKuySFH7yLQGxVzbBX/QoPtrZF5+TpkApTj4f9nJ3nSHG7OOQ==
+"@nuxtjs/sitemap@5.1.5":
+  version "5.1.5"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/sitemap/-/sitemap-5.1.5.tgz#61f69539de79ac0cdaad0bcb3ae74263a43c635b"
+  integrity sha512-2Ql3a7LQM7mvqYyBjCQPsdpfFXRMeXBxyHy45JBJsuhN2/Y9nRAkIHdPM/8+ezrk9FrPEff90nCNrIsncMo66A==
   dependencies:
-    "@nuxt/devtools-kit" "^1.1.5"
-    "@nuxt/devtools-ui-kit" "^1.1.5"
+    "@nuxt/devtools-kit" "^1.2.0"
+    "@nuxt/devtools-ui-kit" "^1.2.0"
     "@nuxt/kit" "^3.11.2"
     "@vueuse/core" "^10.9.0"
     chalk "^5.3.0"
@@ -1418,10 +1418,10 @@
     nuxt-site-config-kit "^2.2.12"
     ofetch "^1.3.4"
     pathe "^1.1.2"
-    pkg-types "^1.0.3"
+    pkg-types "^1.1.0"
     radix3 "^1.1.2"
     semver "^7.6.0"
-    shiki "1.2.4"
+    shiki "1.3.0"
     sirv "^2.0.4"
     site-config-stack "^2.2.12"
     ufo "^1.5.3"
@@ -1807,11 +1807,6 @@
   version "4.17.2"
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.17.2.tgz#5a2d08b81e8064b34242d5cc9973ef8dd1e60503"
   integrity sha512-TGGO7v7qOq4CYmSBVEYpI1Y5xDuCEnbVC5Vth8mOsW0gDSzxNrVERPc790IGHsrT2dQSimgMr9Ub3Y1Jci5/8w==
-
-"@shikijs/core@1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@shikijs/core/-/core-1.2.4.tgz#1b380fad8eaccc6bec4ab1c265d70413e66e8034"
-  integrity sha512-ClaUWpt8oTzjcF0MM1P81AeWyzc1sNSJlAjMG80CbwqbFqXSNz+NpQVUC0icobt3sZn43Sn27M4pHD/Jmp3zHw==
 
 "@shikijs/core@1.3.0":
   version "1.3.0"
@@ -8288,13 +8283,6 @@ shell-quote@^1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.8.1.tgz#6dbf4db75515ad5bac63b4f1894c3a154c766680"
   integrity sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==
-
-shiki@1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/shiki/-/shiki-1.2.4.tgz#6160497463f3328d43223cc0199eaa4bdcbe4311"
-  integrity sha512-Q9n9jKiOjJCRPztA9POn3/uZXNySHDNKAsPNpmtHDcFyi6ZQhx5vQKZW3Nhrwn8TWW3RudSRk66zqY603EZDeg==
-  dependencies:
-    "@shikijs/core" "1.2.4"
 
 shiki@1.3.0:
   version "1.3.0"
