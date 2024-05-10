@@ -13,16 +13,16 @@
   },
   "devDependencies": {
     "@artmizu/yandex-metrika-nuxt": "1.0.4",
-    "@iconify/json": "2.2.206",
+    "@iconify/json": "2.2.208",
     "@nuxt/devtools": "1.2.0",
-    "@nuxt/image": "1.6.0",
-    "@nuxt/ui": "2.15.2",
+    "@nuxt/image": "1.7.0",
+    "@nuxt/ui": "2.16.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/google-fonts": "3.2.0",
-    "@nuxtjs/sitemap": "5.1.4",
+    "@nuxtjs/sitemap": "5.1.5",
     "@pinia/nuxt": "^0.5.1",
-    "@types/node": "20.12.8",
+    "@types/node": "20.12.11",
     "@vueuse/core": "10.9.0",
     "@vueuse/nuxt": "10.9.0",
     "eslint": "8.57.0",
@@ -35,7 +35,7 @@
     "nuxt-site-config-kit": "2.2.12",
     "pinia": "2.1.7",
     "typescript": "5.4.5",
-    "vue-tsc": "2.0.16"
+    "vue-tsc": "2.0.17"
   },
   "resolutions": {
     "jackspeak": "2.1.1"
