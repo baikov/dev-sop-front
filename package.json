@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@artmizu/yandex-metrika-nuxt": "1.0.4",
-    "@iconify/json": "2.2.208",
+    "@iconify/json": "2.2.209",
     "@nuxt/devtools": "1.2.0",
     "@nuxt/image": "1.7.0",
     "@nuxt/ui": "2.16.0",
