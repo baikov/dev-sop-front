@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import type { FormError } from '#ui/types'
-// import { useNuxtApp } from '#app'
+import { useNuxtApp } from '#app'
 const toast = useToast()
 const config = useRuntimeConfig()
 const route = useRoute()
 const fullUrl = computed(() => `${config.public.siteUrl}${route.path}`)
+const ctx = useNuxtApp()
 
 interface ContactInfo {
     name: string,
@@ -42,8 +43,6 @@ const validate = (state: any): FormError[] => {
   return errors
 }
 
-// const ctx = useNuxtApp()
-
 async function onSubmit () { // event: FormSubmitEvent<any>
   const { data, error } = await useFetch<ContactInfo>(
     `${config.public.apiUrl}/forms/`, {
@@ -61,7 +60,7 @@ async function onSubmit () { // event: FormSubmitEvent<any>
     })
 
     // @ts-ignore
-    // if (process.client) { ctx.$metrika.reachGoal('zzz') }
+    if (process.client) { ctx.$metrika.reachGoal('formCallback') }
   } else if (error.value?.statusCode === 429) {
     toast.add({
       title: 'Ошибка!',

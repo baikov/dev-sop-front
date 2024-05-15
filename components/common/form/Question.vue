@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { FormError } from '#ui/types'
+import { useNuxtApp } from '#app'
 const toast = useToast()
 const config = useRuntimeConfig()
 const route = useRoute()
 const fullUrl = computed(() => `${config.public.siteUrl}${route.path}`)
+const ctx = useNuxtApp()
 
 interface ContactInfo {
     name: string,
@@ -60,6 +62,9 @@ async function onSubmit () { // event: FormSubmitEvent<any>
       color: 'green',
       timeout: 10000
     })
+
+    // @ts-ignore
+    if (process.client) { ctx.$metrika.reachGoal('formQuestion') }
   } else if (error.value?.statusCode === 429) {
     toast.add({
       title: 'Ошибка!',
