@@ -1,6 +1,14 @@
 <script setup lang="ts">
 const config = useRuntimeConfig()
 
+interface Geo {
+  ip: string
+  country: string
+  region: string
+  city: string
+  error: string
+}
+
 const breadcrumbs = [
   {
     level: 1,
@@ -10,41 +18,50 @@ const breadcrumbs = [
   }
 ]
 const endpoint = computed(
-  () => `${config.public.apiUrl}/forms/check-ip`
+  () => `${config.public.apiUrl}/forms/check-ip/`
 )
-const { data: ip, refresh } = await useFetch(endpoint)
+const { data: geo, refresh } = await useFetch<Geo>(endpoint, {
+  method: 'GET',
+  server: false
+})
 
-const realIP = useState<string | string[]>('realIP')
-const forwardedFor = useState<string | string[]>('forwardedFor')
-const socketAddr = useState<string>('socketAddr')
+// const realIP = useState<string | string[]>('realIP')
+// const forwardedFor = useState<string | string[]>('forwardedFor')
+// const socketAddr = useState<string>('socketAddr')
+
+// const testip = getRequestHeader(event, 'x-forwarded-for')
 </script>
 
 <template>
   <div>
     <CommonBreadcrumbs :items="breadcrumbs" />
     <UContainer class="flex flex-col items-center justify-center">
-      <div class="flex flex-col items-start justify-center gap-4">
-        <span class="text-lg font-bold">Backend:</span>
-        <span>
-          REMOTE_ADDR: <span class="font-bold" :class="ip.remote_addr ? 'text-green-700' : 'text-red-700'">{{ ip.remote_addr || 'Не определен' }}</span>
-        </span>
-        <span>
-          HTTP_X_FORWARDED_FOR: <span class="font-bold" :class="ip.forwarded ? 'text-green-700' : 'text-red-700'">{{ ip.forwarded || 'Не определен' }}</span>
-        </span>
-        <span class="text-lg font-bold">Frontend:</span>
-        <span>
-          x-real-ip: <span class="font-bold">{{ realIP }}</span>
-        </span>
-        <span>
-          x-forwarded-for: <span class="font-bold">{{ forwardedFor }}</span>
-        </span>
-        <span>
-          socket.remoteAddress: <span class="font-bold">{{ socketAddr }}</span>
-        </span>
-        <UButton @click="refresh">
-          Refresh
-        </UButton>
-      </div>
+      <ClientOnly>
+        <div v-if="geo" class="flex flex-col items-start justify-center gap-4">
+          <span class="text-lg font-bold">Backend:</span>
+          <span>
+            IP: <span class="font-bold">{{ geo.ip || 'Не определен' }}</span>
+          </span>
+          <span>
+            Страна: <span class="font-bold">{{ geo.country || 'Не определена' }}</span>
+          </span>
+          <span>
+            Регион: <span class="font-bold">{{ geo.region || 'Не определен' }}</span>
+          </span>
+          <span>
+            Город: <span class="font-bold">{{ geo.city || 'Не определен' }}</span>
+          </span>
+          <span v-show="geo.error">
+            Ошибка: <span class="font-bold">{{ geo.error }}</span>
+          </span>
+          <UButton @click="refresh">
+            Refresh
+          </UButton>
+        </div>
+        <div v-else>
+          Something went wrong
+        </div>
+      </ClientOnly>
     </UContainer>
   </div>
 </template>
