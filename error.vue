@@ -3,7 +3,10 @@ import type { NuxtError } from '#app'
 const router = useRouter()
 
 defineProps({
-  error: Object as () => NuxtError
+  error: {
+    type: Object as () => NuxtError,
+    default: () => ({})
+  }
 })
 
 const handleError = () => clearError({ redirect: '/' })
