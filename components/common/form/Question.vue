@@ -77,6 +77,7 @@ async function onSubmit () { // event: FormSubmitEvent<any>
   }
   questionFormIsOpen.value = false
 }
+const agree = useState('agree', () => true)
 </script>
 
 <template>
@@ -107,6 +108,15 @@ async function onSubmit () { // event: FormSubmitEvent<any>
             </UFormGroup>
             <UFormGroup label="Вопрос" name="question" required>
               <UTextarea v-model="question" placeholder="Ваш вопрос" />
+            </UFormGroup>
+            <UFormGroup>
+              <UCheckbox v-model="agree" required>
+                <template #label>
+                  <span>Даю согласие на обработку
+                    <NuxtLink to="/policy.pdf" target="_blank" class="text-primary-700 underline">Персональных данных</NuxtLink>
+                  </span>
+                </template>
+              </UCheckbox>
             </UFormGroup>
           </div>
 

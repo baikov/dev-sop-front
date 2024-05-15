@@ -79,6 +79,8 @@ async function onSubmit () { // event: FormSubmitEvent<any>
   }
   callFormIsOpen.value = false
 }
+
+const agree = useState('agree', () => true)
 </script>
 <template>
   <ClientOnly>
@@ -103,10 +105,19 @@ async function onSubmit () { // event: FormSubmitEvent<any>
             <UFormGroup label="Email" name="email">
               <UInput v-model="contactInfo.email" type="email" placeholder="your@email.ru" />
             </UFormGroup>
+            <UFormGroup>
+              <UCheckbox v-model="agree" required>
+                <template #label>
+                  <span>Даю согласие на обработку
+                    <NuxtLink to="/policy.pdf" target="_blank" class="text-primary-700 underline">Персональных данных</NuxtLink>
+                  </span>
+                </template>
+              </UCheckbox>
+            </UFormGroup>
           </div>
 
           <template #footer>
-            <UButton type="submit" block>
+            <UButton type="submit" block :disabled="!agree">
               Отправить
             </UButton>
           </template>
