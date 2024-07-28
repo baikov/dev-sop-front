@@ -16,18 +16,22 @@ updates:
   # https://github.com/dependabot/dependabot-core/issues/2178
 
   - package-ecosystem: 'docker'
-    # Look for a `Dockerfile` in the `compose/local/node` directory
+    # Look for a `Dockerfile` in the `compose/local/` directory
     directory: 'compose/local/'
     # Every weekday
     schedule:
       interval: 'daily'
+    ignore:
+      - dependency-name: 'node'
 
   - package-ecosystem: 'docker'
-    # Look for a `Dockerfile` in the `compose/local/node` directory
+    # Look for a `Dockerfile` in the `compose/production/` directory
     directory: 'compose/production/'
     # Every weekday
     schedule:
       interval: 'daily'
+    ignore:
+      - dependency-name: 'node'
 
   # Enable version updates for npm
   - package-ecosystem: "npm"

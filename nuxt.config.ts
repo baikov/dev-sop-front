@@ -47,7 +47,7 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@nuxtjs/sitemap', // https://nuxtseo.com/sitemap
     // 'nuxt-simple-sitemap', // https://nuxtseo.com/sitemap
-    'nuxt-simple-robots', // https://github.com/harlan-zw/nuxt-simple-robots
+    '@nuxtjs/robots', // https://nuxtseo.com/robots/
     'nuxt-og-image', // https://github.com/harlan-zw/nuxt-og-image
     'nuxt-schema-org', // https://unhead-schema-org.harlanzw.com/integrations/nuxt/module
     '@pinia/nuxt',
@@ -90,9 +90,13 @@ export default defineNuxtConfig({
     ssrHandlers: true
   },
   robots: {
-    // provide simple disallow rules for all robots `user-agent: *`
     disallow: ['/account', '/admin'],
-    allow: '/admin/login'
+    groups: [
+      {
+        userAgent: ['Yandex'],
+        cleanParam: ['etext', '_openstat', 'yclid', 'gclid', 'yclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
+      }
+    ]
   },
   eslint: {
     lintOnStart: false
