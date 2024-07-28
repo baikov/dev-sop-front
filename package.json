@@ -35,7 +35,7 @@
     "nuxt-site-config-kit": "2.2.12",
     "pinia": "2.1.7",
     "typescript": "5.4.5",
-    "vue-tsc": "2.0.28"
+    "vue-tsc": "2.0.29"
   },
   "resolutions": {
     "jackspeak": "2.1.1"
