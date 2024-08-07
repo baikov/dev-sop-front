@@ -5,4 +5,4 @@ services:
     environment:
       - NODE_ENV=stage
     labels:
-      - "traefik.http.routers.dashboard.middlewares=dev-auth@file"
+      - "traefik.http.routers.nuxt.middlewares=dev-auth@file"
