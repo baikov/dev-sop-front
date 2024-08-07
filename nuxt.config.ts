@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
   site: {
-    url: 'https://soptorg.ru'
+    // url: 'https://soptorg.ru'
+    url: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`
   },
   app: {
     head: {

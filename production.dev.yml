@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  nuxt:
+    environment:
+      - NODE_ENV=stage
+    labels:
+      - "traefik.http.routers.dashboard.middlewares=dev-auth@file"
