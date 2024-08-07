@@ -95,6 +95,10 @@ const breadcrumbs = [
     disabled: true
   }
 ]
+
+function goHome () {
+  navigateTo('/')
+}
 </script>
 
 <template>
@@ -132,7 +136,7 @@ const breadcrumbs = [
         </template>
         Body
         <template #footer>
-          <UButton color="green" @click="navigateTo('/account')">
+          <UButton color="green" @click="goHome()">
             Login
           </UButton>
         </template>
