@@ -42,6 +42,7 @@ updates:
       interval: "daily"
     # If don't need to update from 18 to 20
     ignore:
+      - dependency-name: '@types/node'
       - dependency-name: 'eslint'
         update-types:
           - 'version-update:semver-major'
