@@ -27,7 +27,7 @@
     "@vueuse/nuxt": "10.11.0",
     "eslint": "8.57.0",
     "eslint-plugin-tailwindcss": "3.17.4",
-    "nuxt": "3.11.2",
+    "nuxt": "3.12.4",
     "nuxt-og-image": "3.0.0-rc.64",
     "nuxt-schema-org": "3.3.9",
     "@nuxtjs/robots": "^4.0.2",
