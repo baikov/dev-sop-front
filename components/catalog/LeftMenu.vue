@@ -75,7 +75,7 @@ const parentSlug = findParentSlug(props.menu, slug)
                   active-class="bg-gray-300 text-gray-700 dark:bg-gray-900 dark:text-zinc-200"
                   class="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-900 hover:bg-gray-300 hover:text-gray-900 dark:text-zinc-200 dark:hover:bg-gray-900"
                 >
-                  <UIcon name="i-mdi-circle" class="size-1.5 min-w-[0.375rem]" />
+                  <UIcon name="i-mdi-circle" class="size-1.5 min-w-1.5" />
                   <span class="text-sm font-medium"> {{ lv3.name }} </span>
                 </NuxtLink>
               </template>

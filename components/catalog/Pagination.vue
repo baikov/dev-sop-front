@@ -38,7 +38,7 @@ onMounted(() => {
       class="flex items-center gap-x-2 rounded-md border bg-white px-5 py-2 text-sm capitalize text-gray-700 transition-colors duration-200 hover:bg-gray-100 disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
       @click="goPrevious()"
     >
-      <UIcon name="i-mdi-chevron-left" class="h-5 w-5 rtl:-scale-x-100" />
+      <UIcon name="i-mdi-chevron-left" class="size-5 rtl:-scale-x-100" />
       <span>
         Предыдущая
       </span>
@@ -60,7 +60,7 @@ onMounted(() => {
       <span>
         Следующая
       </span>
-      <UIcon name="i-mdi-chevron-right" class="h-5 w-5 rtl:-scale-x-100" />
+      <UIcon name="i-mdi-chevron-right" class="size-5 rtl:-scale-x-100" />
     </button>
   </div>
 </template>
