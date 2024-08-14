@@ -38,6 +38,14 @@ interface ICategoryDetail {
 interface IProductPropertyValue extends IProductProperty {
   value: string
 }
+
+interface IDocument {
+  id: number
+  title: string
+  file: string
+  size: number
+  ordering: number
+}
 interface IProduct {
   id: number
   name: string
@@ -54,6 +62,7 @@ interface IProduct {
   in_stock: boolean
   same_category_products: IProduct[] | []
   related_products: IProduct[] | []
+  documents: IDocument[] | []
 }
 interface IProductList {
   limit: number
@@ -64,6 +73,15 @@ interface IProductList {
   results: IProduct[]
 }
 
+interface INewMenuItem {
+  id: number,
+  name: string,
+  slug: string,
+  image: string,
+  is_published: boolean,
+  children: INewMenuItem[]
+}
+
 export type {
   Category,
   IProduct,
@@ -71,5 +89,6 @@ export type {
   ICategoryDetail,
   IProductList,
   IProductProperty,
-  IProductPropertyValue
+  IProductPropertyValue,
+  INewMenuItem
 }

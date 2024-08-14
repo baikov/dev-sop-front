@@ -96,7 +96,7 @@ useHead({
 // }]
 
 const currencyOptions = {
-  style: 'currency',
+  // style: 'currency',
   currency: 'RUB',
   maximumFractionDigits: 0
 }
@@ -111,6 +111,22 @@ const currencyOptions = {
 const questionFormIsOpen = useState('questionFormIsOpen')
 const productName = useState('productName', () => productDetail.value?.name)
 productName.value = productDetail.value?.name
+
+const fileSize = (size: number) => {
+  const i = Math.floor(Math.log(size) / Math.log(1024))
+  return (size / Math.pow(1024, i)).toFixed(2) + ' ' + ['B', 'KB', 'MB', 'GB', 'TB'][i]
+}
+
+const fileIconMapping = {
+  pdf: 'i-bi-filetype-pdf',
+  doc: 'i-bi-filetype-doc',
+  docx: 'i-bi-filetype-docx',
+  xls: 'i-bi-filetype-xls',
+  xlsx: 'i-bi-filetype-xlsx',
+  png: 'i-bi-filetype-png',
+  jpg: 'i-bi-filetype-jpg',
+  jpeg: 'i-bi-filetype-jpg'
+}
 </script>
 
 <template>
@@ -166,15 +182,15 @@ productName.value = productDetail.value?.name
                 <div class="w-1/2">
                   <div v-if="productDetail.ton_price_with_coef">
                     <span>Цена за тонну: </span>
-                    <span class="font-bold">{{ productDetail.ton_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}</span>
+                    <span class="font-bold">{{ productDetail.ton_price_with_coef.toLocaleString('ru-RU', {'style': 'currency', ...currencyOptions}) }}</span>
                   </div>
                   <div v-if="productDetail.meter_price_with_coef">
                     <span>Цена за метр:</span>
-                    {{ productDetail.meter_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}
+                    {{ productDetail.meter_price_with_coef.toLocaleString('ru-RU', {'style': 'currency', ...currencyOptions}) }}
                   </div>
                   <div v-if="productDetail.unit_price_with_coef">
                     <span>Цена за штуку:</span>
-                    {{ productDetail.unit_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}
+                    {{ productDetail.unit_price_with_coef.toLocaleString('ru-RU', {'style': 'currency', ...currencyOptions}) }}
                   </div>
                 </div>
               </div>
@@ -255,6 +271,21 @@ productName.value = productDetail.value?.name
             </div>
           </template>
         </UTabs> -->
+
+        <!-- Documents -->
+        <div v-if="productDetail.documents.length > 0" class="flex flex-col gap-4 pb-8">
+          <h2 class="my-2 text-xl font-bold text-gray-800 dark:text-zinc-200 md:text-xl">
+            Документы
+          </h2>
+          <div class="flex flex-wrap gap-4 pb-8">
+            <UCard v-for="doc in productDetail.documents" :key="doc.id" class="w-full" :ui="{ body: {padding: 'px-1 py-1 sm:p-2'}}">
+              <UIcon :name="fileIconMapping[doc.file.split('.').slice(-1)[0] as keyof typeof fileIconMapping]" class="mr-2 size-5 shrink-0" />
+              <NuxtLink :to="`${config.public.mediaUrl}/${doc.file}`" class="underline hover:text-gray-700 dark:hover:text-gray-200">
+                {{ doc.title }} ({{ fileSize(doc.size) }})
+              </NuxtLink>
+            </UCard>
+          </div>
+        </div>
 
         <h2 class="my-2 text-xl font-bold text-gray-800 dark:text-zinc-200 md:text-xl">
           {{ productDetail.category }} других размеров
