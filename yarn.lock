@@ -1087,7 +1087,7 @@
     unimport "^3.9.0"
     untyped "^1.4.2"
 
-"@nuxt/schema@3.12.4", "@nuxt/schema@^3.10.3", "@nuxt/schema@^3.12.3":
+"@nuxt/schema@3.12.4", "@nuxt/schema@^3.12.3":
   version "3.12.4"
   resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.12.4.tgz#295873c5e8bfbda0c9312bd16272373c936e6a71"
   integrity sha512-H7FwBV4ChssMaeiLyPdVLOLUa0326ebp3pNbJfGgFt7rSoKh1MmgjorecA8JMxOQZziy3w6EELf4+5cgLh/F1w==
@@ -6133,18 +6133,6 @@ nuxt-schema-org@3.3.9:
     pathe "^1.1.2"
     sirv "^2.0.4"
 
-nuxt-site-config-kit@2.2.12:
-  version "2.2.12"
-  resolved "https://registry.yarnpkg.com/nuxt-site-config-kit/-/nuxt-site-config-kit-2.2.12.tgz#367b73afeab6248d45fcebf7aedfc8c853c0313d"
-  integrity sha512-8amzGtBzHZervHgRkKXNI3lq0E1kP73vX+373uiBI9qGBFClFayuUSTDXAJreI7Yx0vB78iAjAA3a+YKM5iIdw==
-  dependencies:
-    "@nuxt/kit" "^3.10.3"
-    "@nuxt/schema" "^3.10.3"
-    pkg-types "^1.0.3"
-    site-config-stack "2.2.12"
-    std-env "^3.7.0"
-    ufo "^1.4.0"
-
 nuxt-site-config-kit@2.2.15, nuxt-site-config-kit@^2.2.14, nuxt-site-config-kit@^2.2.15:
   version "2.2.15"
   resolved "https://registry.yarnpkg.com/nuxt-site-config-kit/-/nuxt-site-config-kit-2.2.15.tgz#66703b76a9aceae4bb8cd0efd4f28acb200391a4"
@@ -7511,13 +7499,6 @@ sisteransi@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
-
-site-config-stack@2.2.12:
-  version "2.2.12"
-  resolved "https://registry.yarnpkg.com/site-config-stack/-/site-config-stack-2.2.12.tgz#0945f92b4eab6ffbe7ab2069a9e9bb38f1f0b356"
-  integrity sha512-U+nyw2vZ6E2zF/JYlFFEmDsqXSJbf0/6ZBCKXI4FZ2509iQwnEesfQXvWNuJ2JCemUJdAXAoiIturxEJtV4z0g==
-  dependencies:
-    ufo "^1.4.0"
 
 site-config-stack@2.2.15, site-config-stack@^2.2.15:
   version "2.2.15"
