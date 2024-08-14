@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
+  // compatibilityDate: '2024-08-14',
   site: {
     // url: 'https://soptorg.ru'
     url: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`
@@ -24,11 +25,17 @@ export default defineNuxtConfig({
       ]
     }
   },
+  routeRules: {
+    '/manager-dashboard': {
+      ssr: false
+    }
+  },
   runtimeConfig: {
     // apiSecret: '123',
     public: {
       siteUrl: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
       apiUrl: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}${process.env.API_PORT ? `:${process.env.API_PORT}` : ''}/api`,
+      mediaUrl: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}/media`,
       siteName: process.env.SITE_NAME || 'Nuxt 3',
       language: 'ru-RU'
       // titleSeparator: '|',
@@ -65,7 +72,7 @@ export default defineNuxtConfig({
   },
   ui: {
     global: true,
-    icons: ['mdi', 'heroicons', 'tabler', 'icon-park-solid']
+    icons: ['mdi', 'heroicons', 'tabler', 'icon-park-solid', 'bi']
   },
   image: {
     // dir: 'assets/img',
