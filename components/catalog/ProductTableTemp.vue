@@ -57,6 +57,18 @@ const filters = computed(
   }
 )
 
+// const productProperties = ref<string[]>([])
+
+// const getProps = () => {
+//   if (!productList.value?.results[0]) {
+//     console.log('No products', productList.value?.results[0])
+//     return []
+//   }
+//   for (const realProp of productList.value?.results[0].properties || []) {
+//     productProperties.value.push(realProp.code)
+//   }
+// }
+
 const endpoint = computed(
   () => `${config.public.apiUrl}/products/?category=${slug}&sort=${djangoSort.value}&limit=${productListParams.value.limit}&offset=${productListParams.value.offset}${filters.value}`
 )
@@ -88,6 +100,9 @@ if (error.value) {
     }
   }
 }
+// else {
+//   getProps()
+// }
 
 interface IProductRow {
   id: number
@@ -132,6 +147,9 @@ const baseColumns = [
 ]
 
 const productProperties = computed(() => {
+  if (!productList.value?.results[0]) {
+    return []
+  }
   const res = []
   for (const realProp of productList.value?.results[0].properties || []) {
     res.push(realProp.code)
@@ -222,7 +240,6 @@ const currencyOptions = {
 </script>
 
 <template>
-  <!-- {{ productProperties }} -->
   <div>
     <UButton label="Фильтры" @click="isOpen = true" />
 
@@ -288,14 +305,17 @@ const currencyOptions = {
     :columns="columns"
     @update:sort="updateSort"
   >
+    <!-- Product name -->
     <template #name-data="{ row }">
       <NuxtLink :to="`/product/${row.slug}`" class="underline hover:text-gray-700 dark:hover:text-gray-200">
         {{ row.name }}
       </NuxtLink>
     </template>
+    <!-- In stock -->
     <template #in_stock-data="{ row }">
       <span :class="{ 'text-yellow-500': !row.in_stock, 'text-green-500': row.in_stock }">{{ row.in_stock ? 'Много' : 'Мало' }}</span>
     </template>
+    <!-- Price -->
     <template #price-data="{ row }">
       <div v-if="row.ton_price_with_coef || row.meter_price_with_coef || row.unit_price_with_coef">
         <span v-show="row.ton_price_with_coef" class="font-bold">
