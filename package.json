@@ -29,7 +29,7 @@
     "@pinia/nuxt": "0.5.3",
     "@types/node": "20.12.12",
     "@vueuse/core": "10.11.0",
-    "@vueuse/nuxt": "10.11.0",
+    "@vueuse/nuxt": "11.0.1",
     "eslint": "8.57.0",
     "eslint-plugin-tailwindcss": "3.17.4",
     "nuxt": "3.12.4",
