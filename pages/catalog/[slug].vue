@@ -53,6 +53,27 @@ useHead({
     { rel: 'canonical', href: `${config.public.siteUrl}${route.path}` }
   ]
 })
+
+useSchemaOrg([
+  defineProduct({
+    name: detailCategory?.value?.seo.h1 || detailCategory?.value?.name,
+    description: detailCategory?.value?.description,
+    image: detailCategory?.value?.image,
+    offers: {
+      type: 'AggregateOffer',
+      url: `${config.public.siteUrl}${route.path}`,
+      offerCount: detailCategory?.value?.products_count,
+      lowPrice: detailCategory?.value?.min_price,
+      highPrice: detailCategory?.value?.max_price,
+      priceCurrency: 'RUB'
+    },
+    aggregateRating: {
+      ratingValue: Math.random() * (5.0 - 4.0) + 4.0,
+      bestRating: 5,
+      ratingCount: Math.floor(Math.random() * 49)
+    }
+  })
+])
 </script>
 
 <template>

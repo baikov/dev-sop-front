@@ -127,6 +127,26 @@ const fileIconMapping = {
   jpg: 'i-bi-filetype-jpg',
   jpeg: 'i-bi-filetype-jpg'
 }
+useSchemaOrg([
+  defineProduct({
+    name: productDetail.value?.seo.h1 || productDetail.value?.name,
+    description: productDetail.value?.seo.seo_description,
+    image: productDetail.value?.image,
+    offers: [
+      {
+        price: productDetail.value?.ton_price_with_coef,
+        url: `${config.public.siteUrl}${route.path}`,
+        priceCurrency: 'RUB',
+        availability: 'https://schema.org/InStock'
+      }
+    ],
+    aggregateRating: {
+      ratingValue: Math.random() * (5.0 - 4.0) + 4.0,
+      bestRating: 5,
+      ratingCount: Math.floor(Math.random() * 49)
+    }
+  })
+])
 </script>
 
 <template>

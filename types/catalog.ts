@@ -28,9 +28,13 @@ interface IProductProperty {
 interface ICategoryDetail {
   id: number
   name: string
+  image: string | null
   slug: string
   seo: ISEO
   description: string
+  min_price: number
+  max_price: number
+  products_count: number
   breadcrumbs: IBreadcrumb[]
   product_properties: IProductProperty[]
   subcategories: Category[] | []
