@@ -1,10 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  // compatibilityDate: '2024-08-14',
+  compatibilityDate: '2024-04-03',
   site: {
-    // url: 'https://soptorg.ru'
-    url: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`
+    url: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
+    defaultLocale: process.env.NUXT_SITE_LANG || 'ru-RU'
   },
   app: {
     head: {
@@ -54,14 +54,12 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/google-fonts',
     '@nuxtjs/sitemap', // https://nuxtseo.com/sitemap
-    // 'nuxt-simple-sitemap', // https://nuxtseo.com/sitemap
     '@nuxtjs/robots', // https://nuxtseo.com/robots/
     'nuxt-og-image', // https://github.com/harlan-zw/nuxt-og-image
     'nuxt-schema-org', // https://unhead-schema-org.harlanzw.com/integrations/nuxt/module
     '@pinia/nuxt',
-    '@artmizu/yandex-metrika-nuxt'
-    // 'nuxt-vitest',
-    // https://sentry.nuxtjs.org/getting-started/setup
+    '@artmizu/yandex-metrika-nuxt',
+    'nuxt-gtag' // https://github.com/johannschopplich/nuxt-gtag
   ],
   vite: {
     server: {
@@ -105,6 +103,9 @@ export default defineNuxtConfig({
         cleanParam: ['etext', '_openstat', 'yclid', 'gclid', 'yclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
       }
     ]
+  },
+  gtag: {
+    id: 'G-75N44N3M4H'
   },
   eslint: {
     lintOnStart: false
