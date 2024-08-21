@@ -59,7 +59,8 @@ export default defineNuxtConfig({
     'nuxt-schema-org', // https://unhead-schema-org.harlanzw.com/integrations/nuxt/module
     '@pinia/nuxt',
     '@artmizu/yandex-metrika-nuxt',
-    'nuxt-gtag' // https://github.com/johannschopplich/nuxt-gtag
+    'nuxt-gtag', // https://github.com/johannschopplich/nuxt-gtag
+    '@nuxt/scripts'
   ],
   vite: {
     server: {
@@ -89,9 +90,6 @@ export default defineNuxtConfig({
       Ubuntu: [300, 400, 500, 700]
     }
   },
-  yandexMetrika: {
-    id: process.env.YANDEX_METRIKA_ID
-  },
   vueuse: {
     ssrHandlers: true
   },
@@ -103,9 +101,6 @@ export default defineNuxtConfig({
         cleanParam: ['etext', '_openstat', 'yclid', 'gclid', 'yclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
       }
     ]
-  },
-  gtag: {
-    id: 'G-75N44N3M4H'
   },
   eslint: {
     lintOnStart: false
@@ -133,6 +128,19 @@ export default defineNuxtConfig({
           '/account/**'
         ]
       }
+    }
+  },
+  $production: {
+    scripts: {
+      globals: {
+        jivosite: '//code.jivo.ru/widget/hQHL62Yd1r'
+      }
+    },
+    gtag: {
+      id: 'G-75N44N3M4H'
+    },
+    yandexMetrika: {
+      id: process.env.YANDEX_METRIKA_ID
     }
   }
 })
