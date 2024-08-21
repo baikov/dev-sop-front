@@ -5,23 +5,26 @@
 
 <template>
   <div
-    class="hidden border-b border-gray-600 bg-green-700 text-slate-100 dark:bg-gray-900 dark:text-slate-300 md:block"
+    class="border-b border-gray-600 bg-green-700 text-slate-100 dark:bg-gray-900 dark:text-slate-300"
   >
     <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-1">
-      <div class="flex items-center gap-3 text-sm">
+      <div class="flex flex-1 items-center justify-between gap-3 text-sm md:flex-auto md:justify-start">
         <NuxtLink
           class="font-bold hover:text-gray-800 dark:hover:text-zinc-200"
           to="tel:78312140314"
         >
           +7 (831) 214-03-14
         </NuxtLink>
-        <span class="mx-2 h-4 w-px bg-slate-100 lg:mx-2" aria-hidden="true" />
+        <span class="mx-2 hidden h-4 w-px bg-slate-100 md:block lg:mx-2" aria-hidden="true" />
         <NuxtLink
           class="font-bold hover:text-gray-800 dark:hover:text-zinc-200"
           to="mailto:info@soptorg.ru"
         >
           info@soptorg.ru
         </NuxtLink>
+      </div>
+      <div class="hidden md:block">
+        <CommonCitySelector />
       </div>
       <!-- <div class="text-sm">
         <span>Актуальный прайс на {{ month }}.{{ year }}: </span>
