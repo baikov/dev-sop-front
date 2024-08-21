@@ -31,7 +31,7 @@ const productListParams = useState('productListParams', () => {
     acc[item.code] = ''
     return acc
   }, {}) || {}
-  res.limit = 20
+  res.limit = 50
   res.offset = 0
   return res
 })
