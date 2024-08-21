@@ -21,10 +21,10 @@ const breadcrumbs = [
 </script>
 
 <template>
-  <div>
+  <div class="pb-6">
     <CommonBreadcrumbs :items="breadcrumbs" />
     <CommonPageHeader h1="Контактная информация" />
-    <section class="relative mx-auto flex w-full flex-1 flex-col">
+    <section class="relative mx-auto flex w-full flex-1 flex-col pb-6">
       <div class="mx-auto w-full max-w-7xl p-4">
         <div class="block rounded-lg">
           <div class="flex flex-wrap items-center">
@@ -41,9 +41,12 @@ const breadcrumbs = [
                       <p class="mb-1 font-bold">
                         Телефон
                       </p>
-                      <p>
+                      <NuxtLink
+                        class="hover:text-gray-800 hover:underline dark:hover:text-gray-200"
+                        to="tel:78312140314"
+                      >
                         +7 (831) 214-03-14
-                      </p>
+                      </NuxtLink>
                     </div>
                   </div>
                 </div>
@@ -58,13 +61,16 @@ const breadcrumbs = [
                       <p class="mb-1 font-bold">
                         Email
                       </p>
-                      <p>
+                      <NuxtLink
+                        class="hover:text-gray-800 hover:underline dark:hover:text-gray-200"
+                        to="mailto:info@soptorg.ru"
+                      >
                         info@soptorg.ru
-                      </p>
+                      </NuxtLink>
                     </div>
                   </div>
                 </div>
-                <div class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:mb-0 lg:w-full xl:w-6/12 xl:px-12">
+                <div class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:w-6/12 xl:px-12">
                   <div class="align-start flex">
                     <div class="shrink-0">
                       <div class="bg-primary-700 flex size-14 items-center justify-center rounded-md p-4 shadow-md dark:bg-gray-800">
@@ -81,6 +87,23 @@ const breadcrumbs = [
                     </div>
                   </div>
                 </div>
+                <div class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:mb-0 lg:w-full xl:w-6/12 xl:px-12">
+                  <div class="align-start flex">
+                    <div class="shrink-0">
+                      <div class="bg-primary-700 flex size-14 items-center justify-center rounded-md p-4 shadow-md dark:bg-gray-800">
+                        <UIcon name="i-mdi-clock" class="w-6 text-white" />
+                      </div>
+                    </div>
+                    <div class="ml-6 grow">
+                      <p class="mb-1 font-bold">
+                        Время работы
+                      </p>
+                      <p>
+                        пн-пт: 8.00-17.00
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="block w-full shrink-0 grow-0 basis-auto lg:flex lg:w-6/12 xl:w-4/12">
@@ -92,5 +115,18 @@ const breadcrumbs = [
         </div>
       </div>
     </section>
+    <UContainer>
+      <div class="flex flex-wrap">
+        <div class="w-full lg:w-1/2">
+          <CommonFormContacts />
+        </div>
+        <div class="flex w-full flex-col items-center justify-start gap-6 lg:w-1/2 lg:pl-6">
+          <p class="text-xl font-bold">
+            Реквизиты
+          </p>
+          <CommonRequisites />
+        </div>
+      </div>
+    </UContainer>
   </div>
 </template>
