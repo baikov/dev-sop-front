@@ -35,8 +35,8 @@
       <NuxtPicture
         src="/img/main-banner.jpg"
         sizes="sm:550px md:1000px lg:900px"
-        alt="СПЕЦОПТТОРГ"
-        title="СПЕЦОПТТОРГ"
+        alt="СПЕЦОПТТОРГ - Оптовые продажи металлопроката"
+        title="СПЕЦОПТТОРГ - Оптовые продажи металлопроката"
         :img-attrs="{ class: 'h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full' }"
       />
     </div>

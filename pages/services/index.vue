@@ -38,6 +38,7 @@ const services = [
               <span class="inline-block rounded-xl bg-gray-300 p-3 dark:bg-gray-800">
                 <NuxtPicture
                   :src="`/img/services/${service.image}`"
+                  :alt="service.title"
                   sizes="sm:400px md:400px lg:300px"
                   class="inline-block p-3 dark:invert"
                 />

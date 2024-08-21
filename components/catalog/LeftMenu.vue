@@ -42,7 +42,14 @@ const parentSlug = findParentSlug(props.menu, slug)
         active-class="bg-gray-300 text-gray-700 dark:bg-gray-900 dark:text-zinc-200"
         class="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-900 hover:bg-gray-300 hover:text-gray-900 dark:text-zinc-200 dark:hover:bg-gray-900"
       >
-        <NuxtImg v-show="item.image" :src="`/soptorg/media/${item.image}`" width="60" height="30" class="dark:invert" />
+        <NuxtImg
+          v-show="item.image"
+          :src="`/soptorg/media/${item.image}`"
+          :alt="item.name"
+          width="60"
+          height="30"
+          class="dark:invert"
+        />
         <span class="text-md font-medium">{{ item.name }}</span>
       </NuxtLink>
 
@@ -58,7 +65,14 @@ const parentSlug = findParentSlug(props.menu, slug)
                 :to="`/catalog/${subitem.slug}`"
                 class="flex items-center gap-2 px-4 py-2"
               >
-                <NuxtImg v-show="subitem.image" :src="`/soptorg/media/${subitem.image}`" width="40" height="20" class="dark:invert" />
+                <NuxtImg
+                  v-show="subitem.image"
+                  :src="`/soptorg/media/${subitem.image}`"
+                  :alt="subitem.name"
+                  width="40"
+                  height="20"
+                  class="dark:invert"
+                />
                 <span class="text-sm font-medium">{{ subitem.name }}</span>
               </NuxtLink>
               <!-- </div> -->
