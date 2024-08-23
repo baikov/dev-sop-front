@@ -94,7 +94,7 @@ export default defineNuxtConfig({
     ssrHandlers: true
   },
   robots: {
-    disallow: ['/account', '/admin'],
+    disallow: ['/account', '/admin', '/manager-dashboard'],
     groups: [
       {
         userAgent: ['Yandex'],
@@ -125,7 +125,8 @@ export default defineNuxtConfig({
       pages: {
         includeAppSources: true,
         exclude: [
-          '/account/**'
+          '/account/**',
+          '/manager-dashboard/**'
         ]
       }
     }
