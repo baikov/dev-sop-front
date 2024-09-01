@@ -81,19 +81,23 @@ useHead({
   ]
 })
 
-// const items = [{
-//   label: 'Описание',
-//   icon: 'i-heroicons-information-circle',
-//   content: productDetail?.value?.description || `Компания ООО «СпецОптТорг» является крупнейшим поставщиком ${productDetail.value?.name}`
-// }, {
-//   label: 'Доставка и оплата',
-//   icon: 'i-mdi-truck-fast-outline',
-//   content: 'Доставка металлопродукции до вашего объекта - от 1 дня. Доставляем металл собственным автопарком и транспортными компаниями в любую точкуРФ. Выдаем с грузом сопроводительные документы: ТТН, счет-фактура, акт выполненных работ и УПД'
-// }, {
-//   label: 'Документы',
-//   icon: 'i-mdi-file-pdf',
-//   content: 'Finally, this is the content for Tab3'
-// }]
+const tabItems: any = []
+
+if (productDetail.value?.description) {
+  tabItems.push({
+    key: 'description',
+    label: 'Описание',
+    defaultOpen: true,
+    icon: 'i-heroicons-information-circle'
+  })
+}
+if (productDetail.value?.documents && productDetail.value?.documents.length > 0) {
+  tabItems.push({
+    key: 'docs',
+    label: 'Документы',
+    icon: 'i-mdi-file-pdf'
+  })
+}
 
 const currencyOptions = {
   // style: 'currency',
@@ -147,6 +151,9 @@ useSchemaOrg([
     }
   })
 ])
+
+const deliveryModalIsOpen = useState('deliveryModalIsOpen', () => false)
+const paymentModalIsOpen = useState('paymentModalIsOpen', () => false)
 </script>
 
 <template>
@@ -158,8 +165,8 @@ useSchemaOrg([
         <CatalogSidebar />
       </div>
       <div v-if="productDetail" class="w-full md:w-8/12 lg:w-9/12">
-        <div class="flex w-full gap-4 pb-8">
-          <div class="relative w-1/3 self-center">
+        <div class="flex w-full flex-col items-center justify-center gap-4 pb-8 md:flex-row">
+          <div class="flex w-full items-center justify-center md:w-1/3">
             <!-- <NuxtImg src="https://via.placeholder.com/600" placeholder densities="x1 x2" height="300" /> -->
             <NuxtImg
               v-show="productDetail.image"
@@ -181,7 +188,7 @@ useSchemaOrg([
               </div>
             </div>
           </div>
-          <div class="w-2/3">
+          <div class="w-full md:w-2/3">
             <UCard>
               <template #header>
                 Наличие на складах:
@@ -218,7 +225,7 @@ useSchemaOrg([
               </div>
 
               <template #footer>
-                <div class="flex gap-4">
+                <div class="flex justify-between gap-4">
                   <!-- Cart -->
                   <!-- <UButtonGroup size="sm" orientation="horizontal">
                     <UButton
@@ -258,6 +265,28 @@ useSchemaOrg([
                   <UButton icon="i-mdi-mail" variant="outline" @click="questionFormIsOpen = true">
                     Задать вопрос
                   </UButton>
+                  <div class="flex items-center">
+                    <UButton
+                      icon="i-mdi-truck-fast-outline"
+                      size="sm"
+                      color="black"
+                      variant="link"
+                      :trailing="false"
+                      @click="deliveryModalIsOpen = true"
+                    >
+                      <span class="hidden md:block">Доставка</span>
+                    </UButton>
+                    <UButton
+                      icon="i-mdi-credit-card-outline"
+                      size="sm"
+                      color="black"
+                      variant="link"
+                      :trailing="false"
+                      @click="paymentModalIsOpen = true"
+                    >
+                      <span class="hidden md:block">Оплата</span>
+                    </UButton>
+                  </div>
                 </div>
                 <!-- <div v-if="quantityInCart">
                   <span>В заказ уже добавлено {{ quantityInCart }} тонн</span>
@@ -270,44 +299,102 @@ useSchemaOrg([
           </div>
         </div>
 
-        <div class="flex gap-4 pb-8">
-          <UCard class="border-primary-500 w-1/3 border-2 dark:border-gray-400">
+        <div class="flex flex-col gap-4 pb-8 md:flex-row">
+          <UCard class="border-primary-500 flex w-full items-center justify-center border-2 text-center dark:border-gray-400 md:w-1/3">
             Оптимальное соотношение цены и качества
           </UCard>
-          <UCard class="border-primary-500 w-1/3 border-2 dark:border-gray-400">
+          <UCard class="border-primary-500 flex w-full items-center justify-center border-2 text-center dark:border-gray-400 md:w-1/3">
             Репутация надежного поставщика
           </UCard>
-          <UCard class="border-primary-500 w-1/3 border-2 dark:border-gray-400">
+          <UCard class="border-primary-500 flex w-full items-center justify-center border-2 text-center dark:border-gray-400 md:w-1/3">
             Гарантия соблюдения сроков
           </UCard>
         </div>
 
-        <!-- <UTabs :items="items" class="w-full pb-8">
-          <template #default="{ item, index, selected }">
+        <UTabs v-if="tabItems.length > 0" :items="tabItems" class="hidden w-full pb-8 md:block">
+          <template #default="{ item, selected }">
             <div class="relative flex items-center gap-2 truncate">
-              <UIcon :name="item.icon" class="h-4 w-4 shrink-0" />
+              <UIcon :name="item.icon" class="size-4 shrink-0" />
 
-              <span class="truncate">{{ index + 1 }}. {{ item.label }}</span>
+              <h2 class="truncate">
+                {{ item.label }}
+              </h2>
 
-              <span v-if="selected" class="bg-primary-500 dark:bg-primary-400 absolute -right-4 h-2 w-2 rounded-full" />
+              <span v-if="selected" class="bg-primary-500 dark:bg-primary-400 absolute -right-4 size-2 rounded-full" />
             </div>
           </template>
-        </UTabs> -->
+          <template #item="{ item }">
+            <div v-if="item.key === 'docs'">
+              <!-- Documents -->
+              <div v-if="productDetail.documents.length > 0" class="flex flex-col gap-4">
+                <!-- <h2 class="my-2 text-xl font-bold text-gray-800 dark:text-zinc-200 md:text-xl">
+                  Документы
+                </h2> -->
+                <div class="flex flex-wrap gap-4 pb-8">
+                  <UCard v-for="doc in productDetail.documents" :key="doc.id" class="w-full" :ui="{ body: {padding: 'px-1 py-1 sm:p-2'}}">
+                    <UIcon :name="fileIconMapping[doc.file.split('.').slice(-1)[0] as keyof typeof fileIconMapping]" class="mr-2 size-5 shrink-0" />
+                    <NuxtLink :to="`${config.public.mediaUrl}/${doc.file}`" class="underline hover:text-gray-700 dark:hover:text-gray-200">
+                      {{ doc.title }} ({{ fileSize(doc.size) }})
+                    </NuxtLink>
+                  </UCard>
+                </div>
+              </div>
+              <div v-else>
+                <p>{{ item.content }}</p>
+              </div>
+            </div>
+            <div v-if="item.key === 'description'">
+              <!-- eslint-disable-next-line vue/no-v-html -->
+              <div v-if="productDetail?.description" v-html="productDetail?.description" />
+              <div v-else>
+                {{ item.content }}
+              </div>
+            </div>
+          </template>
+        </UTabs>
 
-        <!-- Documents -->
-        <div v-if="productDetail.documents.length > 0" class="flex flex-col gap-4 pb-8">
-          <h2 class="my-2 text-xl font-bold text-gray-800 dark:text-zinc-200 md:text-xl">
-            Документы
-          </h2>
-          <div class="flex flex-wrap gap-4 pb-8">
-            <UCard v-for="doc in productDetail.documents" :key="doc.id" class="w-full" :ui="{ body: {padding: 'px-1 py-1 sm:p-2'}}">
-              <UIcon :name="fileIconMapping[doc.file.split('.').slice(-1)[0] as keyof typeof fileIconMapping]" class="mr-2 size-5 shrink-0" />
-              <NuxtLink :to="`${config.public.mediaUrl}/${doc.file}`" class="underline hover:text-gray-700 dark:hover:text-gray-200">
-                {{ doc.title }} ({{ fileSize(doc.size) }})
-              </NuxtLink>
-            </UCard>
-          </div>
-        </div>
+        <UAccordion v-if="tabItems.length > 0" :items="tabItems" class="block w-full pb-8 md:hidden">
+          <template #default="{ item, selected }">
+            <div class="relative flex items-center gap-2 truncate">
+              <UIcon :name="item.icon" class="size-4 shrink-0" />
+
+              <h2 class="truncate">
+                {{ item.label }}
+              </h2>
+
+              <span v-if="selected" class="bg-primary-500 dark:bg-primary-400 absolute -right-4 size-2 rounded-full" />
+            </div>
+          </template>
+          <template #item="{ item }">
+            <!-- Description -->
+            <div v-if="item.key === 'description'">
+              <!-- eslint-disable-next-line vue/no-v-html -->
+              <div v-if="productDetail?.description" v-html="productDetail?.description" />
+              <div v-else>
+                {{ item.content }}
+              </div>
+            </div>
+            <!-- Documents -->
+            <div v-if="item.key === 'docs'">
+              <div v-if="productDetail.documents.length > 0" class="flex flex-col gap-4">
+                <!-- <h2 class="my-2 text-xl font-bold text-gray-800 dark:text-zinc-200 md:text-xl">
+                  Документы
+                </h2> -->
+                <div class="flex flex-wrap gap-4 pb-8">
+                  <UCard v-for="doc in productDetail.documents" :key="doc.id" class="w-full" :ui="{ body: {padding: 'px-1 py-1 sm:p-2'}}">
+                    <UIcon :name="fileIconMapping[doc.file.split('.').slice(-1)[0] as keyof typeof fileIconMapping]" class="mr-2 size-5 shrink-0" />
+                    <NuxtLink :to="`${config.public.mediaUrl}/${doc.file}`" class="underline hover:text-gray-700 dark:hover:text-gray-200">
+                      {{ doc.title }} ({{ fileSize(doc.size) }})
+                    </NuxtLink>
+                  </UCard>
+                </div>
+              </div>
+              <div v-else>
+                <p>{{ item.content }}</p>
+              </div>
+            </div>
+          </template>
+        </UAccordion>
 
         <h2 class="my-2 text-xl font-bold text-gray-800 dark:text-zinc-200 md:text-xl">
           {{ productDetail.category }} других размеров
@@ -396,5 +483,46 @@ useSchemaOrg([
         <p>Проблема получения данных...</p>
       </div>
     </div>
+    <LazyUModal v-model="deliveryModalIsOpen">
+      <UCard
+        class="dark:bg-gray-800"
+        :ui="{
+          base: 'h-full flex flex-col',
+          rounded: '',
+          divide: 'divide-y divide-gray-100 dark:divide-gray-600',
+        }"
+      >
+        <template #header>
+          <div class="flex items-center justify-between">
+            <p class="text-base font-semibold leading-4 text-gray-900 dark:text-white">
+              Доставка
+            </p>
+            <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1" @click="deliveryModalIsOpen = false" />
+          </div>
+        </template>
+
+        <CommonDelivery />
+      </UCard>
+    </LazyUModal>
+    <LazyUModal v-model="paymentModalIsOpen">
+      <UCard
+        class="dark:bg-gray-800"
+        :ui="{
+          base: 'h-full flex flex-col',
+          rounded: '',
+          divide: 'divide-y divide-gray-100 dark:divide-gray-600',
+        }"
+      >
+        <template #header>
+          <div class="flex items-center justify-between">
+            <p class="text-base font-semibold leading-4 text-gray-900 dark:text-white">
+              Оплата
+            </p>
+            <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1" @click="paymentModalIsOpen = false" />
+          </div>
+        </template>
+        <CommonPayment />
+      </ucard>
+    </LazyUModal>
   </div>
 </template>
