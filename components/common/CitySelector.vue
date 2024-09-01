@@ -14,7 +14,7 @@ const cities = [
   'Саров'
 ]
 
-const selected = ref(cities[0])
+const selected = useState<string>('selectedCity', () => cities[0])
 </script>
 
 <template>
