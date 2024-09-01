@@ -30,8 +30,8 @@ const breadcrumbs = [
   <div>
     <CommonBreadcrumbs :items="breadcrumbs" />
     <CommonPageHeader h1="Реквизиты" />
-    <UContainer class="py-6">
+    <div class="mx-auto w-full max-w-7xl p-4">
       <CommonRequisites />
-    </UContainer>
+    </div>
   </div>
 </template>
