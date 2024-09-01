@@ -86,10 +86,9 @@ useSchemaOrg([
       </div>
       <div class="w-full md:w-8/12 lg:w-9/12">
         <CatalogSubcategories v-show="detailCategory?.subcategories && detailCategory?.subcategories.length > 0" :subcat-list="detailCategory?.subcategories" />
-        <div class="">
-          {{ detailCategory?.description }}
-        </div>
         <CatalogProductTableTemp :category-properties="detailCategory?.product_properties || []" />
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div v-if="detailCategory?.description" class="description p-4" v-html="detailCategory?.description" />
       </div>
     </div>
   </div>
