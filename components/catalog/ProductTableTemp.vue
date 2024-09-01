@@ -240,9 +240,22 @@ const currencyOptions = {
 </script>
 
 <template>
-  <div>
-    <UButton label="Фильтры" @click="isOpen = true" />
-
+  <div class="flex flex-col">
+    <div>
+      <UButton label="Фильтры" @click="isOpen = true" />
+    </div>
+    <div class="flex gap-2 py-2">
+      <template v-for="prop in categoryProperties" :key="prop.code">
+        <UChip v-if="productListParams[prop.code] !== ''" text="x" color="gray">
+          <UBadge
+            class="cursor-pointer bg-red-500"
+            @click="setUnsetFilter(prop.code, productListParams[prop.code])"
+          >
+            {{ prop.name }}: {{ productListParams[prop.code] }}
+          </UBadge>
+        </UChip>
+      </template>
+    </div>
     <USlideover v-model="isOpen">
       <UCard class="flex flex-1 flex-col overflow-y-auto" :ui="{ body: { base: 'flex-1' }, ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
         <template #header>
@@ -269,85 +282,74 @@ const currencyOptions = {
         </template>
       </UCard>
     </USlideover>
-  </div>
 
-  <div v-if="productList" class="flex justify-between px-3 py-3.5 dark:border-gray-700">
-    <div class="sm:flex sm:items-center sm:justify-between">
-      <div>
-        <div class="flex items-center gap-x-3">
-          <h2 class="text-lg font-medium text-gray-800 dark:text-white">
-            Список продукции
-          </h2>
-          <span v-for="prop in categoryProperties" :key="prop.code">
-            <UChip v-if="productListParams[prop.code] !== ''" text="x" color="gray">
-              <UBadge
-                class="cursor-pointer bg-red-500"
-                @click="setUnsetFilter(prop.code, productListParams[prop.code])"
-              >
-                {{ prop.name }}: {{ productListParams[prop.code] }}
-              </UBadge>
-            </UChip>
-          </span>
-
-          <span class="rounded-full bg-green-100 px-3 py-1 text-xs text-green-700 dark:bg-gray-900 dark:text-zinc-200">
-            {{ productList?.count }} позиций
-          </span>
+    <div v-if="productList" class="flex flex-col justify-between gap-5 px-3 py-3.5 dark:border-gray-700 md:flex-row">
+      <div class="sm:flex sm:items-center sm:justify-between">
+        <div>
+          <div class="flex items-center gap-x-3">
+            <h2 class="text-lg font-medium text-gray-800 dark:text-white">
+              Список продукции
+            </h2>
+            <span class="rounded-full bg-green-100 px-3 py-1 text-xs text-green-700 dark:bg-gray-900 dark:text-zinc-200">
+              {{ productList?.count }} позиций
+            </span>
+          </div>
         </div>
       </div>
+      <UPagination v-model="page" class="self-center justify-self-center py-2 md:py-0" :total="productList?.count" :page-count="productListParams.limit" />
     </div>
-    <UPagination v-model="page" :total="productList?.count" :page-count="productListParams.limit" />
-  </div>
-  <UTable
-    v-model:sort="sort"
-    :rows="table"
-    :loading="pending"
-    :loading-state="{ icon: 'i-heroicons-arrow-path-20-solid', label: 'Загрузка...' }"
-    :columns="columns"
-    @update:sort="updateSort"
-  >
-    <!-- Product name -->
-    <template #name-data="{ row }">
-      <NuxtLink :to="`/product/${row.slug}`" class="underline hover:text-gray-700 dark:hover:text-gray-200">
-        {{ row.name }}
-      </NuxtLink>
-    </template>
-    <!-- In stock -->
-    <template #in_stock-data="{ row }">
-      <span :class="{ 'text-yellow-500': !row.in_stock, 'text-green-500': row.in_stock }">{{ row.in_stock ? 'Много' : 'Мало' }}</span>
-    </template>
-    <!-- Price -->
-    <template #price-data="{ row }">
-      <div v-if="row.ton_price_with_coef || row.meter_price_with_coef || row.unit_price_with_coef">
-        <span v-show="row.ton_price_with_coef" class="font-bold">
-          {{ row.ton_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/тн
-        </span>
-        <span v-show="!row.ton_price_with_coef && row.unit_price_with_coef" class="font-bold">
-          {{ `${row.unit_price_with_coef.toLocaleString('ru-RU', currencyOptions)}/шт` }}
-        </span>
-        <span v-show="!row.ton_price_with_coef && row.meter_price_with_coef" class="font-bold">
-          {{ `${row.meter_price_with_coef.toLocaleString('ru-RU', currencyOptions)}/м` }}
-        </span>
-        <p v-if="row.ton_price_with_coef && row.meter_price_with_coef" class="text-xs font-normal text-gray-600 dark:text-gray-400">
-          {{ row.meter_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/м
-        </p>
-        <p v-if="row.ton_price_with_coef && row.unit_price_with_coef" class="text-xs font-normal text-gray-600 dark:text-gray-400">
-          {{ row.unit_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/шт
-        </p>
-      </div>
-      <div v-else>
-        <span class="font-bold">
-          По запросу
-        </span>
-      </div>
-    </template>
-    <template #empty-state>
-      <div class="flex flex-col items-center justify-center gap-3 py-6">
-        <span class="text-sm italic">Товары не найдены</span>
+    <UTable
+      v-model:sort="sort"
+      :rows="table"
+      :loading="pending"
+      :loading-state="{ icon: 'i-heroicons-arrow-path-20-solid', label: 'Загрузка...' }"
+      :columns="columns"
+      @update:sort="updateSort"
+    >
+      <!-- Product name -->
+      <template #name-data="{ row }">
+        <NuxtLink :to="`/product/${row.slug}`" class="underline hover:text-gray-700 dark:hover:text-gray-200">
+          {{ row.name }}
+        </NuxtLink>
+      </template>
+      <!-- In stock -->
+      <template #in_stock-data="{ row }">
+        <span :class="{ 'text-yellow-500': !row.in_stock, 'text-green-500': row.in_stock }">{{ row.in_stock ? 'Много' : 'Мало' }}</span>
+      </template>
+      <!-- Price -->
+      <template #price-data="{ row }">
+        <div v-if="row.ton_price_with_coef || row.meter_price_with_coef || row.unit_price_with_coef">
+          <span v-show="row.ton_price_with_coef" class="font-bold">
+            {{ row.ton_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/тн
+          </span>
+          <span v-show="!row.ton_price_with_coef && row.unit_price_with_coef" class="font-bold">
+            {{ `${row.unit_price_with_coef.toLocaleString('ru-RU', currencyOptions)}/шт` }}
+          </span>
+          <span v-show="!row.ton_price_with_coef && row.meter_price_with_coef" class="font-bold">
+            {{ `${row.meter_price_with_coef.toLocaleString('ru-RU', currencyOptions)}/м` }}
+          </span>
+          <p v-if="row.ton_price_with_coef && row.meter_price_with_coef" class="text-xs font-normal text-gray-600 dark:text-gray-400">
+            {{ row.meter_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/м
+          </p>
+          <p v-if="row.ton_price_with_coef && row.unit_price_with_coef" class="text-xs font-normal text-gray-600 dark:text-gray-400">
+            {{ row.unit_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/шт
+          </p>
+        </div>
+        <div v-else>
+          <span class="font-bold">
+            По запросу
+          </span>
+        </div>
+      </template>
+      <template #empty-state>
+        <div class="flex flex-col items-center justify-center gap-3 py-6">
+          <span class="text-sm italic">Товары не найдены</span>
         <!-- <UButton label="Сбросить фильтры" @click="filters = {}" /> -->
-      </div>
-    </template>
-  </UTable>
-  <div v-if="productList" class="flex justify-end border-t border-gray-200 px-3 py-3.5 dark:border-gray-700">
-    <UPagination v-model="page" :total="productList?.count" :page-count="productListParams.limit" />
+        </div>
+      </template>
+    </UTable>
+    <div v-if="productList" class="flex justify-center border-t border-gray-200 px-3 py-3.5 dark:border-gray-700 md:justify-end">
+      <UPagination v-model="page" :total="productList?.count" :page-count="productListParams.limit" />
+    </div>
   </div>
 </template>
