@@ -26,9 +26,10 @@ export default defineNuxtConfig({
     }
   },
   routeRules: {
-    '/manager-dashboard': {
-      ssr: false
-    }
+    '/company/**': { prerender: true },
+    '/contacts': { prerender: true },
+    '/services': { prerender: true },
+    '/manager-dashboard': { ssr: false }
   },
   runtimeConfig: {
     // apiSecret: '123',
