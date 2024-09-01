@@ -109,7 +109,7 @@ const agree = useState('agree', () => true)
           <UCheckbox v-model="agree" required>
             <template #label>
               <span>Даю согласие на обработку
-                <NuxtLink to="/policy.pdf" target="_blank" class="text-primary-700 underline">Персональных данных</NuxtLink>
+                <NuxtLink to="company/confidentiality" target="_blank" class="text-primary-700 underline">Персональных данных</NuxtLink>
               </span>
             </template>
           </UCheckbox>
