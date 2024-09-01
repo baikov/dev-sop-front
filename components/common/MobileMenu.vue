@@ -14,7 +14,7 @@ const mmIsOpen = ref(false)
 </script>
 
 <template>
-  <div class="self-justify-end my-auto ml-auto flex items-center md:hidden">
+  <div class="my-auto flex items-center md:hidden">
     <div class="cursor-pointer" @click="mmIsOpen = !mmIsOpen">
       <div
         class="relative h-0.5 w-8 rounded bg-zinc-200 transition-all"
