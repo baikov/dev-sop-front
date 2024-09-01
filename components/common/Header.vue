@@ -57,11 +57,13 @@ const callFormIsOpen = useState('callFormIsOpen', () => false)
         <CommonMainMenu :main-menu="mainMenu" :catalog-menu="catalogMenu" />
       </nav>
       <div class="flex items-center md:flex-initial">
+        <LazyCommonSearch />
         <CommonDarkToggleSwipe />
         <!-- <CommonDarkToggle /> -->
         <!-- <CommonHeaderProfile class="ml-4" /> -->
         <!-- <CommonCart /> -->
         <UButton label="Заказать звонок" class="ml-4 hidden md:block" @click="callFormIsOpen = true" />
+        <LazyCommonMobileMenu :main-menu="mainMenu" :catalog-menu="catalogMenu" />
       </div>
       <CommonMobileMenu :main-menu="mainMenu" :catalog-menu="catalogMenu" />
     </UContainer>

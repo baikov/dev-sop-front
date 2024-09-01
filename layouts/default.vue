@@ -13,7 +13,7 @@ defineOgImage({
     </div>
     <CommonScrollToTop />
     <CommonFooter />
-    <CommonFormCall />
-    <CommonFormQuestion />
+    <LazyCommonFormCall />
+    <LazyCommonFormQuestion />
   </div>
 </template>
