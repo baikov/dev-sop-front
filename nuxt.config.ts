@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   site: {
     url: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
-    defaultLocale: process.env.NUXT_SITE_LANG || 'ru-RU'
+    defaultLocale: 'ru-RU'
   },
   app: {
     head: {
@@ -48,19 +48,16 @@ export default defineNuxtConfig({
     shim: false
   },
   modules: [
-    '@nuxtjs/eslint-module', // https://github.com/nuxt-modules/eslint
+    '@nuxtjs/eslint-module',
     '@nuxt/ui',
     '@nuxt/image',
     '@vueuse/nuxt',
     '@nuxtjs/google-fonts',
-    '@nuxtjs/sitemap', // https://nuxtseo.com/sitemap
-    '@nuxtjs/robots', // https://nuxtseo.com/robots/
-    'nuxt-og-image', // https://github.com/harlan-zw/nuxt-og-image
-    'nuxt-schema-org', // https://unhead-schema-org.harlanzw.com/integrations/nuxt/module
     '@pinia/nuxt',
     '@artmizu/yandex-metrika-nuxt',
-    'nuxt-gtag', // https://github.com/johannschopplich/nuxt-gtag
-    '@nuxt/scripts'
+    'nuxt-gtag',
+    '@nuxt/scripts',
+    '@nuxtjs/seo'
   ],
   vite: {
     server: {
@@ -89,6 +86,14 @@ export default defineNuxtConfig({
       // Nunito: [100, 200, 300, 400, 500, 600, 700, 800, 900],
       Ubuntu: [300, 400, 500, 700]
     }
+  },
+  seo: {
+    // clear default whitelist: ['page', 'sort', 'filter', 'search', 'q', 'query']
+    canonicalQueryWhitelist: []
+    // fallbackTitle: false,
+  },
+  linkChecker: {
+    enabled: false
   },
   vueuse: {
     ssrHandlers: true
