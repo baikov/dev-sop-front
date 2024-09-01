@@ -19,6 +19,8 @@ const mainMenu: IMenuItem[] = [
     depth: 1,
     slug: 'company',
     submenu: [
+      { id: 278, name: 'Доставка', depth: 1, slug: 'delivery', submenu: [] },
+      { id: 279, name: 'Оплата', depth: 1, slug: 'payment', submenu: [] },
       { id: 277, name: 'Реквизиты', depth: 1, slug: 'requisites', submenu: [] }
     ]
   },
@@ -51,7 +53,7 @@ const callFormIsOpen = useState('callFormIsOpen', () => false)
 <template>
   <header class="sticky top-0 z-40 border-b border-gray-600 bg-gradient-to-r from-gray-900 to-gray-700 text-zinc-200">
     <CommonTopBanner />
-    <UContainer class="flex flex-1 items-center">
+    <UContainer class="flex flex-1 items-center justify-between">
       <CommonLogo />
       <nav class="hidden flex-1 items-center justify-end px-4 md:flex">
         <CommonMainMenu :main-menu="mainMenu" :catalog-menu="catalogMenu" />
@@ -65,7 +67,6 @@ const callFormIsOpen = useState('callFormIsOpen', () => false)
         <UButton label="Заказать звонок" class="ml-4 hidden md:block" @click="callFormIsOpen = true" />
         <LazyCommonMobileMenu :main-menu="mainMenu" :catalog-menu="catalogMenu" />
       </div>
-      <CommonMobileMenu :main-menu="mainMenu" :catalog-menu="catalogMenu" />
     </UContainer>
   </header>
 </template>
