@@ -8,9 +8,9 @@
         <main class="mx-auto max-w-7xl px-4 pt-10 sm:px-6 sm:pt-12 md:pt-16 lg:px-8 lg:pt-20 xl:pt-28">
           <div class="sm:text-center lg:text-left">
             <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-zinc-100 sm:text-5xl md:text-6xl">
-              <span class="block xl:inline">Оптовые продажи металлопроката</span>
+              <span class="block xl:inline">Металлопрокат со склада</span>
               {{ ' ' }}
-              <span class="block text-green-700 xl:inline">со склада</span>
+              <span class="block text-green-700 xl:inline">в Нижнем Новгороде</span>
             </h1>
             <p class="mt-3 text-base text-gray-500 dark:text-zinc-300 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
               Имеем огромный опыт работы в сфере реализации металла. Работаем с ведущими предприятиями производителями металлоизделий России.

@@ -6,7 +6,21 @@
   html {
     font-family: "Ubuntu", system-ui, sans-serif;
   }
-  /* .text-base-color {
-    @apply text-gray-800 dark:text-gray-200;
-  } */
+  .description p {
+    margin-bottom: 20px;
+  }
+  .description h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  .description ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    list-style: square;
+  }
+  .description ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    list-style: decimal;
+  }
 }

@@ -320,7 +320,7 @@ const currencyOptions = {
       <template #price-data="{ row }">
         <div v-if="row.ton_price_with_coef || row.meter_price_with_coef || row.unit_price_with_coef">
           <span v-show="row.ton_price_with_coef" class="font-bold">
-            {{ row.ton_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/тн
+            {{ row.ton_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/т
           </span>
           <span v-show="!row.ton_price_with_coef && row.unit_price_with_coef" class="font-bold">
             {{ `${row.unit_price_with_coef.toLocaleString('ru-RU', currencyOptions)}/шт` }}
