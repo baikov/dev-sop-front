@@ -21,7 +21,8 @@ const mainMenu: IMenuItem[] = [
     submenu: [
       { id: 278, name: 'Доставка', depth: 1, slug: 'delivery', submenu: [] },
       { id: 279, name: 'Оплата', depth: 1, slug: 'payment', submenu: [] },
-      { id: 277, name: 'Реквизиты', depth: 1, slug: 'requisites', submenu: [] }
+      { id: 277, name: 'Реквизиты', depth: 1, slug: 'requisites', submenu: [] },
+      { id: 280, name: 'Документы', depth: 1, slug: 'documents', submenu: [] }
     ]
   },
   { id: 275, name: 'Услуги', depth: 1, slug: 'services', submenu: [] },

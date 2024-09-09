@@ -4,7 +4,6 @@
 // Cart
 // import { useCartStore } from '~/store/cart'
 // const { cart, addProduct, removeProduct, increaseProductQuantity, decreaseProductQuantity } = useCartStore()
-
 const { getProductDetail } = useCategory()
 const route = useRoute()
 const config = useRuntimeConfig()
@@ -116,21 +115,6 @@ const questionFormIsOpen = useState('questionFormIsOpen')
 const productName = useState('productName', () => productDetail.value?.name)
 productName.value = productDetail.value?.name
 
-const fileSize = (size: number) => {
-  const i = Math.floor(Math.log(size) / Math.log(1024))
-  return (size / Math.pow(1024, i)).toFixed(2) + ' ' + ['B', 'KB', 'MB', 'GB', 'TB'][i]
-}
-
-const fileIconMapping = {
-  pdf: 'i-bi-filetype-pdf',
-  doc: 'i-bi-filetype-doc',
-  docx: 'i-bi-filetype-docx',
-  xls: 'i-bi-filetype-xls',
-  xlsx: 'i-bi-filetype-xlsx',
-  png: 'i-bi-filetype-png',
-  jpg: 'i-bi-filetype-jpg',
-  jpeg: 'i-bi-filetype-jpg'
-}
 useSchemaOrg([
   defineProduct({
     name: productDetail.value?.seo.h1 || productDetail.value?.name,
@@ -327,23 +311,13 @@ const paymentModalIsOpen = useState('paymentModalIsOpen', () => false)
             <div v-if="item.key === 'docs'">
               <!-- Documents -->
               <div v-if="productDetail.documents.length > 0" class="flex flex-col gap-4">
-                <!-- <h2 class="my-2 text-xl font-bold text-gray-800 dark:text-zinc-200 md:text-xl">
-                  Документы
-                </h2> -->
-                <div class="flex flex-wrap gap-4 pb-8">
-                  <UCard v-for="doc in productDetail.documents" :key="doc.id" class="w-full" :ui="{ body: {padding: 'px-1 py-1 sm:p-2'}}">
-                    <UIcon :name="fileIconMapping[doc.file.split('.').slice(-1)[0] as keyof typeof fileIconMapping]" class="mr-2 size-5 shrink-0" />
-                    <NuxtLink :to="`${config.public.mediaUrl}/${doc.file}`" class="underline hover:text-gray-700 dark:hover:text-gray-200">
-                      {{ doc.title }} ({{ fileSize(doc.size) }})
-                    </NuxtLink>
-                  </UCard>
-                </div>
+                <CommonDocuments :docs="productDetail.documents" :is-full="true" />
               </div>
               <div v-else>
                 <p>{{ item.content }}</p>
               </div>
             </div>
-            <div v-if="item.key === 'description'">
+            <div v-if="item.key === 'description'" class="description px-4">
               <!-- eslint-disable-next-line vue/no-v-html -->
               <div v-if="productDetail?.description" v-html="productDetail?.description" />
               <div v-else>
@@ -367,7 +341,7 @@ const paymentModalIsOpen = useState('paymentModalIsOpen', () => false)
           </template>
           <template #item="{ item }">
             <!-- Description -->
-            <div v-if="item.key === 'description'">
+            <div v-if="item.key === 'description'" class="description px-4">
               <!-- eslint-disable-next-line vue/no-v-html -->
               <div v-if="productDetail?.description" v-html="productDetail?.description" />
               <div v-else>
@@ -377,17 +351,7 @@ const paymentModalIsOpen = useState('paymentModalIsOpen', () => false)
             <!-- Documents -->
             <div v-if="item.key === 'docs'">
               <div v-if="productDetail.documents.length > 0" class="flex flex-col gap-4">
-                <!-- <h2 class="my-2 text-xl font-bold text-gray-800 dark:text-zinc-200 md:text-xl">
-                  Документы
-                </h2> -->
-                <div class="flex flex-wrap gap-4 pb-8">
-                  <UCard v-for="doc in productDetail.documents" :key="doc.id" class="w-full" :ui="{ body: {padding: 'px-1 py-1 sm:p-2'}}">
-                    <UIcon :name="fileIconMapping[doc.file.split('.').slice(-1)[0] as keyof typeof fileIconMapping]" class="mr-2 size-5 shrink-0" />
-                    <NuxtLink :to="`${config.public.mediaUrl}/${doc.file}`" class="underline hover:text-gray-700 dark:hover:text-gray-200">
-                      {{ doc.title }} ({{ fileSize(doc.size) }})
-                    </NuxtLink>
-                  </UCard>
-                </div>
+                <CommonDocuments :docs="productDetail.documents" :is-full="true" />
               </div>
               <div v-else>
                 <p>{{ item.content }}</p>
@@ -415,7 +379,7 @@ const paymentModalIsOpen = useState('paymentModalIsOpen', () => false)
           <template #price-data="{ row }">
             <div v-if="row.ton_price_with_coef || row.meter_price_with_coef || row.unit_price_with_coef">
               <span v-show="row.ton_price_with_coef" class="font-bold">
-                {{ row.ton_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/тн
+                {{ row.ton_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/т
               </span>
               <span v-show="!row.ton_price_with_coef && row.unit_price_with_coef" class="font-bold">
                 {{ `${row.unit_price_with_coef.toLocaleString('ru-RU', currencyOptions)}/шт` }}
@@ -456,7 +420,7 @@ const paymentModalIsOpen = useState('paymentModalIsOpen', () => false)
           <template #price-data="{ row }">
             <div v-if="row.ton_price_with_coef || row.meter_price_with_coef || row.unit_price_with_coef">
               <span v-show="row.ton_price_with_coef" class="font-bold">
-                {{ row.ton_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/тн
+                {{ row.ton_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/т
               </span>
               <span v-show="!row.ton_price_with_coef && row.unit_price_with_coef" class="font-bold">
                 {{ `${row.unit_price_with_coef.toLocaleString('ru-RU', currencyOptions)}/шт` }}

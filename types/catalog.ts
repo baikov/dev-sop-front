@@ -12,8 +12,6 @@ interface Category {
   name: string
   slug: string
   image: string | null
-  // parents: string[]
-  description: string
 }
 interface IProductProperty {
   id: number
@@ -48,8 +46,10 @@ interface IDocument {
   title: string
   file: string
   size: number
+  categories?: Category[]
   ordering: number
 }
+
 interface IProduct {
   id: number
   name: string
@@ -94,5 +94,6 @@ export type {
   IProductList,
   IProductProperty,
   IProductPropertyValue,
-  INewMenuItem
+  INewMenuItem,
+  IDocument
 }
