@@ -30,7 +30,7 @@ const fileIconMapping = {
       <div class="flex items-center justify-between">
         <div class="flex items-center">
           <UIcon :name="fileIconMapping[doc.file.split('.').slice(-1)[0] as keyof typeof fileIconMapping]" class="mr-2 size-5 shrink-0" />
-          <NuxtLink :to="`${config.public.mediaUrl}/${doc.file}`" class="underline hover:text-gray-700 dark:hover:text-gray-200">
+          <NuxtLink :to="`${config.public.mediaUrl}/${doc.file}`" class="underline hover:text-gray-700 dark:hover:text-gray-200" external target="_blank">
             {{ doc.title }}
           </NuxtLink>
         </div>
