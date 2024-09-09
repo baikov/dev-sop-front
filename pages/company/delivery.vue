@@ -13,8 +13,14 @@ useHead({
 const breadcrumbs = [
   {
     level: 1,
+    name: 'О компании',
+    href: '/company',
+    disabled: true
+  },
+  {
+    level: 2,
     name: 'Доставка',
-    href: '/delivery',
+    href: '/company/delivery',
     disabled: true
   }
 ]
