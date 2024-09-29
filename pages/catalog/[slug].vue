@@ -57,7 +57,7 @@ useHead({
 useSchemaOrg([
   defineProduct({
     name: detailCategory?.value?.seo.h1 || detailCategory?.value?.name,
-    description: detailCategory?.value?.description,
+    description: detailCategory?.value?.seo.seo_description,
     image: detailCategory?.value?.image,
     offers: {
       type: 'AggregateOffer',

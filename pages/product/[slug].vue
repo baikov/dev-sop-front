@@ -118,7 +118,7 @@ productName.value = productDetail.value?.name
 useSchemaOrg([
   defineProduct({
     name: productDetail.value?.seo.h1 || productDetail.value?.name,
-    description: productDetail.value?.seo.seo_description,
+    description: 'Купить ' + productDetail?.value?.category + ' с доставкой по Нижнему Новгороду. ' + productDetail?.value?.name + ' в наличии на складе ' + config.public.siteName,
     image: productDetail.value?.image,
     offers: [
       {
