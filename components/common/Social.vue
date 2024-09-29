@@ -17,7 +17,7 @@ const mappedSocials = Object.values(socials).map((link) => {
 </script>
 
 <template>
-  <div class="my-7 flex items-center justify-center gap-4">
+  <div class="flex items-center justify-center gap-4">
     <NuxtLink
       v-for="social in mappedSocials"
       :key="social.name"

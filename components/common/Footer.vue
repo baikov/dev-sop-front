@@ -12,10 +12,12 @@ const year = new Date().getFullYear()
         <span>Оптовые поставки металлопроката © {{ year }}</span>
       </div>
       <div class="flex flex-col items-center py-2 sm:items-start">
-        <span class="font-bold">Время работы</span>
-        <span>пн-пт: 8.00-17.00</span>
+        <p><span class="font-bold">Время работы</span> пн-пт: 8.00-17.00</p>
+        <NuxtLink to="company/confidentiality" target="_blank" class="underline">
+          Политика конфиденциальности
+        </NuxtLink>
       </div>
-      <div class="hidden items-center gap-2 sm:float-right md:flex">
+      <div class="hidden items-center gap-1 sm:float-right md:flex">
         <CommonSocial />
       </div>
     </UContainer>
