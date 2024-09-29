@@ -18,6 +18,14 @@ const breadcrumbs = [
     disabled: true
   }
 ]
+const pictures = [
+  '/img/company/1.jpg',
+  '/img/company/2.jpg',
+  '/img/company/3.jpg',
+  '/img/company/4.jpg',
+  '/img/company/5.jpg',
+  '/img/company/6.jpg'
+]
 </script>
 
 <template>
@@ -28,13 +36,23 @@ const breadcrumbs = [
       <div class="relative isolate overflow-hidden px-6 py-20 dark:text-zinc-200 sm:py-6 lg:overflow-visible lg:px-0">
         <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
           <div class="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-            <NuxtPicture
+            <!-- <NuxtPicture
               src="/img/about.jpg"
               sizes="sm:300px md:600px lg:1000px"
               alt="О компании СПЕЦОПТТОРГ"
               title="О компании СПЕЦОПТТОРГ"
               :img-attrs="{ class: 'max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10' }"
-            />
+            /> -->
+            <UCarousel
+              v-slot="{ item }"
+              :items="pictures"
+              :ui="{ item: 'basis-full' }"
+              class="overflow-hidden rounded-lg"
+              arrows
+              indicators
+            >
+              <img :src="item" class="w-full" draggable="false">
+            </UCarousel>
           </div>
           <div class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
             <div class="lg:pr-4">
