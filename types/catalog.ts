@@ -7,6 +7,28 @@ interface ISEO {
   is_index: boolean
   is_follow: boolean
 }
+
+interface IYMLCategory {
+  id: number
+  name: string
+  parent_id: number | null
+}
+
+interface IYMLProduct {
+  id: number
+  name: string
+  slug: string
+  category_id: number
+  price: number
+  picture: string
+  description: string
+}
+
+interface IYML {
+  categories: IYMLCategory[]
+  products: IYMLProduct[]
+}
+
 interface Category {
   id: number
   name: string
@@ -95,5 +117,6 @@ export type {
   IProductProperty,
   IProductPropertyValue,
   INewMenuItem,
-  IDocument
+  IDocument,
+  IYML
 }
