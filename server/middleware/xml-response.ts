@@ -7,16 +7,15 @@ export default defineEventHandler(async (event) => {
 
   if (pathname === '/yml') {
     const yml = await $fetch<IYML>(`${config.public.apiUrl}/yml/`)
-
+    // <picture>https://soptorg.ru${product.picture}</picture>
     const offers = yml.products.map(product => `
       <offer id="${product.id}">
           <name>${product.name}</name>
-          <url>https://soptorg.ru/products/${product.slug}</url>
+          <url>https://soptorg.ru/product/${product.slug}</url>
           <price>${product.price}</price>
           <currencyId>RUR</currencyId>
           <categoryId>${product.category_id}</categoryId>
           <vendor>Спецоптторг</vendor>
-          <picture>https://soptorg.ru${product.picture}</picture>
           <description>
               <![CDATA[
               ${product.description}
