@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
     ).join('')
 
     const categories = yml.categories.map(category => `
-      <category id="${category.id}" parentId="${category.parent_id || 1}">${category.name}</category>
+      <category id="${category.id}"${category.parent_id !== 0 ? ` parentId="${category.parent_id}"` : ''}>${category.name}</category>
       `
     ).join('')
 
