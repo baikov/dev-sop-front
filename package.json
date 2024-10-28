@@ -19,7 +19,7 @@
     "@iconify-json/mdi": "^1.2.1",
     "@iconify-json/tabler": "^1.2.6",
     "@nuxt/devtools": "1.6.0",
-    "@nuxt/eslint": "^0.6.0",
+    "@nuxt/eslint": "^0.6.1",
     "@nuxt/image": "1.8.1",
     "@nuxt/scripts": "0.9.5",
     "@nuxt/ui": "2.18.7",
