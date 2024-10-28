@@ -12,15 +12,16 @@ if (error.value) {
       title: 'Ошибка на сервере',
       description: 'Что-то пошло не так, попробуйте позже',
       icon: 'i-heroicons-x-circle-solid',
-      color: 'red'
+      color: 'red',
     })
-  } else {
+  }
+  else {
     for (const key of Object.keys(error.value.data)) {
       toast.add({
         title: 'Ошибка получения категории',
         description: `${key}: ${error.value.data[key]}`,
         icon: 'i-heroicons-x-circle-solid',
-        color: 'red'
+        color: 'red',
       })
     }
   }
@@ -33,25 +34,25 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: detailCategory?.value?.seo.seo_description
+      content: detailCategory?.value?.seo.seo_description,
     },
     {
       name: 'robots',
       content: `${detailCategory?.value?.seo.is_index ? 'index' : 'noindex'}, ${detailCategory?.value?.seo.is_follow ? 'follow' : 'nofollow'
-        }`
+      }`,
     },
     {
       property: 'og:site_name',
-      content: config.public.siteName
+      content: config.public.siteName,
     },
     {
       property: 'og:url',
-      content: `${config.public.siteUrl}${route.path}`
-    }
+      content: `${config.public.siteUrl}${route.path}`,
+    },
   ],
   link: [
-    { rel: 'canonical', href: `${config.public.siteUrl}${route.path}` }
-  ]
+    { rel: 'canonical', href: `${config.public.siteUrl}${route.path}` },
+  ],
 })
 
 useSchemaOrg([
@@ -59,20 +60,20 @@ useSchemaOrg([
     name: detailCategory?.value?.seo.h1 || detailCategory?.value?.name,
     description: detailCategory?.value?.seo.seo_description,
     image: detailCategory?.value?.image,
-    offers: {
+    aggregateOffer: {
       type: 'AggregateOffer',
       url: `${config.public.siteUrl}${route.path}`,
-      offerCount: detailCategory?.value?.products_count,
-      lowPrice: detailCategory?.value?.min_price,
-      highPrice: detailCategory?.value?.max_price,
-      priceCurrency: 'RUB'
+      offerCount: detailCategory?.value?.products_count ?? 0,
+      lowPrice: detailCategory?.value?.min_price ?? 0,
+      highPrice: detailCategory?.value?.max_price ?? 0,
+      priceCurrency: 'RUB',
     },
     aggregateRating: {
       ratingValue: Math.random() * (5.0 - 4.0) + 4.0,
       bestRating: 5,
-      ratingCount: Math.floor(Math.random() * 49)
-    }
-  })
+      ratingCount: Math.floor(Math.random() * 49),
+    },
+  }),
 ])
 </script>
 
@@ -85,10 +86,17 @@ useSchemaOrg([
         <CatalogSidebar />
       </div>
       <div class="w-full md:w-8/12 lg:w-9/12">
-        <CatalogSubcategories v-show="detailCategory?.subcategories && detailCategory?.subcategories.length > 0" :subcat-list="detailCategory?.subcategories" />
+        <CatalogSubcategories
+          v-show="detailCategory?.subcategories && detailCategory?.subcategories.length > 0"
+          :subcat-list="detailCategory?.subcategories"
+        />
         <CatalogProductTableTemp :category-properties="detailCategory?.product_properties || []" />
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div v-if="detailCategory?.description" class="description p-4" v-html="detailCategory?.description" />
+        <div
+          v-if="detailCategory?.description"
+          class="description p-4"
+          v-html="detailCategory?.description"
+        />
       </div>
     </div>
   </div>

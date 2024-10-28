@@ -5,7 +5,7 @@ useSchemaOrg([
     url: 'https://soptorg.ru',
     logo: '/logo.png',
     sameAs: [
-      'https://vk.com/soptorg'
+      'https://vk.com/soptorg',
     ],
     email: 'info@soptorg.ru',
     telephone: '+7 (831) 214-03-14',
@@ -14,20 +14,30 @@ useSchemaOrg([
       postalCode: '603095',
       addressRegion: 'Нижегородская область',
       addressLocality: 'Нижний Новгород',
-      streetAddress: 'пр-кт Бусыгина, д. 1, офис 325'
+      streetAddress: 'пр-кт Бусыгина, д. 1, офис 325',
     },
-    openingHours: 'Mo,Tu,We,Th,Fr 08:00-17:00'
-  })
+    openingHours: 'Mo,Tu,We,Th,Fr 08:00-17:00',
+  }),
 ])
 </script>
+
 <template>
   <Body
     class="bg-gray-100 text-gray-800 antialiased transition-colors duration-0 dark:bg-gray-700 dark:text-gray-200"
   >
     <NuxtLayout>
-      <NuxtLoadingIndicator :height="5" :duration="3000" :throttle="400" />
+      <NuxtLoadingIndicator
+        :height="5"
+        :duration="3000"
+        :throttle="400"
+      />
       <NuxtPage />
-      <UNotifications />
+      <UNotifications>
+        <template #description="{ description }">
+          <!-- eslint-disable-next-line vue/no-v-html -->
+          <span v-html="description" />
+        </template>
+      </UNotifications>
     </NuxtLayout>
   </Body>
 </template>
