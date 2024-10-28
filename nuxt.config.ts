@@ -1,11 +1,37 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: false },
-  compatibilityDate: '2024-04-03',
-  site: {
-    url: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
-    defaultLocale: 'ru-RU'
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/ui',
+    '@nuxt/image',
+    '@vueuse/nuxt',
+    '@nuxtjs/google-fonts',
+    '@pinia/nuxt',
+    '@artmizu/yandex-metrika-nuxt',
+    'nuxt-gtag',
+    '@nuxt/scripts',
+    '@nuxtjs/seo',
+  ],
+  $production: {
+    routeRules: {
+      '/company/**': { prerender: true },
+      '/contacts': { prerender: true },
+      '/services': { prerender: true },
+      '/manager-dashboard': { ssr: false },
+    },
+    gtag: {
+      id: 'G-75N44N3M4H',
+    },
+    scripts: {
+      globals: {
+        jivosite: '//code.jivo.ru/widget/hQHL62Yd1r',
+      },
+    },
+    yandexMetrika: {
+      id: process.env.YANDEX_METRIKA_ID,
+    },
   },
+  devtools: { enabled: true },
   app: {
     head: {
       charset: 'utf-8',
@@ -17,137 +43,112 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png?v=2' },
         { rel: 'manifest', href: '/site.webmanifest?v=2' },
         { rel: 'mask-icon', href: '/safari-pinned-tab.svg?v=2', color: '#15803d' },
-        { rel: 'shortcut icon', href: '/favicon.ico?v=2' }
+        { rel: 'shortcut icon', href: '/favicon.ico?v=2' },
       ],
       meta: [
         { name: 'msapplication-TileColor', content: '#00a300' },
-        { name: 'theme-color', content: '#ffffff' }
-      ]
-    }
+        { name: 'theme-color', content: '#ffffff' },
+      ],
+    },
   },
-  routeRules: {
-    '/company/**': { prerender: true },
-    '/contacts': { prerender: true },
-    '/services': { prerender: true },
-    '/manager-dashboard': { ssr: false }
+  site: {
+    url: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
+    defaultLocale: 'ru-RU',
+  },
+  ui: {
+    global: true,
+  //   icons: ['mdi', 'heroicons', 'tabler', 'icon-park-solid', 'bi']
   },
   runtimeConfig: {
-    // apiSecret: '123',
     public: {
       siteUrl: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
       apiUrl: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}${process.env.API_PORT ? `:${process.env.API_PORT}` : ''}/api`,
-      mediaUrl: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}/media`,
+      mediaUrl: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}:8000/media`,
       siteName: process.env.SITE_NAME || 'Nuxt 3',
-      language: 'ru-RU'
+      language: 'ru-RU',
       // titleSeparator: '|',
-    }
+    },
+  },
+  compatibilityDate: '2024-10-27',
+  vite: {
+    server: {
+      hmr: {
+        protocol: `${process.env.HTTPS === 'true' ? 'wss' : 'ws'}`,
+      },
+    },
   },
   // ssr: true, // for SPA with Nginx
   typescript: {
     strict: true,
     typeCheck: false,
-    shim: false
+    shim: false,
   },
-  modules: [
-    '@nuxtjs/eslint-module',
-    '@nuxt/ui',
-    '@nuxt/image',
-    '@vueuse/nuxt',
-    '@nuxtjs/google-fonts',
-    '@pinia/nuxt',
-    '@artmizu/yandex-metrika-nuxt',
-    'nuxt-gtag',
-    '@nuxt/scripts',
-    '@nuxtjs/seo'
-  ],
-  vite: {
-    server: {
-      hmr: {
-        protocol: `${process.env.HTTPS === 'true' ? 'wss' : 'ws'}`
-      }
-    }
+  eslint: {
+    checker: false,
+    config: {
+      stylistic: true,
+    },
   },
-  ui: {
-    global: true,
-    icons: ['mdi', 'heroicons', 'tabler', 'icon-park-solid', 'bi']
+  googleFonts: {
+    families: {
+      Ubuntu: [300, 400, 500, 700],
+    },
   },
   image: {
     // dir: 'assets/img',
     domains: [
       `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
-      'localhost'
+      'localhost',
     ],
     alias: {
-      soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`
+      soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
       // soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://localhost:8000'}`
-    }
-  },
-  googleFonts: {
-    families: {
-      // Nunito: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-      Ubuntu: [300, 400, 500, 700]
-    }
-  },
-  seo: {
-    // clear default whitelist: ['page', 'sort', 'filter', 'search', 'q', 'query']
-    canonicalQueryWhitelist: []
-    // fallbackTitle: false,
+    },
   },
   linkChecker: {
-    enabled: false
-  },
-  vueuse: {
-    ssrHandlers: true
+    enabled: false,
   },
   robots: {
     disallow: ['/account', '/admin', '/manager-dashboard'],
     groups: [
       {
         userAgent: ['Yandex'],
-        cleanParam: ['etext', '_openstat', 'yclid', 'gclid', 'yclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
-      }
-    ]
+        cleanParam: ['etext', '_openstat', 'yclid', 'gclid', 'yclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'],
+      },
+    ],
   },
-  eslint: {
-    lintOnStart: false
-  },
-  tailwindcss: {
-    viewer: false
+  seo: {
+    // clear default whitelist: ['page', 'sort', 'filter', 'search', 'q', 'query']
+    canonicalQueryWhitelist: [],
+    // fallbackTitle: false,
   },
   sitemap: {
     sitemaps: {
       products: {
         sources: [
-          `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}${process.env.API_PORT ? `:${process.env.API_PORT}` : ''}/api` + '/products/sitemap/'
+          `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}${process.env.API_PORT ? `:${process.env.API_PORT}` : ''}/api` + '/products/sitemap/',
         ],
-        defaults: { priority: 0.5 }
+        defaults: { priority: 0.5 },
       },
       categories: {
         sources: [
-          `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}${process.env.API_PORT ? `:${process.env.API_PORT}` : ''}/api` + '/categories/sitemap/'
+          `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}${process.env.API_PORT ? `:${process.env.API_PORT}` : ''}/api` + '/categories/sitemap/',
         ],
-        defaults: { priority: 0.7 }
+        defaults: { priority: 0.7 },
       },
       pages: {
         includeAppSources: true,
         exclude: [
           '/account/**',
-          '/manager-dashboard/**'
-        ]
-      }
-    }
+          '/manager-dashboard/**',
+        ],
+      },
+    },
   },
-  $production: {
-    scripts: {
-      globals: {
-        jivosite: '//code.jivo.ru/widget/hQHL62Yd1r'
-      }
-    },
-    gtag: {
-      id: 'G-75N44N3M4H'
-    },
-    yandexMetrika: {
-      id: process.env.YANDEX_METRIKA_ID
-    }
-  }
+  tailwindcss: {
+    viewer: false,
+  },
+  vueuse: {
+    ssrHandlers: true,
+  },
 })
