@@ -18,10 +18,10 @@
     "ui"
   ],
   // ESLint
-  "prettier.enable": false,
+  "eslint.useFlatConfig": true,
+  "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit", //"never",
-    "source.fixAll": "never"
+    "source.fixAll.eslint": "explicit"
   },
   // Nuxt
   "nuxtr.defaultPackageManager": "Yarn",
