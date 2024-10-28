@@ -6,23 +6,23 @@ useHead({
     {
       hid: 'description',
       name: 'description',
-      content: 'Информация о доставке стальной трубы, металлопроката и изоляции для труб'
-    }
-  ]
+      content: 'Информация о доставке стальной трубы, металлопроката и изоляции для труб',
+    },
+  ],
 })
 const breadcrumbs = [
   {
     level: 1,
     name: 'О компании',
     href: '/company',
-    disabled: true
+    disabled: true,
   },
   {
     level: 2,
     name: 'Доставка',
     href: '/company/delivery',
-    disabled: true
-  }
+    disabled: true,
+  },
 ]
 </script>
 

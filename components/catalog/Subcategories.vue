@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { Category } from '~/types/catalog'
+
 defineProps<{
   subcatList?: Category[] | []
 }>()
@@ -10,7 +11,11 @@ defineProps<{
     <div class="container mx-auto px-4 transition-all duration-300 ease-in-out">
       <div class="mx-auto max-w-6xl transition-all duration-300 ease-in-out">
         <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-          <div v-for="cat in subcatList" :key="cat.id" data-aos="fade-up">
+          <div
+            v-for="cat in subcatList"
+            :key="cat.id"
+            data-aos="fade-up"
+          >
             <NuxtLink
               class="group relative top-0
               flex h-full flex-col items-center justify-center rounded-md

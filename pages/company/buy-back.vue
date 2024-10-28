@@ -6,23 +6,23 @@ useHead({
     {
       hid: 'description',
       name: 'description',
-      content: 'Возврат металлопроката ненадлежащего качества'
-    }
-  ]
+      content: 'Возврат металлопроката ненадлежащего качества',
+    },
+  ],
 })
 const breadcrumbs = [
   {
     level: 1,
     name: 'О компании',
     href: '/company',
-    disabled: true
+    disabled: true,
   },
   {
     level: 2,
     name: 'Возврат',
     href: '/company/buy-back',
-    disabled: true
-  }
+    disabled: true,
+  },
 ]
 </script>
 

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { IMenuItem } from '~/types'
+
 defineProps<{
   catalogMenu?: IMenuItem[] | null
   mainMenu: IMenuItem[]
@@ -11,7 +12,10 @@ defineProps<{
     class="relative flex h-full cursor-pointer items-center p-4 font-bold transition-colors ease-in-out hover:bg-white/10 hover:text-zinc-50"
     :class="catalogMenu ? 'group' : ''"
   >
-    <NuxtLink to="/catalog" active-class="underline">
+    <NuxtLink
+      to="/catalog"
+      active-class="underline"
+    >
       Каталог
     </NuxtLink>
     <div class="absolute right-0 top-full hidden bg-gray-700 group-hover:block group-hover:touch-auto dark:bg-gray-900">
@@ -51,7 +55,10 @@ defineProps<{
     class="relative flex h-full cursor-pointer items-center p-4 font-bold transition-colors ease-in-out hover:bg-white/10 hover:text-zinc-50"
     :class="item.submenu ? 'group' : ''"
   >
-    <NuxtLink :to="`/${item.slug}`" active-class="underline">
+    <NuxtLink
+      :to="`/${item.slug}`"
+      active-class="underline"
+    >
       {{ item.name }}
     </NuxtLink>
     <div

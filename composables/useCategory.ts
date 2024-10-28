@@ -8,11 +8,11 @@ export const useCategory = () => {
     const { data, error } = await useFetch<Category[]>(
       `${config.public.apiUrl}/categories/`, {
         // headers: { Authorization: `JWT ${tokenCookie.value}` }
-      }
+      },
     )
     return {
       data,
-      error
+      error,
     }
   }
 
@@ -20,11 +20,11 @@ export const useCategory = () => {
     const { data, error } = await useFetch<Category[]>(
       `${config.public.apiUrl}/categories/root/`, {
         // headers: { Authorization: `JWT ${tokenCookie.value}` }
-      }
+      },
     )
     return {
       data,
-      error
+      error,
     }
   }
 
@@ -32,11 +32,11 @@ export const useCategory = () => {
     const { data, error } = await useFetch<ICategoryDetail>(
       `${config.public.apiUrl}/categories/${slug}/`, {
         // headers: { Authorization: `JWT ${tokenCookie.value}` }
-      }
+      },
     )
     return {
       data,
-      error
+      error,
     }
   }
 
@@ -46,11 +46,11 @@ export const useCategory = () => {
       {
         // query: { limit: pageLimit, offset: pageOffset }
         // watch: [pageLimit, pageOffset],
-      }
+      },
     )
     return {
       data,
-      error
+      error,
     }
   }
 
@@ -58,28 +58,28 @@ export const useCategory = () => {
     const { data, error, refresh } = await useFetch<IProductList>(
       `${config.public.apiUrl}/products/?category=${slug}`,
       {
-        query: productListParams
+        query: productListParams,
         // watch: [sort]
         // transform: (productList) => {
         //   return productList.map(productList.results => ({ title: mountain.title, description: mountain.description }))
         // }
-      }
+      },
     )
     return {
       data,
       error,
-      refresh
+      refresh,
     }
   }
 
   const getProductDetail = async (slug: string) => {
     const { data, error, refresh } = await useFetch<IProduct>(
-      `${config.public.apiUrl}/products/${slug}/`
+      `${config.public.apiUrl}/products/${slug}/`,
     )
     return {
       data,
       error,
-      refresh
+      refresh,
     }
   }
 

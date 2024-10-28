@@ -6,23 +6,23 @@ useHead({
     {
       hid: 'description',
       name: 'description',
-      content: 'Политика в области обработки и защиты персональных данных — СПЕЦОПТТОРГ'
-    }
-  ]
+      content: 'Политика в области обработки и защиты персональных данных — СПЕЦОПТТОРГ',
+    },
+  ],
 })
 const breadcrumbs = [
   {
     level: 1,
     name: 'О компании',
     href: '/company',
-    disabled: true
+    disabled: true,
   },
   {
     level: 2,
     name: 'Политика конфиденциальности',
     href: '/company/confidentiality',
-    disabled: true
-  }
+    disabled: true,
+  },
 ]
 </script>
 

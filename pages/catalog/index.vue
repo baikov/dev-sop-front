@@ -10,15 +10,16 @@ if (error.value) {
       title: 'Ошибка на сервере',
       description: 'Что-то пошло не так, попробуйте позже',
       icon: 'i-heroicons-x-circle-solid',
-      color: 'red'
+      color: 'red',
     })
-  } else {
+  }
+  else {
     for (const key of Object.keys(error.value.data)) {
       toast.add({
         title: 'Ошибка получения списка категорий',
         description: `${key}: ${error.value.data[key]}`,
         icon: 'i-heroicons-x-circle-solid',
-        color: 'red'
+        color: 'red',
       })
     }
   }
@@ -28,8 +29,8 @@ const breadcrumbs = [
     level: 1,
     name: 'Каталог',
     href: '/catalog',
-    disabled: true
-  }
+    disabled: true,
+  },
 ]
 </script>
 

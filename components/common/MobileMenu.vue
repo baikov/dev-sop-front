@@ -8,14 +8,20 @@ defineProps<{
 
 const toggleSubmenu = (id: number) => {
   const sub = document.querySelector(`#submenu-${id}`)
-  if (sub?.classList.contains('hidden')) { sub.classList.replace('hidden', 'block') } else { sub?.classList.replace('block', 'hidden') }
+  if (sub?.classList.contains('hidden')) {
+    sub.classList.replace('hidden', 'block')
+  }
+  else { sub?.classList.replace('block', 'hidden') }
 }
 const mmIsOpen = ref(false)
 </script>
 
 <template>
   <div class="my-auto flex items-center md:hidden">
-    <div class="cursor-pointer" @click="mmIsOpen = !mmIsOpen">
+    <div
+      class="cursor-pointer"
+      @click="mmIsOpen = !mmIsOpen"
+    >
       <div
         class="relative h-0.5 w-8 rounded bg-zinc-200 transition-all"
         :class="mmIsOpen ? 'top-2 rotate-45' : 'top-0 rotate-0'"
@@ -39,14 +45,20 @@ const mmIsOpen = ref(false)
         rounded: '',
         divide: 'divide-y divide-gray-100 dark:divide-gray-800',
         body: {
-          base: 'grow'
-        }
+          base: 'grow',
+        },
       }"
     >
       <template #header>
         <div class="flex items-center justify-between">
           <CommonDarkToggle />
-          <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark-20-solid" class="-my-1" @click="mmIsOpen = false" />
+          <UButton
+            color="gray"
+            variant="ghost"
+            icon="i-heroicons-x-mark-20-solid"
+            class="-my-1"
+            @click="mmIsOpen = false"
+          />
         </div>
       </template>
 
@@ -55,7 +67,10 @@ const mmIsOpen = ref(false)
           class="relative my-4 flex w-full cursor-pointer items-center justify-start font-bold"
         >
           <!-- <UIcon name="i-mdi-format-align-justify" class="mr-2 size-6" /> -->
-          <NuxtLink to="/" @click="mmIsOpen = false">
+          <NuxtLink
+            to="/"
+            @click="mmIsOpen = false"
+          >
             Главная
           </NuxtLink>
         </div>
@@ -63,7 +78,10 @@ const mmIsOpen = ref(false)
           class="relative my-4 flex w-full cursor-pointer items-center justify-start font-bold"
         >
           <!-- <UIcon name="i-mdi-format-align-justify" class="mr-2 size-6" /> -->
-          <NuxtLink to="/catalog" @click="mmIsOpen = false">
+          <NuxtLink
+            to="/catalog"
+            @click="mmIsOpen = false"
+          >
             Каталог
           </NuxtLink>
         </div>
@@ -80,7 +98,10 @@ const mmIsOpen = ref(false)
         >
           <div class="relative flex w-full cursor-pointer items-center justify-start font-bold">
             <!-- <UIcon v-if="item.icon" :name="item.icon" class="mr-2 size-6" /> -->
-            <NuxtLink :to="`/${item.slug}`" @click="mmIsOpen = false">
+            <NuxtLink
+              :to="`/${item.slug}`"
+              @click="mmIsOpen = false"
+            >
               {{ item.name }}
             </NuxtLink>
             <UIcon

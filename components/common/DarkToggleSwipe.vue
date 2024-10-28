@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const color = useColorMode()
 const isDark = useState('isDark', () => color.value === 'dark')
-function toggleDark () {
+function toggleDark() {
   color.preference = isDark.value ? 'dark' : 'light'
 }
 watch(isDark, () => {

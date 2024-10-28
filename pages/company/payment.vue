@@ -6,23 +6,23 @@ useHead({
     {
       hid: 'description',
       name: 'description',
-      content: 'Информация об оплате стальной трубы, металлопроката и изоляции для труб'
-    }
-  ]
+      content: 'Информация об оплате стальной трубы, металлопроката и изоляции для труб',
+    },
+  ],
 })
 const breadcrumbs = [
   {
     level: 1,
     name: 'О компании',
     href: '/company',
-    disabled: true
+    disabled: true,
   },
   {
     level: 2,
     name: 'Оплата',
     href: '/company/payment',
-    disabled: true
-  }
+    disabled: true,
+  },
 ]
 </script>
 

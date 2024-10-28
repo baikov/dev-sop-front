@@ -2,7 +2,13 @@
   <div class="relative overflow-hidden bg-white dark:bg-gray-900 ">
     <div class="mx-auto max-w-7xl">
       <div class="relative z-10 bg-white pb-8 dark:bg-gray-900 sm:pb-16 md:pb-20 lg:w-full lg:max-w-2xl lg:pb-28 xl:pb-32">
-        <svg class="absolute inset-y-0 right-0 hidden h-full w-48 translate-x-1/2 text-white dark:text-gray-900 lg:block" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <svg
+          class="absolute inset-y-0 right-0 hidden h-full w-48 translate-x-1/2 text-white dark:text-gray-900 lg:block"
+          fill="currentColor"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
           <polygon points="50,0 100,0 50,100 0,100" />
         </svg>
         <main class="mx-auto max-w-7xl px-4 pt-10 sm:px-6 sm:pt-12 md:pt-16 lg:px-8 lg:pt-20 xl:pt-28">

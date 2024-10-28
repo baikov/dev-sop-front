@@ -6,24 +6,24 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Купить металлопрокат в Нижнем Новгороде оптом. Поставка трубного и сортового металлопроката по выгодным ценам за тонну и метр. Доставка по Нижегородской области'
+      content: 'Купить металлопрокат в Нижнем Новгороде оптом. Поставка трубного и сортового металлопроката по выгодным ценам за тонну и метр. Доставка по Нижегородской области',
     },
     {
       name: 'robots',
-      content: 'index, follow'
+      content: 'index, follow',
     },
     {
       property: 'og:site_name',
-      content: config.public.siteName
+      content: config.public.siteName,
     },
     {
       property: 'og:url',
-      content: config.public.siteUrl
-    }
+      content: config.public.siteUrl,
+    },
   ],
   link: [
-    { rel: 'canonical', href: config.public.siteUrl }
-  ]
+    { rel: 'canonical', href: config.public.siteUrl },
+  ],
 })
 </script>
 

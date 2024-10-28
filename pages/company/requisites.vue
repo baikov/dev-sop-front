@@ -6,23 +6,23 @@ useHead({
     {
       hid: 'description',
       name: 'description',
-      content: 'Реквизиты компании ООО "СПЕЦОПТТОРГ"'
-    }
-  ]
+      content: 'Реквизиты компании ООО "СПЕЦОПТТОРГ"',
+    },
+  ],
 })
 const breadcrumbs = [
   {
     level: 1,
     name: 'О компании',
     href: '/company',
-    disabled: false
+    disabled: false,
   },
   {
     level: 2,
     name: 'Реквизиты',
     href: '/company/requisites',
-    disabled: true
-  }
+    disabled: true,
+  },
 ]
 </script>
 

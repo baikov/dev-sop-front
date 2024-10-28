@@ -13,12 +13,12 @@ const confirmationCookie = useCookie('accountConfirmation')
 
 const activateForm: IActivateAccount = {
   uid: slug[0] || '',
-  token: slug[1] || ''
+  token: slug[1] || '',
 }
 
 const email = useState('email', () => '')
 
-async function onSubmitActivate () {
+async function onSubmitActivate() {
   // const data = await form.value!.validate()
   await activateAccount(activateForm)
   const confirmationCookie = useCookie('accountConfirmation')
@@ -27,31 +27,33 @@ async function onSubmitActivate () {
       title: 'Success!',
       description: 'Account activated',
       icon: 'i-heroicons-check-solid',
-      color: 'green'
+      color: 'green',
     })
     // return navigateTo('/account')
-  } else if (errorMessage.value?.message) {
+  }
+  else if (errorMessage.value?.message) {
     for (const msg of Object.values(errorMessage.value.message)) {
       toast.add({
         title: 'Activation faild!',
         description: `${msg}`,
         icon: 'i-heroicons-x-circle-solid',
-        color: 'red'
+        color: 'red',
       })
       await promiseTimeout(500)
     }
     errorMessage.value = {} as IAuthError
     return navigateTo('/account/confirm')
-  } else {
+  }
+  else {
     toast.add({
       title: 'Activation faild!',
       description: 'Undefined error',
       icon: 'i-heroicons-x-circle-solid',
-      color: 'red'
+      color: 'red',
     })
   }
 }
-async function submitResend () {
+async function submitResend() {
   await resendEmail(user.value?.email || email.value)
   const confirmationCookie = useCookie('accountConfirmation')
   if (confirmationCookie.value === 'sended') {
@@ -59,25 +61,27 @@ async function submitResend () {
       title: 'Success!',
       description: 'Activation link sended',
       icon: 'i-heroicons-check-solid',
-      color: 'green'
+      color: 'green',
     })
-  } else if (errorMessage.value?.message) {
+  }
+  else if (errorMessage.value?.message) {
     for (const msg of Object.values(errorMessage.value)) {
       toast.add({
         title: 'Resend faild!',
         description: `${msg}`,
         icon: 'i-heroicons-x-circle-solid',
-        color: 'red'
+        color: 'red',
       })
       await promiseTimeout(500)
     }
     errorMessage.value = {} as IAuthError
-  } else {
+  }
+  else {
     toast.add({
       title: 'Resend faild!',
       description: 'Undefined error',
       icon: 'i-heroicons-x-circle-solid',
-      color: 'red'
+      color: 'red',
     })
   }
 }
@@ -86,17 +90,17 @@ const breadcrumbs = [
     level: 1,
     name: 'Account',
     href: '/account',
-    disabled: false
+    disabled: false,
   },
   {
     level: 2,
     name: 'Activation',
     href: '/account/confirm',
-    disabled: true
-  }
+    disabled: true,
+  },
 ]
 
-function goHome () {
+function goHome() {
   navigateTo('/')
 }
 </script>
@@ -109,7 +113,10 @@ function goHome () {
   <div>
     <DefaultBreadcrumbs :items="breadcrumbs" />
     <UContainer class="flex flex-col items-center justify-center">
-      <UCard v-if="activateForm.uid && activateForm.token && confirmationCookie !== 'confirmed'" class="w-auto lg:w-96">
+      <UCard
+        v-if="activateForm.uid && activateForm.token && confirmationCookie !== 'confirmed'"
+        class="w-auto lg:w-96"
+      >
         <template #header>
           <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
             Activate
@@ -120,12 +127,18 @@ function goHome () {
         </template>
         Click on button
         <template #footer>
-          <UButton color="green" @click="onSubmitActivate">
+          <UButton
+            color="green"
+            @click="onSubmitActivate"
+          >
             Activate
           </UButton>
         </template>
       </UCard>
-      <UCard v-if="confirmationCookie === 'confirmed'" class="w-auto lg:w-96">
+      <UCard
+        v-if="confirmationCookie === 'confirmed'"
+        class="w-auto lg:w-96"
+      >
         <template #header>
           <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
             Success!
@@ -136,12 +149,18 @@ function goHome () {
         </template>
         Body
         <template #footer>
-          <UButton color="green" @click="goHome()">
+          <UButton
+            color="green"
+            @click="goHome()"
+          >
             Login
           </UButton>
         </template>
       </UCard>
-      <UCard v-if="(confirmationCookie === 'error' || confirmationCookie === 'sended') && !activateForm.uid" class="w-auto lg:w-96">
+      <UCard
+        v-if="(confirmationCookie === 'error' || confirmationCookie === 'sended') && !activateForm.uid"
+        class="w-auto lg:w-96"
+      >
         <template #header>
           <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
             Confirmation
@@ -152,11 +171,26 @@ function goHome () {
         </template>
         We send confirmation link on email, please check
         If you didn't receive it click "resend" button
-        <UFormGroup v-if="!user?.email" label="Email" name="email" required class="mb-3">
-          <UInput v-model="email" placeholder="you@example.com" error="Not a valid email address." icon="i-heroicons-envelope" required />
+        <UFormGroup
+          v-if="!user?.email"
+          label="Email"
+          name="email"
+          required
+          class="mb-3"
+        >
+          <UInput
+            v-model="email"
+            placeholder="you@example.com"
+            error="Not a valid email address."
+            icon="i-heroicons-envelope"
+            required
+          />
         </UFormGroup>
         <template #footer>
-          <UButton color="red" @click="submitResend">
+          <UButton
+            color="red"
+            @click="submitResend"
+          >
             Resend activation email
           </UButton>
         </template>
