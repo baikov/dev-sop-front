@@ -1,17 +1,20 @@
 <script lang="ts" setup>
-import type { IProductList, IProductProperty } from '~/types/catalog'
+import type { IProductList, IProductProperty, IProduct } from '~/types/catalog'
+import { useCartStore } from '~/store/cart'
+
 const config = useRuntimeConfig()
 const route = useRoute()
 const slug = route.params.slug.toString()
 const toast = useToast()
+const { cart } = useCartStore()
 
 interface SortRef {
-  column: string;
-  direction: 'asc' | 'desc';
+  column: string
+  direction: 'asc' | 'desc'
 }
 const sort = ref<SortRef>({
   column: 'diametr',
-  direction: 'asc'
+  direction: 'asc',
 })
 
 const props = defineProps<{
@@ -21,7 +24,8 @@ const props = defineProps<{
 const djangoSort = computed(() => {
   if (sort.value.direction === 'desc') {
     return `-${sort.value.column}`
-  } else {
+  }
+  else {
     return sort.value.column
   }
 })
@@ -37,12 +41,12 @@ const productListParams = useState('productListParams', () => {
 })
 
 const page = computed({
-  get () {
+  get() {
     return productListParams.value.offset / productListParams.value.limit + 1
   },
-  set (newValue) {
+  set(newValue) {
     productListParams.value.offset = (newValue - 1) * productListParams.value.limit
-  }
+  },
 })
 
 const filters = computed(
@@ -54,7 +58,7 @@ const filters = computed(
       }
     }
     return result
-  }
+  },
 )
 
 // const productProperties = ref<string[]>([])
@@ -70,15 +74,15 @@ const filters = computed(
 // }
 
 const endpoint = computed(
-  () => `${config.public.apiUrl}/products/?category=${slug}&sort=${djangoSort.value}&limit=${productListParams.value.limit}&offset=${productListParams.value.offset}${filters.value}`
+  () => `${config.public.apiUrl}/products/?category=${slug}&sort=${djangoSort.value}&limit=${productListParams.value.limit}&offset=${productListParams.value.offset}${filters.value}`,
 )
 
 const { data: productList, pending, error } = await useFetch<IProductList>(
   endpoint,
   {
     method: 'get',
-    watch: [endpoint]
-  }
+    watch: [endpoint],
+  },
 )
 
 if (error.value) {
@@ -87,15 +91,16 @@ if (error.value) {
       title: 'Ошибка на сервере',
       description: 'Что-то пошло не так, попробуйте позже',
       icon: 'i-heroicons-x-circle-solid',
-      color: 'red'
+      color: 'red',
     })
-  } else {
+  }
+  else {
     for (const key of Object.keys(error.value.data)) {
       toast.add({
         title: 'Ошибка получения списка продукции',
         description: `${key}: ${error.value.data[key]}`,
         icon: 'i-heroicons-x-circle-solid',
-        color: 'red'
+        color: 'red',
       })
     }
   }
@@ -114,6 +119,7 @@ interface IProductRow {
   unit_price_with_coef: number
   [key: string | number | symbol]: any
 }
+
 const table = computed(() => {
   const res = [] as IProductRow[]
   for (const item of productList.value?.results || []) {
@@ -125,7 +131,7 @@ const table = computed(() => {
       in_stock: item.in_stock,
       meter_price_with_coef: item.meter_price_with_coef,
       ton_price_with_coef: item.ton_price_with_coef,
-      unit_price_with_coef: item.unit_price_with_coef
+      unit_price_with_coef: item.unit_price_with_coef,
     }
     for (const prop of props) {
       row[prop.code] = parseFloat(prop.value) || prop.value
@@ -138,12 +144,16 @@ const table = computed(() => {
 const baseColumns = [
   {
     key: 'in_stock',
-    label: 'Наличие'
+    label: 'Наличие',
   },
   {
     key: 'price',
-    label: 'Цена'
-  }
+    label: 'Цена',
+  },
+  {
+    key: 'order',
+    label: 'В заказ',
+  },
 ]
 
 const productProperties = computed(() => {
@@ -164,22 +174,22 @@ const propColumns = computed(() => {
       res.push({
         key: item.code,
         label: item.name,
-        sortable: item.is_sortable
+        sortable: item.is_sortable,
       })
     }
   }
   return res
-}
+},
 )
 
 const columns = computed(() => {
   return [
     {
       key: 'name',
-      label: 'Название'
+      label: 'Название',
     },
     ...propColumns.value,
-    ...baseColumns
+    ...baseColumns,
   ]
 })
 
@@ -190,7 +200,8 @@ const updateSort = () => {
 const setUnsetFilter = (propertyCode: string, value: string) => {
   if (productListParams.value[propertyCode] === value) {
     productListParams.value[propertyCode] = ''
-  } else {
+  }
+  else {
     productListParams.value[propertyCode] = value
   }
   productListParams.value.offset = 0
@@ -213,40 +224,64 @@ watch(error, () => {
         title: 'Ошибка на сервере',
         description: 'Что-то пошло не так, попробуйте позже',
         icon: 'i-heroicons-x-circle-solid',
-        color: 'red'
+        color: 'red',
       })
       sort.value = { direction: 'asc', column: 'diametr' }
-    } else {
+    }
+    else {
       for (const key of Object.keys(error.value.data)) {
         toast.add({
           title: 'Ошибка получения списка продукции',
           description: `${key}: ${error.value.data[key]}`,
           icon: 'i-heroicons-x-circle-solid',
-          color: 'red'
+          color: 'red',
         })
       }
     }
   }
 })
 
-const currencyOptions = {
-  style: 'currency',
-  currency: 'RUB',
-  maximumFractionDigits: 0
+const isProductInCart = (id: number) => {
+  return cart.productsInCart.some(item => item.id === id)
 }
-// const ctx = useNuxtApp()
-// if (process.client)
-//   ctx.$metrika.reachGoal('zzz')
+
+const productAddIsOpen = useState('productAddIsOpen', () => false)
+
+const productAdd = ref<IProduct | null>(null)
+
+const showProductAddModal = (id: number) => {
+  productAdd.value = productList.value?.results.find(item => item.id === id) || null
+  if (!productAdd.value) {
+    toast.add({
+      title: 'Ошибка',
+      description: 'Продукт не найден',
+      icon: 'i-heroicons-x-circle-solid',
+      color: 'red',
+    })
+    return
+  }
+  productAddIsOpen.value = true
+}
 </script>
 
 <template>
   <div class="flex flex-col">
     <div>
-      <UButton label="Фильтры" @click="isOpen = true" />
+      <UButton
+        label="Фильтры"
+        @click="isOpen = true"
+      />
     </div>
     <div class="flex gap-2 py-2">
-      <template v-for="prop in categoryProperties" :key="prop.code">
-        <UChip v-if="productListParams[prop.code] !== ''" text="x" color="gray">
+      <template
+        v-for="prop in categoryProperties"
+        :key="prop.code"
+      >
+        <UChip
+          v-if="productListParams[prop.code] !== ''"
+          text="x"
+          color="gray"
+        >
           <UBadge
             class="cursor-pointer bg-red-500"
             @click="setUnsetFilter(prop.code, productListParams[prop.code])"
@@ -257,12 +292,18 @@ const currencyOptions = {
       </template>
     </div>
     <USlideover v-model="isOpen">
-      <UCard class="flex flex-1 flex-col overflow-y-auto" :ui="{ body: { base: 'flex-1' }, ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
+      <UCard
+        class="flex flex-1 flex-col overflow-y-auto"
+        :ui="{ body: { base: 'flex-1' }, ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }"
+      >
         <template #header>
           Фильтры
         </template>
 
-        <div v-for="prop in categoryProperties" :key="prop.code">
+        <div
+          v-for="prop in categoryProperties"
+          :key="prop.code"
+        >
           <span v-if="prop.values != null && prop.values.length > 0">
             {{ prop.name }}:
             <UBadge
@@ -283,7 +324,10 @@ const currencyOptions = {
       </UCard>
     </USlideover>
 
-    <div v-if="productList" class="flex flex-col justify-between gap-5 px-3 py-3.5 dark:border-gray-700 md:flex-row">
+    <div
+      v-if="productList"
+      class="flex flex-col justify-between gap-5 px-3 py-3.5 dark:border-gray-700 md:flex-row"
+    >
       <div class="sm:flex sm:items-center sm:justify-between">
         <div>
           <div class="flex items-center gap-x-3">
@@ -296,7 +340,12 @@ const currencyOptions = {
           </div>
         </div>
       </div>
-      <UPagination v-model="page" class="self-center justify-self-center py-2 md:py-0" :total="productList?.count" :page-count="productListParams.limit" />
+      <UPagination
+        v-model="page"
+        class="self-center justify-self-center py-2 md:py-0"
+        :total="productList?.count"
+        :page-count="productListParams.limit"
+      />
     </div>
     <UTable
       v-model:sort="sort"
@@ -308,7 +357,10 @@ const currencyOptions = {
     >
       <!-- Product name -->
       <template #name-data="{ row }">
-        <NuxtLink :to="`/product/${row.slug}`" class="underline hover:text-gray-700 dark:hover:text-gray-200">
+        <NuxtLink
+          :to="`/product/${row.slug}`"
+          class="underline hover:text-gray-700 dark:hover:text-gray-200"
+        >
           {{ row.name }}
         </NuxtLink>
       </template>
@@ -319,20 +371,35 @@ const currencyOptions = {
       <!-- Price -->
       <template #price-data="{ row }">
         <div v-if="row.ton_price_with_coef || row.meter_price_with_coef || row.unit_price_with_coef">
-          <span v-show="row.ton_price_with_coef" class="font-bold">
-            {{ row.ton_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/т
+          <span
+            v-show="row.ton_price_with_coef"
+            class="font-bold"
+          >
+            {{ formatPrice(row.ton_price_with_coef) }}/т
           </span>
-          <span v-show="!row.ton_price_with_coef && row.unit_price_with_coef" class="font-bold">
-            {{ `${row.unit_price_with_coef.toLocaleString('ru-RU', currencyOptions)}/шт` }}
+          <span
+            v-show="!row.ton_price_with_coef && row.unit_price_with_coef"
+            class="font-bold"
+          >
+            {{ `${formatPrice(row.unit_price_with_coef)}/шт` }}
           </span>
-          <span v-show="!row.ton_price_with_coef && row.meter_price_with_coef" class="font-bold">
-            {{ `${row.meter_price_with_coef.toLocaleString('ru-RU', currencyOptions)}/м` }}
+          <span
+            v-show="!row.ton_price_with_coef && row.meter_price_with_coef"
+            class="font-bold"
+          >
+            {{ `${formatPrice(row.meter_price_with_coef)}/м` }}
           </span>
-          <p v-if="row.ton_price_with_coef && row.meter_price_with_coef" class="text-xs font-normal text-gray-600 dark:text-gray-400">
-            {{ row.meter_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/м
+          <p
+            v-if="row.ton_price_with_coef && row.meter_price_with_coef"
+            class="text-xs font-normal text-gray-600 dark:text-gray-400"
+          >
+            {{ formatPrice(row.meter_price_with_coef) }}/м
           </p>
-          <p v-if="row.ton_price_with_coef && row.unit_price_with_coef" class="text-xs font-normal text-gray-600 dark:text-gray-400">
-            {{ row.unit_price_with_coef.toLocaleString('ru-RU', currencyOptions) }}/шт
+          <p
+            v-if="row.ton_price_with_coef && row.unit_price_with_coef"
+            class="text-xs font-normal text-gray-600 dark:text-gray-400"
+          >
+            {{ formatPrice(row.unit_price_with_coef) }}/шт
           </p>
         </div>
         <div v-else>
@@ -341,6 +408,35 @@ const currencyOptions = {
           </span>
         </div>
       </template>
+      <!-- Order -->
+      <template #order-data="{ row }">
+        <!-- <UPopover
+          overlay
+          :popper="{ placement: 'bottom-start', offsetDistance: -50 }"
+          :ui="{ width: '100%' }"
+        >
+          <UButton
+            :icon="isProductInCart(row.id) ? 'i-mdi-cart-check' : 'i-mdi-cart-plus'"
+            size="sm"
+            color="primary"
+            square
+            :variant="isProductInCart(row.id) ? 'solid' : 'outline'"
+          />
+
+          <template #panel>
+            <div class="flex items-center justify-center gap-4 p-4">
+              <CatalogProductAdd :product="row" />
+            </div>
+          </template>
+        </UPopover> -->
+        <UButton
+          :icon="isProductInCart(row.id) ? 'i-mdi-cart-check' : 'i-mdi-cart-plus'"
+          color="primary"
+          :variant="isProductInCart(row.id) ? 'solid' : 'outline'"
+          square
+          @click="showProductAddModal(row.id)"
+        />
+      </template>
       <template #empty-state>
         <div class="flex flex-col items-center justify-center gap-3 py-6">
           <span class="text-sm italic">Товары не найдены</span>
@@ -348,8 +444,43 @@ const currencyOptions = {
         </div>
       </template>
     </UTable>
-    <div v-if="productList" class="flex justify-center border-t border-gray-200 px-3 py-3.5 dark:border-gray-700 md:justify-end">
-      <UPagination v-model="page" :total="productList?.count" :page-count="productListParams.limit" />
+    <div
+      v-if="productList"
+      class="flex justify-center border-t border-gray-200 px-3 py-3.5 dark:border-gray-700 md:justify-end"
+    >
+      <UPagination
+        v-model="page"
+        :total="productList?.count"
+        :page-count="productListParams.limit"
+      />
     </div>
   </div>
+  <ClientOnly>
+    <UModal v-model="productAddIsOpen">
+      <UCard>
+        <template #header>
+          <div class="flex items-center justify-between">
+            <h3 class="text-base font-semibold leading-6">
+              Добавление в корзину
+            </h3>
+            <UButton
+              color="gray"
+              variant="ghost"
+              icon="i-heroicons-x-mark-20-solid"
+              class="-my-1"
+              @click="productAddIsOpen = false"
+            />
+          </div>
+          <p>
+            Товар: {{ productAdd?.name }}
+          </p>
+        </template>
+        <CatalogProductAdd
+          v-if="productAdd"
+          :product="productAdd"
+        />
+        <span v-else>Странная ошибка ¯\_(ツ)_/¯</span>
+      </UCard>
+    </UModal>
+  </ClientOnly>
 </template>

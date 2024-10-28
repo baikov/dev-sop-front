@@ -6,17 +6,17 @@ useHead({
     {
       hid: 'description',
       name: 'description',
-      content: 'Информация о компании ООО "СПЕЦОПТТОРГ"'
-    }
-  ]
+      content: 'Информация о компании ООО "СПЕЦОПТТОРГ"',
+    },
+  ],
 })
 const breadcrumbs = [
   {
     level: 1,
     name: 'О компании',
     href: '/company',
-    disabled: true
-  }
+    disabled: true,
+  },
 ]
 const pictures = [
   '/img/company/1.jpg',
@@ -24,7 +24,7 @@ const pictures = [
   '/img/company/3.jpg',
   '/img/company/4.jpg',
   '/img/company/5.jpg',
-  '/img/company/6.jpg'
+  '/img/company/6.jpg',
 ]
 </script>
 
@@ -44,7 +44,11 @@ const pictures = [
               arrows
               indicators
             >
-              <img :src="item" class="w-full" draggable="false">
+              <img
+                :src="item"
+                class="w-full"
+                draggable="false"
+              >
             </UCarousel>
           </div>
           <div class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">

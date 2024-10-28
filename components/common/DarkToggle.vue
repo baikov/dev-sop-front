@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const color = useColorMode()
-function toggleDark () {
+function toggleDark() {
   color.preference = color.value === 'dark' ? 'light' : 'dark'
 }
 </script>
@@ -21,10 +21,16 @@ function toggleDark () {
           />
         </template>
         <template v-else>
-          <UIcon name="i-tabler-sun" class="theme-icon" />
+          <UIcon
+            name="i-tabler-sun"
+            class="theme-icon"
+          />
         </template>
         <template #fallback>
-          <UIcon name="i-tabler-loader" class="theme-icon" />
+          <UIcon
+            name="i-tabler-loader"
+            class="theme-icon"
+          />
         </template>
       </ClientOnly>
     </div>

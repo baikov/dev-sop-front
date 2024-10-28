@@ -10,9 +10,11 @@ const createErrors = (data: any): IAuthError | null => {
   for (const fieldErrors of Object.values(data)) {
     if (Array.isArray(fieldErrors)) {
       error.message = [...fieldErrors]
-    } else if (typeof fieldErrors === 'object' && fieldErrors !== null) {
+    }
+    else if (typeof fieldErrors === 'object' && fieldErrors !== null) {
       error.message = [...Object.values(fieldErrors)]
-    } else if (typeof fieldErrors === 'string') {
+    }
+    else if (typeof fieldErrors === 'string') {
       error.message = [fieldErrors]
     }
   }
@@ -24,12 +26,12 @@ export const useAuthStore = defineStore('auth', {
     return {
       user: useCookie('user').value as IUser | null || null,
       authenticated: !!useCookie('token').value,
-      errorMessage: {} as IAuthError | null
+      errorMessage: {} as IAuthError | null,
     }
   },
   getters: {},
   actions: {
-    async loginUser (formData: ILoginForm) {
+    async loginUser(formData: ILoginForm) {
       const config = useRuntimeConfig()
       const tokenCookie = useCookie<string>('token')
       const refreshCookie = useCookie<string>('refresh')
@@ -38,7 +40,7 @@ export const useAuthStore = defineStore('auth', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: formData,
-        watch: false
+        watch: false,
       })
       if (data.value) {
         tokenCookie.value = data.value.access
@@ -51,7 +53,7 @@ export const useAuthStore = defineStore('auth', {
         this.errorMessage = createErrors(error.value.data)
       }
     },
-    logoutUser () {
+    logoutUser() {
       const tokenCookie = useCookie('token')
       const refreshCookie = useCookie('refresh')
       const userCookie = useCookie<IUser | null>('user')
@@ -63,11 +65,11 @@ export const useAuthStore = defineStore('auth', {
       this.user = null
       confirmationCookie.value = null
     },
-    async getUserMe (token: string) {
+    async getUserMe(token: string) {
       const config = useRuntimeConfig()
       const user = useCookie<IUser>('user')
       const { data, error } = await useFetch<IUser>(`${config.public.apiUrl}/auth/users/me/`, {
-        headers: { Authorization: `JWT ${token}` }
+        headers: { Authorization: `JWT ${token}` },
       })
       if (data.value) {
         user.value = data.value
@@ -78,7 +80,7 @@ export const useAuthStore = defineStore('auth', {
         this.errorMessage = createErrors(error.value)
       }
     },
-    async verifyJWT (token: string) {
+    async verifyJWT(token: string) {
       const config = useRuntimeConfig()
       const refreshCookie = useCookie('refresh')
       const tokenCookie = useCookie('token')
@@ -86,7 +88,7 @@ export const useAuthStore = defineStore('auth', {
       const { status, error } = await useFetch(`${config.public.apiUrl}/auth/jwt/verify/`, {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
-        body: { token }
+        body: { token },
       })
 
       if (status.value === 'success') {
@@ -98,7 +100,8 @@ export const useAuthStore = defineStore('auth', {
         this.errorMessage = createErrors(error.value.data)
         if (this.errorMessage?.code === 401 && refreshCookie.value) {
           this.refreshJWT(refreshCookie.value)
-        } else {
+        }
+        else {
           this.authenticated = false
           this.user = null
           refreshCookie.value = null
@@ -107,7 +110,7 @@ export const useAuthStore = defineStore('auth', {
         }
       }
     },
-    async refreshJWT (refresh: string) {
+    async refreshJWT(refresh: string) {
       const config = useRuntimeConfig()
       const tokenCookie = useCookie('token')
       const userCookie = useCookie('user')
@@ -116,7 +119,7 @@ export const useAuthStore = defineStore('auth', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: { refresh },
-        server: false
+        server: false,
       })
       if (data.value) {
         tokenCookie.value = data.value.access
@@ -132,14 +135,14 @@ export const useAuthStore = defineStore('auth', {
         this.user = null
       }
     },
-    async registerUser (formData: IRegistrationForm) {
+    async registerUser(formData: IRegistrationForm) {
       const config = useRuntimeConfig()
       const confirmationCookie = useCookie('accountConfirmation')
       const { data, error } = await useFetch<IUser>(`${config.public.apiUrl}/auth/users/`, {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: formData,
-        watch: false
+        watch: false,
       })
       if (data.value) {
         confirmationCookie.value = 'sended'
@@ -149,13 +152,13 @@ export const useAuthStore = defineStore('auth', {
         this.errorMessage = createErrors(error.value.data)
       }
     },
-    async activateAccount (formData: IActivateAccount) {
+    async activateAccount(formData: IActivateAccount) {
       const config = useRuntimeConfig()
       const confirmationCookie = useCookie('accountConfirmation')
       const { status, error } = await useFetch(`${config.public.apiUrl}/auth/users/activation/`, {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
-        body: formData
+        body: formData,
       })
       if (status.value === 'success') {
         confirmationCookie.value = 'confirmed'
@@ -165,13 +168,13 @@ export const useAuthStore = defineStore('auth', {
         this.errorMessage = createErrors(error.value.data)
       }
     },
-    async resendEmail (email: string) {
+    async resendEmail(email: string) {
       const config = useRuntimeConfig()
       const confirmationCookie = useCookie('accountConfirmation')
       const { status, error } = await useFetch(`${config.public.apiUrl}/auth/users/resend_activation/`, {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
-        body: { email }
+        body: { email },
       })
       if (status.value === 'success') {
         confirmationCookie.value = 'sended'
@@ -179,11 +182,11 @@ export const useAuthStore = defineStore('auth', {
       if (error.value) {
         this.errorMessage = {
           code: error.value.statusCode as number || null,
-          message: ['Wrong email']
+          message: ['Wrong email'],
         }
       }
-    }
-  }
+    },
+  },
 })
 
 if (import.meta.hot) {

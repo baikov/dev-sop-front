@@ -58,5 +58,5 @@ export type {
   IRegistrationForm,
   IActivateAccount,
   IAuthError,
-  IMenuItem
+  IMenuItem,
 }

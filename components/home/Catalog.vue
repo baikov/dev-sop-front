@@ -10,20 +10,22 @@ if (error.value) {
       title: 'Ошибка на сервере',
       description: 'Что-то пошло не так, попробуйте позже',
       icon: 'i-heroicons-x-circle-solid',
-      color: 'red'
+      color: 'red',
     })
-  } else {
+  }
+  else {
     for (const key of Object.keys(error.value.data)) {
       toast.add({
         title: 'Ошибка получения списка категорий',
         description: `${key}: ${error.value.data[key]}`,
         icon: 'i-heroicons-x-circle-solid',
-        color: 'red'
+        color: 'red',
       })
     }
   }
 }
 </script>
+
 <template>
   <div class="py-4">
     <CatalogSubcategories :subcat-list="rootCategories || []" />

@@ -8,11 +8,11 @@ export const useMenu = () => {
     const { data, error } = await useFetch<IMenuItem[]>(
       `${config.public.apiUrl}/categories/menu/`, {
         // headers: { Authorization: `JWT ${tokenCookie.value}` }
-      }
+      },
     )
     return {
       data,
-      error
+      error,
     }
   }
 

@@ -1,18 +1,18 @@
 <script setup lang="ts">
 // inherited attrs can mess up the satori parser
 defineOptions({
-  inheritAttrs: false
+  inheritAttrs: false,
 })
 
 defineProps({
   title: {
     type: String,
-    default: 'Default Title'
+    default: 'Default Title',
   },
   description: {
     type: String,
-    default: 'Default Descr'
-  }
+    default: 'Default Descr',
+  },
 })
 </script>
 

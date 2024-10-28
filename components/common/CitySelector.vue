@@ -11,18 +11,30 @@ const cities = [
   'Кстово',
   'Кулебаки',
   'Павлово',
-  'Саров'
+  'Саров',
 ]
 
 const selected = useState<string>('selectedCity', () => cities[0])
 </script>
 
 <template>
-  <USelectMenu v-slot="{ open }" v-model="selected" :options="cities">
-    <UButton variant="link" color="white" class="flex-1 justify-between">
+  <USelectMenu
+    v-slot="{ open }"
+    v-model="selected"
+    :options="cities"
+  >
+    <UButton
+      variant="link"
+      color="white"
+      class="flex-1 justify-between"
+    >
       {{ selected }}
 
-      <UIcon name="i-heroicons-chevron-right-20-solid" class="size-5 text-gray-50 transition-transform dark:text-gray-500" :class="[open && 'rotate-90']" />
+      <UIcon
+        name="i-heroicons-chevron-right-20-solid"
+        class="size-5 text-gray-50 transition-transform dark:text-gray-500"
+        :class="[open && 'rotate-90']"
+      />
     </UButton>
   </USelectMenu>
 </template>

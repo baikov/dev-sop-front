@@ -8,7 +8,7 @@ const table = [
   { name: 'Расчётный счет', value: '40702810001500188475' },
   { name: 'Название банка', value: 'ООО "Банк Точка"' },
   { name: 'БИК', value: '044525104' },
-  { name: 'Корр. счет', value: '30101810745374525104' }
+  { name: 'Корр. счет', value: '30101810745374525104' },
 ]
 </script>
 
@@ -33,14 +33,26 @@ const table = [
           Файлы
         </dt>
         <dd class="mt-1 text-sm sm:col-span-2 sm:mt-0">
-          <ul role="list" class="divide-y divide-gray-200 rounded-md border border-gray-200">
+          <ul
+            role="list"
+            class="divide-y divide-gray-200 rounded-md border border-gray-200"
+          >
             <li class="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
               <div class="flex w-0 flex-1 items-center">
-                <UIcon class="size-5 shrink-0" aria-hidden="true" name="i-mdi-file-pdf" />
+                <UIcon
+                  class="size-5 shrink-0"
+                  aria-hidden="true"
+                  name="i-mdi-file-pdf"
+                />
                 <span class="ml-2 w-0 flex-1 truncate">Карточка_организации.pdf</span>
               </div>
               <div class="ml-4 shrink-0">
-                <NuxtLink to="/soptorg_req.pdf" class="font-medium hover:underline" external target="_blank">
+                <NuxtLink
+                  to="/soptorg_req.pdf"
+                  class="font-medium hover:underline"
+                  external
+                  target="_blank"
+                >
                   Скачать
                 </NuxtLink>
               </div>

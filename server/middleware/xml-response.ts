@@ -22,12 +22,12 @@ export default defineEventHandler(async (event) => {
               ]]>
           </description>
       </offer>
-      `
+      `,
     ).join('')
 
     const categories = yml.categories.map(category => `
       <category id="${category.id}"${category.parent_id !== 0 ? ` parentId="${category.parent_id}"` : ''}>${category.name}</category>
-      `
+      `,
     ).join('')
 
     // console.log('products', offers)

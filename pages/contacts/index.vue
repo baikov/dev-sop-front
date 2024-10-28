@@ -6,17 +6,17 @@ useHead({
     {
       hid: 'description',
       name: 'description',
-      content: 'Контакты компании ООО "СПЕЦОПТТОРГ"'
-    }
-  ]
+      content: 'Контакты компании ООО "СПЕЦОПТТОРГ"',
+    },
+  ],
 })
 const breadcrumbs = [
   {
     level: 1,
     name: 'Контакты',
     href: '/contacts',
-    disabled: true
-  }
+    disabled: true,
+  },
 ]
 </script>
 
@@ -34,7 +34,10 @@ const breadcrumbs = [
                   <div class="flex items-start">
                     <div class="shrink-0">
                       <div class="bg-primary-700 flex size-14 items-center justify-center rounded-md p-4 shadow-md dark:bg-gray-800">
-                        <UIcon name="i-mdi-phone" class="w-6 text-white" />
+                        <UIcon
+                          name="i-mdi-phone"
+                          class="w-6 text-white"
+                        />
                       </div>
                     </div>
                     <div class="ml-6 grow">
@@ -54,7 +57,10 @@ const breadcrumbs = [
                   <div class="flex items-start">
                     <div class="shrink-0">
                       <div class="bg-primary-700 flex size-14 items-center justify-center rounded-md p-4 shadow-md dark:bg-gray-800">
-                        <UIcon name="i-mdi-email" class="w-6 text-white" />
+                        <UIcon
+                          name="i-mdi-email"
+                          class="w-6 text-white"
+                        />
                       </div>
                     </div>
                     <div class="ml-6 grow">
@@ -74,7 +80,10 @@ const breadcrumbs = [
                   <div class="align-start flex">
                     <div class="shrink-0">
                       <div class="bg-primary-700 flex size-14 items-center justify-center rounded-md p-4 shadow-md dark:bg-gray-800">
-                        <UIcon name="i-mdi-map-marker" class="w-6 text-white" />
+                        <UIcon
+                          name="i-mdi-map-marker"
+                          class="w-6 text-white"
+                        />
                       </div>
                     </div>
                     <div class="ml-6 grow">
@@ -91,7 +100,10 @@ const breadcrumbs = [
                   <div class="align-start flex">
                     <div class="shrink-0">
                       <div class="bg-primary-700 flex size-14 items-center justify-center rounded-md p-4 shadow-md dark:bg-gray-800">
-                        <UIcon name="i-mdi-clock" class="w-6 text-white" />
+                        <UIcon
+                          name="i-mdi-clock"
+                          class="w-6 text-white"
+                        />
                       </div>
                     </div>
                     <div class="ml-6 grow">
@@ -108,7 +120,12 @@ const breadcrumbs = [
             </div>
             <div class="block w-full shrink-0 grow-0 basis-auto lg:flex lg:w-6/12 xl:w-4/12">
               <div class="block w-full overflow-hidden rounded-lg shadow-lg">
-                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A832f2b93d8e203a25b2eaf25f4da38f4a271b283c8a15d665841d9eb563e04c4&amp;source=constructor&amp;scroll=false" width="100%" height="400" frameborder="0" />
+                <iframe
+                  src="https://yandex.ru/map-widget/v1/?um=constructor%3A832f2b93d8e203a25b2eaf25f4da38f4a271b283c8a15d665841d9eb563e04c4&amp;source=constructor&amp;scroll=false"
+                  width="100%"
+                  height="400"
+                  frameborder="0"
+                />
               </div>
             </div>
           </div>

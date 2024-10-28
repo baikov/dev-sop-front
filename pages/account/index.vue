@@ -8,8 +8,8 @@ const breadcrumbs = [
     level: 1,
     name: 'Account',
     href: '/account',
-    disabled: true
-  }
+    disabled: true,
+  },
 ]
 </script>
 

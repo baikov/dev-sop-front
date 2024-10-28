@@ -15,7 +15,10 @@
         >
           +7 (831) 214-03-14
         </NuxtLink>
-        <span class="mx-2 hidden h-4 w-px bg-slate-100 md:block lg:mx-2" aria-hidden="true" />
+        <span
+          class="mx-2 hidden h-4 w-px bg-slate-100 md:block lg:mx-2"
+          aria-hidden="true"
+        />
         <NuxtLink
           class="font-bold hover:text-gray-800 dark:hover:text-zinc-200"
           to="mailto:info@soptorg.ru"

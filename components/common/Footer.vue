@@ -13,7 +13,11 @@ const year = new Date().getFullYear()
       </div>
       <div class="flex flex-col items-center py-2 sm:items-start">
         <p><span class="font-bold">Время работы</span> пн-пт: 8.00-17.00</p>
-        <NuxtLink to="company/confidentiality" target="_blank" class="underline">
+        <NuxtLink
+          to="company/confidentiality"
+          target="_blank"
+          class="underline"
+        >
           Политика конфиденциальности
         </NuxtLink>
       </div>
@@ -22,7 +26,11 @@ const year = new Date().getFullYear()
       </div>
     </UContainer>
     <UContainer class="flex w-full max-w-full items-center justify-center gap-5 bg-gray-950 py-2">
-      <NuxtLink to="https://baikov.dev" target="_blank" class="text-sm font-bold">
+      <NuxtLink
+        to="https://baikov.dev"
+        target="_blank"
+        class="text-sm font-bold"
+      >
         baikov<span class="font-bold text-red-500 dark:text-gray-200">.dev</span>
       </NuxtLink>
       <span class="bg-primary-700 text-light-200 block rounded px-1 py-0.5 text-xs dark:bg-gray-200 dark:text-gray-900">

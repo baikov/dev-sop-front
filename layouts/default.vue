@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 defineOgImage({
-  component: 'OgImageDefault'
+  component: 'OgImageDefault',
   // title: 'My awesome home page.'
 })
 </script>

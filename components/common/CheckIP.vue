@@ -14,15 +14,15 @@ const breadcrumbs = [
     level: 1,
     name: 'Check IP',
     href: '/account/checkip',
-    disabled: true
-  }
+    disabled: true,
+  },
 ]
 const endpoint = computed(
-  () => `${config.public.apiUrl}/forms/check-ip/`
+  () => `${config.public.apiUrl}/forms/check-ip/`,
 )
 const { data: geo, refresh } = await useFetch<Geo>(endpoint, {
   method: 'GET',
-  server: false
+  server: false,
 })
 
 // const realIP = useState<string | string[]>('realIP')
@@ -37,7 +37,10 @@ const { data: geo, refresh } = await useFetch<Geo>(endpoint, {
     <CommonBreadcrumbs :items="breadcrumbs" />
     <UContainer class="flex flex-col items-center justify-center">
       <ClientOnly>
-        <div v-if="geo" class="flex flex-col items-start justify-center gap-4">
+        <div
+          v-if="geo"
+          class="flex flex-col items-start justify-center gap-4"
+        >
           <span class="text-lg font-bold">Backend:</span>
           <span>
             IP: <span class="font-bold">{{ geo.ip || 'Не определен' }}</span>

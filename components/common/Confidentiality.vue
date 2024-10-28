@@ -284,12 +284,18 @@
       <strong>Юридический адрес:</strong> Нижегородская область, г. Нижний Новгород, пр-кт Бусыгина, д. 1, офис 325
     </p>
     <p class="mb-2">
-      <strong>Электронная почта:</strong> <NuxtLink to="mailto:info@soptorg.ru" class="text-blue-500">
+      <strong>Электронная почта:</strong> <NuxtLink
+        to="mailto:info@soptorg.ru"
+        class="text-blue-500"
+      >
         info@soptorg.ru
       </NuxtLink>
     </p>
     <p class="mb-2">
-      <strong>Телефон:</strong> <NuxtLink to="tel:+78312140314" class="text-blue-500">
+      <strong>Телефон:</strong> <NuxtLink
+        to="tel:+78312140314"
+        class="text-blue-500"
+      >
         8 (831) 214-03-14
       </NuxtLink>
     </p>
