@@ -6,7 +6,7 @@ WORKDIR /nuxt
 COPY package*.json ./
 COPY ./yarn.lock ./
 
-ENV NODE_OPTIONS --max_old_space_size=950
+ENV NODE_OPTIONS --max_old_space_size=4096
 
 RUN yarn install --prefer-offline --pure-lockfile --non-interactive --production=false
 
