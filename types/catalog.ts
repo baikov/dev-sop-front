@@ -100,12 +100,18 @@ interface IProductList {
 }
 
 interface INewMenuItem {
-  id: number,
-  name: string,
-  slug: string,
-  image: string,
-  is_published: boolean,
+  id: number
+  name: string
+  slug: string
+  image: string
+  is_published: boolean
   children: INewMenuItem[]
+}
+
+interface ContactInfo {
+  name: string
+  phone: string
+  email: string
 }
 
 export type {
@@ -118,5 +124,6 @@ export type {
   IProductPropertyValue,
   INewMenuItem,
   IDocument,
-  IYML
+  IYML,
+  ContactInfo,
 }
