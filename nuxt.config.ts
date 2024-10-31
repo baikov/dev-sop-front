@@ -14,9 +14,9 @@ export default defineNuxtConfig({
   ],
   $production: {
     routeRules: {
-      '/company/**': { prerender: true },
-      '/contacts': { prerender: true },
-      '/services': { prerender: true },
+      // '/company/**': { prerender: true },
+      // '/contacts': { prerender: true },
+      // '/services': { prerender: true },
       '/manager-dashboard': { ssr: false },
     },
     gtag: {
@@ -57,7 +57,6 @@ export default defineNuxtConfig({
   },
   ui: {
     global: true,
-  //   icons: ['mdi', 'heroicons', 'tabler', 'icon-park-solid', 'bi']
   },
   runtimeConfig: {
     public: {
@@ -92,6 +91,12 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Ubuntu: [300, 400, 500, 700],
+    },
+  },
+  icon: {
+    clientBundle: {
+      scan: true,
+      sizeLimitKb: 256,
     },
   },
   image: {
