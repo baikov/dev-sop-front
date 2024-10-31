@@ -972,10 +972,10 @@
   dependencies:
     "@iconify/types" "*"
 
-"@iconify-json/tabler@^1.2.3", "@iconify-json/tabler@^1.2.6":
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@iconify-json/tabler/-/tabler-1.2.6.tgz#15f1b0067d078b0045511098a987b217c975e360"
-  integrity sha512-+LjRsbx4tqaLNorQldahZRCepYVAC8Fj6hpkHuZFWB0xj81YasACT0f9JGtavG4+LePdvkXRTuz5RQOU6YcnXA==
+"@iconify-json/tabler@^1.2.3", "@iconify-json/tabler@^1.2.7":
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/@iconify-json/tabler/-/tabler-1.2.7.tgz#f915e20b9136232b967bc2cda47a71574b889b09"
+  integrity sha512-q6FbDeC5caOC7i7/dcJOv7PdovHWItd84hCvsnlD/mzsrl5Nhol6eSQOMRv1bIpyxykGEiSDbOsVK5f23j/aFg==
   dependencies:
     "@iconify/types" "*"
 
