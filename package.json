@@ -17,29 +17,26 @@
     "@iconify-json/heroicons": "^1.2.1",
     "@iconify-json/icon-park-solid": "^1.2.1",
     "@iconify-json/mdi": "^1.2.1",
-    "@iconify-json/tabler": "^1.2.6",
+    "@iconify-json/tabler": "^1.2.7",
     "@nuxt/devtools": "1.6.0",
-    "@nuxt/eslint": "^0.6.0",
+    "@nuxt/eslint": "0.6.1",
     "@nuxt/image": "1.8.1",
     "@nuxt/scripts": "0.9.5",
     "@nuxt/ui": "2.18.7",
     "@nuxtjs/google-fonts": "3.2.0",
     "@nuxtjs/seo": "^2.0.0-rc.23",
-    "@pinia/nuxt": "0.5.5",
+    "@pinia/nuxt": "0.6.1",
     "@types/eslint-plugin-tailwindcss": "^3.17.0",
     "@types/node": "20.12.12",
-    "@vueuse/core": "11.1.0",
-    "@vueuse/nuxt": "11.1.0",
+    "@vueuse/core": "11.2.0",
+    "@vueuse/nuxt": "11.2.0",
     "eslint": "^9.13.0",
     "eslint-plugin-tailwindcss": "3.17.5",
-    "nuxt": "^3.13.2",
+    "nuxt": "3.13.2",
     "nuxt-gtag": "^3.0.1",
-    "pinia": "2.2.4",
+    "pinia": "2.2.5",
     "typescript": "^5.6.3",
-    "vue-tsc": "2.1.8"
-  },
-  "resolutions": {
-    "rollup": "npm:@rollup/wasm-node"
+    "vue-tsc": "2.1.10"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
