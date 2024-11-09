@@ -13,6 +13,15 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
   ],
   $production: {
+    runtimeConfig: {
+      public: {
+        siteUrl: `https://${process.env.DOMAIN}`,
+        apiUrl: `https://${process.env.DOMAIN}/api`,
+        mediaUrl: `https://${process.env.DOMAIN}/media`,
+        siteName: process.env.SITE_NAME || 'Nuxt 3',
+        language: 'ru-RU',
+      },
+    },
     routeRules: {
       // '/company/**': { prerender: true },
       // '/contacts': { prerender: true },
@@ -31,7 +40,7 @@ export default defineNuxtConfig({
       id: process.env.YANDEX_METRIKA_ID,
     },
   },
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   app: {
     head: {
       charset: 'utf-8',
@@ -65,7 +74,14 @@ export default defineNuxtConfig({
       mediaUrl: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}:8000/media`,
       siteName: process.env.SITE_NAME || 'Nuxt 3',
       language: 'ru-RU',
-      // titleSeparator: '|',
+    },
+    image: {
+      domains: [
+        `https://${process.env.DOMAIN}`,
+      ],
+      alias: {
+        soptorg: `https://${process.env.DOMAIN}`,
+      },
     },
   },
   compatibilityDate: '2024-10-27',
@@ -100,14 +116,13 @@ export default defineNuxtConfig({
     },
   },
   image: {
-    // dir: 'assets/img',
     domains: [
       `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
       'localhost',
     ],
     alias: {
-      soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
-      // soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://localhost:8000'}`
+      // soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
+      soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://localhost:8000'}`,
     },
   },
   linkChecker: {
