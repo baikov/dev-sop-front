@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { IProductList, IProductProperty, IProduct } from '~/types/catalog'
+import type { ProductInCart } from '~/types/cart'
 import { useCartStore } from '~/store/cart'
 
 const config = useRuntimeConfig()
@@ -134,7 +135,9 @@ const table = computed(() => {
       unit_price_with_coef: item.unit_price_with_coef,
     }
     for (const prop of props) {
-      row[prop.code] = parseFloat(prop.value) || prop.value
+      const value: string | number = prop.value.replace(',', '.')
+      row[prop.code] = /^[0-9]+(\.[0-9]+)?$/.test(value) ? parseFloat(value) : value
+      console.log(row[prop.code])
     }
     res.push(row)
   }
@@ -242,7 +245,7 @@ watch(error, () => {
 })
 
 const isProductInCart = (id: number) => {
-  return cart.productsInCart.some(item => item.id === id)
+  return cart.productsInCart.some((item: ProductInCart) => item.id === id)
 }
 
 const productAddIsOpen = useState('productAddIsOpen', () => false)
