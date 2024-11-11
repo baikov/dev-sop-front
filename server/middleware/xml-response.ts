@@ -3,15 +3,15 @@ import type { IYML } from '~/types/catalog'
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
-  const { pathname } = parseURL(event.node.req.url)
+  const { pathname, search } = parseURL(event.node.req.url)
 
   if (pathname === '/yml') {
     const yml = await $fetch<IYML>(`${config.public.apiUrl}/yml/`)
-    // <picture>https://soptorg.ru${product.picture}</picture>
     const offers = yml.products.map(product => `
       <offer id="${product.id}">
           <name>${product.name}</name>
           <url>https://soptorg.ru/product/${product.slug}</url>
+          ${search.includes('?pic=1') && product.picture !== '' ? `<picture>https://soptorg.ru${product.picture}</picture>` : ''}
           <price>${product.price}</price>
           <currencyId>RUR</currencyId>
           <categoryId>${product.category_id}</categoryId>
