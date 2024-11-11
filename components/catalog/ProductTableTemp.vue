@@ -137,7 +137,6 @@ const table = computed(() => {
     for (const prop of props) {
       const value: string | number = prop.value.replace(',', '.')
       row[prop.code] = /^[0-9]+(\.[0-9]+)?$/.test(value) ? parseFloat(value) : value
-      console.log(row[prop.code])
     }
     res.push(row)
   }

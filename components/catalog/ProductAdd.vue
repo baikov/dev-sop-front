@@ -13,9 +13,6 @@ const props = defineProps<{
 const vesMetra = +(props.product?.properties?.find(prop => prop.code === 'ves-metra')?.value ?? 0)
 const dlina = +(props.product?.properties?.find(prop => prop.code === 'dlina')?.value ?? 0)
 
-console.log('vesMetra', vesMetra)
-console.log('dlina', dlina)
-
 const productInCart = computed(() => cart.productsInCart.find(item => item.id === props.product.id))
 const tons = ref(0)
 const meters = ref(0)
