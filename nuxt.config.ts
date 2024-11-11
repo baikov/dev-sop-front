@@ -12,22 +12,26 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxtjs/seo',
   ],
-  $production: {
+  $development: {
     runtimeConfig: {
       public: {
-        siteUrl: `https://${process.env.DOMAIN}`,
-        apiUrl: `https://${process.env.DOMAIN}/api`,
-        mediaUrl: `https://${process.env.DOMAIN}/media`,
+        siteUrl: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
+        apiUrl: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}${process.env.API_PORT ? `:${process.env.API_PORT}` : ''}/api`,
+        mediaUrl: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}:8000/media`,
         siteName: process.env.SITE_NAME || 'Nuxt 3',
         language: 'ru-RU',
       },
     },
-    routeRules: {
-      // '/company/**': { prerender: true },
-      // '/contacts': { prerender: true },
-      // '/services': { prerender: true },
-      '/manager-dashboard': { ssr: false },
+    image: {
+      domains: [
+        `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
+      ],
+      alias: {
+        soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://localhost:8000'}`,
+      },
     },
+  },
+  $production: {
     gtag: {
       id: 'G-75N44N3M4H',
     },
@@ -69,20 +73,18 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      siteUrl: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
-      apiUrl: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}${process.env.API_PORT ? `:${process.env.API_PORT}` : ''}/api`,
-      mediaUrl: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}:8000/media`,
+      siteUrl: `https://${process.env.DOMAIN}`,
+      apiUrl: `https://${process.env.DOMAIN}/api`,
+      mediaUrl: `https://${process.env.DOMAIN}/media`,
       siteName: process.env.SITE_NAME || 'Nuxt 3',
       language: 'ru-RU',
     },
-    image: {
-      domains: [
-        `https://${process.env.DOMAIN}`,
-      ],
-      alias: {
-        soptorg: `https://${process.env.DOMAIN}`,
-      },
-    },
+  },
+  routeRules: {
+    // '/company/**': { prerender: true },
+    // '/contacts': { prerender: true },
+    // '/services': { prerender: true },
+    '/manager-dashboard': { ssr: false },
   },
   compatibilityDate: '2024-10-27',
   vite: {
@@ -117,12 +119,10 @@ export default defineNuxtConfig({
   },
   image: {
     domains: [
-      `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
-      'localhost',
+      `https://${process.env.DOMAIN}`,
     ],
     alias: {
-      // soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://'}${process.env.DOMAIN}`,
-      soptorg: `${process.env.HTTPS === 'true' ? 'https://' : 'http://localhost:8000'}`,
+      soptorg: `https://${process.env.DOMAIN}`,
     },
   },
   linkChecker: {
