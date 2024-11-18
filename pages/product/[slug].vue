@@ -154,7 +154,7 @@ const paymentModalIsOpen = useState('paymentModalIsOpen', () => false)
               :alt="productDetail.name"
               :title="productDetail.name"
               loading="lazy"
-              class="relative top-0 inline-block transition-all duration-300 ease-in-out group-hover:-top-0.5 dark:invert"
+              class="relative top-0 inline-block transition-all duration-300 ease-in-out group-hover:-top-0.5"
             />
             <div class="absolute left-12 top-2">
               <div
