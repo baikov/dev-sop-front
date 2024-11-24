@@ -25,6 +25,7 @@ const mainMenu: IMenuItem[] = [
       { id: 277, name: 'Реквизиты', depth: 1, slug: 'requisites', submenu: [] },
       { id: 280, name: 'Документы', depth: 1, slug: 'documents', submenu: [] },
       { id: 281, name: 'Возврат', depth: 1, slug: 'buy-back', submenu: [] },
+      { id: 281, name: 'Отзывы', depth: 1, slug: 'reviews', submenu: [] },
     ],
   },
   { id: 275, name: 'Услуги', depth: 1, slug: 'services', submenu: [] },
