@@ -62,18 +62,15 @@ useHead({
 })
 
 useSchemaOrg([
-  defineProduct({
+  defineAggregateOffer({
     name: detailCategory?.value?.seo.h1 || detailCategory?.value?.name,
     description: detailCategory?.value?.seo.seo_description,
     image: detailCategory?.value?.image,
-    aggregateOffer: {
-      type: 'AggregateOffer',
-      url: `${config.public.siteUrl}${route.path}`,
-      offerCount: detailCategory?.value?.products_count ?? 0,
-      lowPrice: detailCategory?.value?.min_price ?? 0,
-      highPrice: detailCategory?.value?.max_price ?? 0,
-      priceCurrency: 'RUB',
-    },
+    url: `${config.public.siteUrl}${route.path}`,
+    offerCount: detailCategory?.value?.products_count ?? 0,
+    lowPrice: detailCategory?.value?.min_price ?? 0,
+    highPrice: detailCategory?.value?.max_price ?? 0,
+    priceCurrency: 'RUB',
     aggregateRating: {
       ratingValue: Math.random() * (5.0 - 4.0) + 4.0,
       bestRating: 5,
