@@ -374,9 +374,11 @@ const showProductAddModal = (id: number) => {
       <template #name-data="{ row }">
         <NuxtLink
           :to="`/product/${row.slug}`"
-          class="underline hover:text-gray-700 dark:hover:text-gray-200"
+          class="max-w-10 truncate underline hover:text-gray-700 dark:hover:text-gray-200"
         >
-          {{ row.name }}
+          <div class="max-w-[250px] text-wrap">
+            {{ row.name }}
+          </div>
         </NuxtLink>
       </template>
       <!-- In stock -->
