@@ -232,15 +232,25 @@ const paymentModalIsOpen = useState('paymentModalIsOpen', () => false)
                 <div class="w-1/2">
                   <div v-if="productDetail.ton_price_with_coef">
                     <span>Цена за тонну: </span>
-                    <span class="font-bold">{{ formatPrice(productDetail.ton_price_with_coef) }}</span>
+                    <span class="text-2xl font-bold">{{ formatPrice(productDetail.ton_price_with_coef) }}</span>
                   </div>
                   <div v-if="productDetail.meter_price_with_coef">
-                    <span>Цена за метр:</span>
-                    {{ formatPrice(productDetail.meter_price_with_coef) }}
+                    <span>Цена за метр: </span>
+                    <span
+                      class="font-bold"
+                      :class="{ 'text-2xl': !productDetail.ton_price_with_coef }"
+                    >
+                      {{ formatPrice(productDetail.meter_price_with_coef) }}
+                    </span>
                   </div>
                   <div v-if="productDetail.unit_price_with_coef">
-                    <span>Цена за штуку:</span>
-                    {{ formatPrice(productDetail.unit_price_with_coef) }}
+                    <span>Цена за штуку: </span>
+                    <span
+                      class="font-bold"
+                      :class="{ 'text-2xl': !productDetail.ton_price_with_coef && !productDetail.meter_price_with_coef }"
+                    >
+                      {{ formatPrice(productDetail.unit_price_with_coef) }}
+                    </span>
                   </div>
                 </div>
               </div>
