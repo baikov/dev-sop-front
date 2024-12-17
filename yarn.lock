@@ -855,10 +855,10 @@
   dependencies:
     "@iconify/types" "*"
 
-"@iconify-json/icon-park-solid@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@iconify-json/icon-park-solid/-/icon-park-solid-1.2.1.tgz#a0a66bb4e5a698ba65589587bfd56f49c061dc62"
-  integrity sha512-pOagJOb6ha6izXJq6y/ACmK+0GR3PszSY5c7HQl42MUe18+Qco794qK8zAmtHY+pmS76/sNK85PUIJU5vkvuUg==
+"@iconify-json/icon-park-solid@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@iconify-json/icon-park-solid/-/icon-park-solid-1.2.2.tgz#cd2f9f11c7e0859ecede37f364bc59a2cbb92085"
+  integrity sha512-CVIe1+WMb3axWWrZ4Yt9/ZAbF8UEYnQ77Zt+DooLuA5VxVcea9eVzFnmuNZ8UVgQ7lt2y8ZHU2VGI6BylLeYCA==
   dependencies:
     "@iconify/types" "*"
 
