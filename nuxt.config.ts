@@ -133,7 +133,7 @@ export default defineNuxtConfig({
     groups: [
       {
         userAgent: ['Yandex'],
-        cleanParam: ['etext', '_openstat', 'yclid', 'gclid', 'yclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'],
+        cleanParam: ['etext', '_openstat', 'yclid', 'gclid', 'yclid', 'fbclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_referer', 'utm_ya_campaign', 'yabizcmpgn', 'utm_candidate'],
       },
     ],
   },
