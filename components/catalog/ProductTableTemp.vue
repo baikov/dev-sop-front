@@ -114,6 +114,7 @@ interface IProductRow {
   id: number
   name: string
   slug: string
+  image: string | null
   in_stock: boolean
   meter_price_with_coef: number
   ton_price_with_coef: number
@@ -129,6 +130,7 @@ const table = computed(() => {
       id: item.id,
       name: item.name,
       slug: item.slug,
+      image: item.image,
       in_stock: item.in_stock,
       meter_price_with_coef: item.meter_price_with_coef,
       ton_price_with_coef: item.ton_price_with_coef,
@@ -186,6 +188,10 @@ const propColumns = computed(() => {
 
 const columns = computed(() => {
   return [
+    {
+      key: 'image',
+      label: '',
+    },
     {
       key: 'name',
       label: 'Название',
@@ -357,6 +363,13 @@ const showProductAddModal = (id: number) => {
       :columns="columns"
       @update:sort="updateSort"
     >
+      <!-- Image -->
+      <template #image-data="{ row }">
+        <UAvatar
+          :src="row.image"
+          :alt="row.name"
+        />
+      </template>
       <!-- Product name -->
       <template #name-data="{ row }">
         <NuxtLink
