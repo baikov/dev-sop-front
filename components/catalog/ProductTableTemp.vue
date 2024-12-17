@@ -366,7 +366,7 @@ const showProductAddModal = (id: number) => {
       <!-- Image -->
       <template #image-data="{ row }">
         <UAvatar
-          :src="`/soptorg/media/${row.image}`"
+          :src="`/media/${row.image}`"
           :alt="`Фото товара ${row.name}`"
         />
       </template>
