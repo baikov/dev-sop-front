@@ -15,6 +15,12 @@ if (error.value) {
       color: 'red',
     })
   }
+  else if (error.value.statusCode === 404) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Страница не найдена',
+    })
+  }
   else {
     for (const key of Object.keys(error.value.data)) {
       toast.add({
