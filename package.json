@@ -22,7 +22,7 @@
     "@nuxt/eslint": "0.7.2",
     "@nuxt/image": "1.8.1",
     "@nuxt/scripts": "0.9.5",
-    "@nuxt/ui": "2.19.2",
+    "@nuxt/ui": "2.21.0",
     "@nuxtjs/google-fonts": "3.2.0",
     "@nuxtjs/seo": "2.0.2",
     "@pinia/nuxt": "0.8.0",
