@@ -65,7 +65,6 @@ async function onSubmit() { // event: FormSubmitEvent<any>
     })
     contactsFormIsSend.value = true
     if (import.meta.client) {
-      // @ts-expect-error: because fuck you, that's why
       ctx.$metrika.reachGoal('formContacts')
     }
   }

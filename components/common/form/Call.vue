@@ -62,7 +62,6 @@ async function onSubmit() { // event: FormSubmitEvent<any>
     })
 
     if (import.meta.client) {
-      // @ts-expect-error: because fuck you, that's why
       ctx.$metrika.reachGoal('formCallback')
     }
   }
