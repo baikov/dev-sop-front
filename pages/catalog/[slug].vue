@@ -5,6 +5,7 @@ const config = useRuntimeConfig()
 const slug = route.params.slug.toString()
 const { data: detailCategory, error } = await getCategory(slug)
 const toast = useToast()
+const page = ref(parseInt(route.query.page?.toString() || '1'))
 
 if (error.value) {
   if (error.value.statusCode === 500) {
@@ -32,9 +33,13 @@ if (error.value) {
     }
   }
 }
+const totalPages = Math.ceil((detailCategory?.value?.products_count ?? 0) / 50)
+console.log('prod count', detailCategory?.value?.products_count)
+console.log('totalPages', totalPages)
 
+const seoTitle = page.value > 1 ? `${detailCategory?.value?.seo.seo_title} - Страница ${page.value}` : detailCategory?.value?.seo.seo_title
 useHead({
-  title: detailCategory?.value?.seo.seo_title,
+  title: seoTitle,
   titleTemplate: '%s',
 
   meta: [
@@ -58,6 +63,8 @@ useHead({
   ],
   link: [
     { rel: 'canonical', href: `${config.public.siteUrl}${route.path}` },
+    ...(page.value > 1 && totalPages > 1 ? [{ rel: 'prev', href: `${config.public.siteUrl}${route.path}?page=${page.value - 1}` }] : []),
+    ...(totalPages > 1 && page.value < totalPages ? [{ rel: 'next', href: `${config.public.siteUrl}${route.path}?page=${page.value + 1}` }] : []),
   ],
 })
 
@@ -93,7 +100,7 @@ useSchemaOrg([
           v-show="detailCategory?.subcategories && detailCategory?.subcategories.length > 0"
           :subcat-list="detailCategory?.subcategories"
         />
-        <CatalogProductTableTemp :category-properties="detailCategory?.product_properties || []" />
+        <CatalogProductTable :category-properties="detailCategory?.product_properties || []" />
         <!-- eslint-disable-next-line vue/no-v-html -->
         <div
           v-if="detailCategory?.description"
